@@ -828,7 +828,7 @@ void Menu::stMenu() {
 						catch (long) {
 							cout << "\t\t\t\t\t\t\tThang khong hop le! Moi nhap lai.\n";
 						}
-						catch (unsigned int) {
+						catch (float) {
 							cout << "\t\t\t\t\t\t\tNgay khong duoc am! Moi nhap lai.\n";
 						}
 						catch (string) {
@@ -853,7 +853,7 @@ void Menu::stMenu() {
 						catch (long) {
 							cout << "\t\t\t\t\t\t\tThang khong hop le! Moi nhap lai.\n";
 						}
-						catch (unsigned int) {
+						catch (float) {
 							cout << "\t\t\t\t\t\t\tNgay khong duoc am! Moi nhap lai.\n";
 						}
 						catch (string) {
@@ -957,7 +957,7 @@ void Menu::stMenu() {
 						catch (long) {
 							cout << "\t\t\t\t\t\t\tThang khong hop le! Moi nhap lai.\n";
 						}
-						catch (unsigned int) {
+						catch (float) {
 							cout << "\t\t\t\t\t\t\tNgay khong duoc am! Moi nhap lai.\n";
 						}
 						catch (string) {

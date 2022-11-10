@@ -1,13 +1,34 @@
 #include "CinemaRoomManager.h"
 #include <Windows.h>
 
+void checkCnmrId(const string& id) {
+	if(id.size() != 2) throw Error(7);
+	for (int i = 0; i < id.length(); i++) {
+		if (id[i] > '9' || id[i] < '0') {
+			throw Error(1);
+		}
+	}
+}
+
 CinemaRoom CinemaRoomManager::setCinemaRoomInfor() {
 	CinemaRoom cinemaRoom;
+	string templ = "cnmr";
 	string id;
+	string idin;
 	int check = 0;
 	do {
-		cout << "\n\t\t\t\t\t\t\tNhap id: ";
-		getline(cin, id);
+		do {
+			cout << "\n\t\t\t\t\t\t\tNhap id(vi du: cnmr01, cnmr02,...): ";
+			try {
+				cout << templ;
+				getline(cin, idin);
+				checkCnmrId(idin);
+				break;
+			} catch(Error error) {
+				error.getMessage();
+			}
+		} while(true);	
+		id = templ + idin;		
 		if(this->findById(id) != nullptr) {
 			do {
 				cout << "\t\t\t\t\t\t\t\tMa bi trung!. Lua chon";
@@ -32,8 +53,24 @@ CinemaRoom CinemaRoomManager::setCinemaRoomInfor() {
 	cout << "\t\t\t\t\t\t\tNhap so ghe: ";
 	chairs = getInt();
 	string status;
-	cout << "\t\t\t\t\t\t\tNhap tinh trang phong chieu: ";
-	getline(cin, status);
+	do {
+		cout << "\t\t\t\t\t\t\tNhap tinh trang phong chieu(great, good, normal, bad): ";
+		getline(cin, status);
+		if(status != "bad" && status != "normal" && status != "good" && status != "great") {
+			do {
+				cout << "\t\t\t\t\t\t\t\tTinh trang khong hop le!. Lua chon";
+				cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
+				cout << "\t\t\t2. Thoat";
+				cout << "\n\t\t\t\t\t\t\t";
+				check = getInt();
+				if (check != 1 && check != 2) {
+					cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
+					system("pause");
+				}
+			} while (check != 1 && check != 2);
+		}
+		else check = 3;
+	} while(check == 1 || check == 0);
 	cinemaRoom.setId(id);
 	cinemaRoom.setChairs(chairs);
 	cinemaRoom.setStatus(status);
@@ -80,8 +117,25 @@ string CinemaRoomManager::update() {
 				break;
 			}
 			case(2): {
-				cout << "\t\t\t\t\t\t\tNhap tinh trang: ";
-				getline(cin, up);
+				int check = 0;
+				do {
+					cout << "\t\t\t\t\t\t\tNhap tinh trang phong chieu(great, good, normal, bad): ";
+					getline(cin, up);
+					if(up != "bad" && up != "normal" && up != "good" && up != "great") {
+						do {
+							cout << "\t\t\t\t\t\t\t\tTinh trang khong hop le!. Lua chon";
+							cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
+							cout << "\t\t\t2. Thoat";
+							cout << "\n\t\t\t\t\t\t\t";
+							check = getInt();
+							if (check != 1 && check != 2) {
+								cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
+								system("pause");
+							}
+						} while (check != 1 && check != 2);
+					}
+					else check = 3;
+				} while(check == 1 || check == 0);
 				if(up == "bad") {
 					SetConsoleTextAttribute(cl, 4);
 					cout << "\n\t\t\t\t\t\tLUU Y:    SAU KHI XAC NHAN THAY DOI PHONG CHIEU CAP NHAT TINH TRANG KHONG TOT SE DUOC XOA TRONG LICH CHIEU\n";

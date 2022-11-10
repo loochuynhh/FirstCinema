@@ -9,6 +9,7 @@
 #include "Staff.h"
 #include <fstream>
 #include "Salary.h"
+#include "Error.h"
 
 using namespace std;
 

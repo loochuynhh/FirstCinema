@@ -1,5 +1,14 @@
 #include "FilmManager.h"
 
+void checkFilmId(const string& id) {
+	if(id.size() != 4) throw Error(9);
+	for (int i = 0; i < id.length(); i++) {
+		if (id[i] > '9' || id[i] < '0') {
+			throw Error(1);
+		}
+	}
+}
+
 char asciitolower(char in) {
 	if (in <= 'Z' && in >= 'A')
 		return in - ('Z' - 'z');
@@ -52,13 +61,25 @@ Film FilmManager::setFilmInfor() {
 	string director;
 	string actor;
 	string country;
+	string idin;
+	string templ = "f";
 	int type;
 	int length;
 	int check = 0;
 	Film filmtmp;
 	do {
-		cout << "\n\t\t\t\t\t\t\tNhap id: ";
-		getline(cin, id);
+		do {
+			cout << "\n\t\t\t\t\t\t\tNhap id(vi du: f0001, f0002,...): ";
+			try {
+				cout << templ;
+				getline(cin, idin);
+				checkFilmId(idin);
+				break;
+			} catch(Error error) {
+				error.getMessage();
+			}
+		} while(true);	
+		id = templ + idin;		
 		if(this->findById(id) != nullptr) {
 			do {
 				cout << "\t\t\t\t\t\t\t\tMa bi trung!. Lua chon";

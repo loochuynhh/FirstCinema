@@ -3,6 +3,7 @@
 #include "StaffManager.h"
 #include "Ticket.h"
 #include "Time.h"
+#include "Error.h"
 
 class TicketManager : public Manager<Ticket>
 {

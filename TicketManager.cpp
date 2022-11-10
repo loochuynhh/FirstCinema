@@ -1,5 +1,14 @@
 #include "TicketManager.h"
 
+void checkTkId(const string& id) {
+	if(id.size() != 4) throw Error(9);
+	for (int i = 0; i < id.length(); i++) {
+		if (id[i] > '9' || id[i] < '0') {
+			throw Error(1);
+		}
+	}
+}
+
 TicketManager::TicketManager(ScheduleManager& scheduleList, StaffManager& staffManager) {
 	this->scheduleList = &scheduleList;
 	this->staffManager = &staffManager;
@@ -13,13 +22,25 @@ Ticket TicketManager::setTicketInfor() {
 	string customerName = "";
 	string customerPhone;
 	string staffId;
+	string idin;
+	string templ = "tk";
 	int cost;
 	int amount;
 	int soda_corn;
 	int check = 0;
 	do {
-		cout << "\n\t\t\t\t\t\t\tNhap id: ";
-		getline(cin, id);
+		do {
+			cout << "\n\t\t\t\t\t\t\tNhap id(vi du: tk0001, tk0100): ";
+			try {
+				cout << templ;
+				getline(cin, idin);
+				checkTkId(idin);
+				break;
+			} catch(Error error) {
+				error.getMessage();
+			}
+		} while(true);	
+		id = templ + idin;
 		if(this->findById(id) != nullptr) {
 			do {
 				cout << "\t\t\t\t\t\t\t\tMa bi trung!. Lua chon";
@@ -71,11 +92,11 @@ Ticket TicketManager::setTicketInfor() {
 			customerPhone = getphone();
 			break;
 		}
-		catch (int) {
-			cout << "\t\t\t\t\t\t\tSo dien thoai khong chua ki tu! Moi nhap lai.\n";
+		catch (Error error) {
+			error.getMessage();
 		}
-		catch (long) {
-			cout << "\t\t\t\t\t\t\tSo dien thoai gom 10 hoac 11 so! Moi nhap lai.\n";
+		catch (...) {
+			cout << "Invalid information" << endl;
 		}
 	} while (true);
 	check = 0;

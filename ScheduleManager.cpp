@@ -1,5 +1,14 @@
 #include "ScheduleManager.h"
 
+void checkScdId(const string& id) {
+	if(id.size() != 3) throw Error(8);
+	for (int i = 0; i < id.length(); i++) {
+		if (id[i] > '9' || id[i] < '0') {
+			throw Error(1);
+		}
+	}
+}
+
 ScheduleManager::ScheduleManager(FilmManager& filmManager, CinemaRoomManager& room) {
 	this->filmManager = &filmManager;
 	this->cinemaRoomManager = &room;
@@ -10,14 +19,26 @@ Schedule ScheduleManager::setScheduleInfor() {
 	string id;
 	string filmId;
 	string cinemaRoomId;
+	string templ = "scd";
 	int show;
 	int date;
 	int month;
 	int year;
 	int check = 0;
+	string idin;
 	do {
-		cout << "\n\t\t\t\t\t\t\tNhap id: ";
-		getline(cin, id);
+		do {
+			cout << "\n\t\t\t\t\t\t\tNhap id(vi du: scd001, scd010,...): ";
+			try {
+				cout << templ;
+				getline(cin, idin);
+				checkScdId(idin);
+				break;
+			} catch(Error error) {
+				error.getMessage();
+			}
+		} while(true);	
+		id = templ + idin;
 		if(this->findById(id) != nullptr) {
 			do {
 				cout << "\t\t\t\t\t\t\t\tMa bi trung!. Lua chon";
@@ -124,17 +145,8 @@ Schedule ScheduleManager::setScheduleInfor() {
 			checktime(date, month, year);
 			break;
 		}
-		catch (int) {
-			cout << "\t\t\t\t\t\t\tNgay thang khong phu hop!. Moi nhap lai.\n";
-		}
-		catch (long) {
-			cout << "\t\t\t\t\t\t\tThang khong hop le! Moi nhap lai.\n";
-		}
-		catch (unsigned int) {
-			cout << "\t\t\t\t\t\t\tNgay khong duoc am! Moi nhap lai.\n";
-		}
-		catch (string) {
-			cout << "\t\t\t\t\t\t\tNam khong hop le! Moi nhap lai.\n";
+		catch (Error error) {
+			error.getMessage();
 		}
 	} while (true);
 	Time t(date, month, year);
@@ -273,17 +285,8 @@ void ScheduleManager::update() {
 						checktime(date, month, year);
 						break;
 					}
-					catch (int) {
-						cout << "\t\t\t\t\t\t\tNgay thang khong phu hop!. Moi nhap lai.\n";
-					}
-					catch (long) {
-						cout << "\t\t\t\t\t\t\tThang khong hop le! Moi nhap lai.\n";
-					}
-					catch (float) {
-						cout << "\t\t\t\t\t\t\tNgay khong duoc am! Moi nhap lai.\n";
-					}
-					catch (string) {
-						cout << "\t\t\t\t\t\t\tNam khong hop le! Moi nhap lai.\n";
+					catch (Error error) {
+						error.getMessage();
 					}
 				} while (true);
 				Time t;

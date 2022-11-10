@@ -1,5 +1,14 @@
 #include "StaffManager.h"
 
+void checkStId(const string& id) {
+	if(id.size() != 3) throw Error(8);
+	for (int i = 0; i < id.length(); i++) {
+		if (id[i] > '9' || id[i] < '0') {
+			throw Error(1);
+		}
+	}
+}
+
 void StaffManager::readFile(fstream& filein) {
 	int len;
 	filein >> len;
@@ -51,10 +60,22 @@ Staff StaffManager::setStaff() {
 	int age, agerl, date, month, year;
 	Infor infor;
 	Inforrl inforrl;
+	string idin;
+	string templ = "st";
 	int check = 0;
 	do {
-		cout << "\n\t\t\t\t\t\t\tNhap ID nhan vien: ";
-		getline(cin, id);
+		do {
+			cout << "\n\t\t\t\t\t\t\tNhap ID nhan vien(vi du: st001, st020): ";
+			try {
+				cout << templ;
+				getline(cin, idin);
+				checkStId(idin);
+				break;
+			} catch(Error error) {
+				error.getMessage();
+			}
+		} while(true);	
+		id = templ + idin;
 		if(this->findById(id) != nullptr) {
 			do {
 				cout << "\t\t\t\t\t\t\t\tMa bi trung!. Lua chon";
@@ -89,11 +110,8 @@ Staff StaffManager::setStaff() {
 			phone = getphone();
 			break;
 		}
-		catch (int) {
-			cout << "\t\t\t\t\t\t\tSo dien thoai khong chua ki tu! Moi nhap lai.\n";
-		}
-		catch (long) {
-			cout << "\t\t\t\t\t\t\tSo dien thoai gom 10 hoac 11 so! Moi nhap lai.\n";
+		catch (Error error) {
+			error.getMessage();
 		}
 	} while (true);
 	infor.setPhone(phone);
@@ -114,17 +132,8 @@ Staff StaffManager::setStaff() {
 			checktime(date, month, year);
 			break;
 		}
-		catch (int) {
-			cout << "\t\t\t\t\t\t\tNgay thang khong phu hop!. Moi nhap lai.\n";
-		}
-		catch (long) {
-			cout << "\t\t\t\t\t\t\tThang khong hop le! Moi nhap lai.\n";
-		}
-		catch (unsigned int) {
-			cout << "\t\t\t\t\t\t\tNgay khong duoc am! Moi nhap lai.\n";
-		}
-		catch (string) {
-			cout << "\t\t\t\t\t\t\tNam khong hop le! Moi nhap lai.\n";
+		catch (Error error) {
+			error.getMessage();
 		}
 	} while (true);
 	Time t(date, month, year);
@@ -229,7 +238,7 @@ void StaffManager::update(){
 					catch (long) {
 						cout << "\t\t\t\t\t\t\tThang khong hop le! Moi nhap lai.\n";
 					}
-					catch (unsigned int) {
+					catch (float) {
 						cout << "\t\t\t\t\t\t\tNgay khong duoc am! Moi nhap lai.\n";
 					}
 					catch (string) {

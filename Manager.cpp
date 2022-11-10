@@ -149,21 +149,22 @@ int getInt() {
 string getphone() {
 	string x;
 	getline(cin, x);
-	if (x.length() > 11 || x.length() < 10) throw long(0);
+	if (x.length() > 11 || x.length() < 10) throw Error(2);
 	for (int i = 0; i < x.length(); i++) {
 		if (x[i] > '9' || x[i] < '0') {
-			throw int(0);
+			throw Error(1);
 		}
 	}
 	return x;
 }
+
 int checktime(int date, int month, int year) {
-	if (date > 30 && (month == 4 || month == 6 || month == 9 || month == 11)) throw int();
-	else if (date > 31 && (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)) throw int();
-	else if (date > 29 && month == 2) throw int();
-	else if (month > 12 || month < 1) throw long();
-	else if (date < 1) throw float();
-	else if (year > 9999 || year < 1000) throw string();
+	if (date > 30 && (month == 4 || month == 6 || month == 9 || month == 11)) throw Error(3);
+	else if (date > 31 && (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)) throw Error(3);
+	else if (date > 29 && month == 2) throw Error(3);
+	else if (month > 12 || month < 1) throw Error(4);
+	else if (date < 1) throw Error(5);
+	else if (year > 9999 || year < 1000) throw Error(6);
 	return 0;
 }
 template class Manager<Ticket>;
