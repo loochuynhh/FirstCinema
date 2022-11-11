@@ -3,7 +3,6 @@
 void DirectorManager::readFile(fstream& filein) {
 	int len;
 	filein >> len;
-	filein.ignore(1);
 	for (int i = 0; i < len; i++) {
 		Director dr;
 		dr.readDataFile(filein);

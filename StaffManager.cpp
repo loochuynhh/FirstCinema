@@ -232,17 +232,8 @@ void StaffManager::update(){
 						checktime(date, month, year);
 						break;
 					}
-					catch (int) {
-						cout << "\t\t\t\t\t\t\tNgay thang khong phu hop!. Moi nhap lai.\n";
-					}
-					catch (long) {
-						cout << "\t\t\t\t\t\t\tThang khong hop le! Moi nhap lai.\n";
-					}
-					catch (float) {
-						cout << "\t\t\t\t\t\t\tNgay khong duoc am! Moi nhap lai.\n";
-					}
-					catch (string) {
-						cout << "\t\t\t\t\t\t\tNam khong hop le! Moi nhap lai.\n";
+					catch (Error error) {
+						error.getMessage();
 					}
 				} while (true);
 				staff->getTimeSt().setDate(date);  staff->getTimeSt().setMonth(month); staff->getTimeSt().setYear(year);
