@@ -29,7 +29,7 @@ void StaffManager::writeFile(fstream& fileout) {
 void StaffManager::write() {
 	Node* node = this->head;
 	for (int i = 0; i < 170; i++) cout << "-"; cout << endl;
-	cout << "| Ma nhan vien |    " << left << setw(22) << " Ten nhan vien" << "| Tuoi |" << left << setw(15) << "   Cong viec " << "|" << left << setw(23) << "     Tai khoan" << "|" << left << setw(17) << "   Mat khau" << "| Ngay sinh  |" << left << setw(15) << " So dien thoai" << "|" << left << setw(32) << "        email" << "|" << endl;
+	cout << "| Ma nhan vien |    " << left << setw(22) << " Ten nhan vien" << "| Tuoi |" << left << setw(15) << "   Cong viec " << "|" << left << setw(23) << "     Tai khoan" << "|" << left << setw(17) << "   Mat khau" << "|  Ngay lam  |" << left << setw(15) << " So dien thoai" << "|" << left << setw(32) << "        email" << "|" << endl;
 	for (int i = 0; i < 170; i++) cout << "-"; cout << endl;
 	for (int i = 0; i < length; i++) {
 		node->data.writeData();
@@ -123,11 +123,11 @@ Staff StaffManager::setStaff() {
 	infor.setAge(age);
 	do {
 		try {
-			cout << "\t\t\t\t\t\t\tNhap ngay sinh nhan vien: ";
+			cout << "\t\t\t\t\t\t\tNhap ngay nhan vien bat dau lam: ";
 			date = getInt();
-			cout << "\t\t\t\t\t\t\tNhap thang sinh nhan vien: ";
+			cout << "\t\t\t\t\t\t\tNhap thang nhan vien bat dau lam: ";
 			month = getInt();
-			cout << "\t\t\t\t\t\t\tNhap nam sinh nhan vien: ";
+			cout << "\t\t\t\t\t\t\tNhap nam nhan vien bat dau lam: ";
 			year = getInt();
 			checktime(date, month, year);
 			break;
@@ -147,11 +147,8 @@ Staff StaffManager::setStaff() {
 			phonerl = getphone();
 			break;
 		}
-		catch (int) {
-			cout << "\t\t\t\t\t\t\tSo dien thoai khong chua ki tu! Moi nhap lai.\n";
-		}
-		catch (long) {
-			cout << "\t\t\t\t\t\t\tSo dien thoai gom 10 hoac 11 so! Moi nhap lai.\n";
+		catch (Error error) {
+			error.getMessage();
 		}
 	} while (true);
 	inforrl.setPhone(phonerl);
@@ -161,6 +158,7 @@ Staff StaffManager::setStaff() {
 	cout << "\t\t\t\t\t\t\tNhap tuoi nhan than: ";
 	agerl = getInt();
 	inforrl.setAge(agerl);
+	staff.setInforSt(infor);
 	staff.setRelative(inforrl);
 	staff.setId(id); staff.setName(name); staff.setAccount(account); staff.setJob(job); staff.setPassword(password);
 	return staff;
@@ -181,7 +179,7 @@ void StaffManager::update(){
 			cout << "\t\t\t\t\t\t\t2. Sua cong viec" << endl;
 			cout << "\t\t\t\t\t\t\t3. Sua tai khoan" << endl;
 			cout << "\t\t\t\t\t\t\t4. Sua mat khau" << endl;
-			cout << "\t\t\t\t\t\t\t5. Sua ngay thang nam sinh" << endl;
+			cout << "\t\t\t\t\t\t\t5. Sua thoi gian bat dau lam" << endl;
 			cout << "\t\t\t\t\t\t\t6. Sua tuoi nhan vien" << endl;
 			cout << "\t\t\t\t\t\t\t7. Sua so dien thoai" << endl;
 			cout << "\t\t\t\t\t\t\t8. Sua mail nhan vien" << endl;
@@ -194,6 +192,8 @@ void StaffManager::update(){
 			opttmp = getInt();
 			string up;
 			int upn;
+			Infor infor = staff->getInforSt();
+			Inforrl inforrl = staff->getRelative();
 			switch (opttmp) {
 			case(1): {
 				cout << "\t\t\t\t\t\t\tNhap ten nhan vien: ";
@@ -223,11 +223,11 @@ void StaffManager::update(){
 				int date, month, year;
 				do {
 					try {
-						cout << "\t\t\t\t\t\t\tNhap ngay sinh: ";
+						cout << "\t\t\t\t\t\t\tNhap ngay bat dau lam: ";
 						date = getInt();
-						cout << "\t\t\t\t\t\t\tNhap thang sinh: ";
+						cout << "\t\t\t\t\t\t\tNhap thang bat dau lam: ";
 						month = getInt();
-						cout << "\t\t\t\t\t\t\tNhap nam sinh: ";
+						cout << "\t\t\t\t\t\t\tNhap nam bat dau lam: ";
 						year = getInt();
 						checktime(date, month, year);
 						break;
@@ -236,13 +236,15 @@ void StaffManager::update(){
 						error.getMessage();
 					}
 				} while (true);
-				staff->getTimeSt().setDate(date);  staff->getTimeSt().setMonth(month); staff->getTimeSt().setYear(year);
+				Time time(date, month, year);
+				staff->setTimeSt(time);
 				break;
 			}
 			case(6): {
 				cout << "\t\t\t\t\t\t\tNhap tuoi nhan vien: ";
 				upn = getInt();
-				staff->getInforSt().setAge(upn);
+				infor.setAge(upn); 
+				staff->setInforSt(infor);
 				break;
 			}
 			case(7): {
@@ -252,32 +254,33 @@ void StaffManager::update(){
 						up = getphone();
 						break;
 					}
-					catch (int) {
-						cout << "\t\t\t\t\t\t\tSo dien thoai khong chua ki tu! Moi nhap lai.\n";
-					}
-					catch (long) {
-						cout << "\t\t\t\t\t\t\tSo dien thoai gom 10 hoac 11 so! Moi nhap lai.\n";
+					catch (Error error) {
+						error.getMessage();
 					}
 				} while (true);
-				staff->getInforSt().setPhone(up);
+				infor.setPhone(up); 
+				staff->setInforSt(infor);
 				break;
 			}
 			case(8): {
 				cout << "\t\t\t\t\t\t\tNhap mail nhan vien: ";
 				getline(cin, up);
-				staff->getInforSt().setMail(up);
+				infor.setMail(up);
+				staff->setInforSt(infor);
 				break;
 			}
 			case(9): {
 				cout << "\t\t\t\t\t\t\tNhap ten nhan than: ";
 				getline(cin, up);
-				staff->getRelative().setNamerl(up);
+				inforrl.setNamerl(up);
+				staff->setRelative(inforrl);
 				break;
 			}
 			case(10): {
 				cout << "\t\t\t\t\t\t\tNhap tuoi nhan than: ";
 				upn = getInt();
-				staff->getRelative().setAge(upn);
+				inforrl.setAge(upn);
+				staff->setRelative(inforrl);
 				break;
 			}
 			case(11): {
@@ -287,20 +290,19 @@ void StaffManager::update(){
 						up = getphone();
 						break;
 					}
-					catch (int) {
-						cout << "\t\t\t\t\t\t\tSo dien thoai khong chua ki tu! Moi nhap lai.\n";
-					}
-					catch (long) {
-						cout << "\t\t\t\t\t\t\tSo dien thoai gom 10 hoac 11 so! Moi nhap lai.\n";
+					catch (Error error) {
+						error.getMessage();
 					}
 				} while (true);
-				staff->getRelative().setPhone(up);
+				inforrl.setPhone(up);
+				staff->setRelative(inforrl);
 				break;
 			}
 			case(12): {
 				cout << "\t\t\t\t\t\t\tNhap mail nhan than: ";
 				getline(cin, up);
-				staff->getRelative().setMail(up);
+				inforrl.setMail(up);
+				staff->setRelative(inforrl);
 				break;
 			}
 			case(0): {

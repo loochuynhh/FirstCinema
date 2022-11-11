@@ -174,6 +174,7 @@ int TicketManager::getRevenue(Time& t1, Time& t2) {
 		if (t >= t1 && t <= t2 ) {
 			revenue += node->data.getCost() * node->data.getAmount() + node->data.getSoda_Corn();
 		}
+		node = node->next;
 	}
 	return revenue;
 }
@@ -183,6 +184,7 @@ int TicketManager::getRevenue(string staffId) {
 	int revenue = 0;
 	for (int i = 0; i < this->length; i++) {
 		if (node->data.getStaffId() == staffId) revenue += node->data.getCost() * node->data.getAmount() + node->data.getSoda_Corn();
+		node = node->next;
 	}
 	return revenue;
 }

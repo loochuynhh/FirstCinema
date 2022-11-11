@@ -822,17 +822,8 @@ void Menu::stMenu() {
 							checktime(date, month, year);
 							break;
 						}
-						catch (int) {
-							cout << "\t\t\t\t\t\t\tNgay thang khong phu hop!. Moi nhap lai.\n";
-						}
-						catch (long) {
-							cout << "\t\t\t\t\t\t\tThang khong hop le! Moi nhap lai.\n";
-						}
-						catch (float) {
-							cout << "\t\t\t\t\t\t\tNgay khong duoc am! Moi nhap lai.\n";
-						}
-						catch (string) {
-							cout << "\t\t\t\t\t\t\tNam khong hop le! Moi nhap lai.\n";
+						catch (Error error) {
+							error.getMessage();
 						}
 					} while (true);
 					Time t1(date, month, year);
@@ -847,17 +838,8 @@ void Menu::stMenu() {
 							checktime(date, month, year);
 							break;
 						}
-						catch (int) {
-							cout << "\t\t\t\t\t\t\tNgay thang khong phu hop!. Moi nhap lai.\n";
-						}
-						catch (long) {
-							cout << "\t\t\t\t\t\t\tThang khong hop le! Moi nhap lai.\n";
-						}
-						catch (float) {
-							cout << "\t\t\t\t\t\t\tNgay khong duoc am! Moi nhap lai.\n";
-						}
-						catch (string) {
-							cout << "\t\t\t\t\t\t\tNam khong hop le! Moi nhap lai.\n";
+						catch (Error error) {
+							error.getMessage();
 						}
 					} while (true);
 					Time t2(date, month, year);
@@ -951,17 +933,8 @@ void Menu::stMenu() {
 							checktime(1, 1, year);
 							break;
 						}
-						catch (int) {
-							cout << "\t\t\t\t\t\t\tNgay thang khong phu hop!. Moi nhap lai.\n";
-						}
-						catch (long) {
-							cout << "\t\t\t\t\t\t\tThang khong hop le! Moi nhap lai.\n";
-						}
-						catch (float) {
-							cout << "\t\t\t\t\t\t\tNgay khong duoc am! Moi nhap lai.\n";
-						}
-						catch (string) {
-							cout << "\t\t\t\t\t\t\tNam khong hop le! Moi nhap lai.\n";
+						catch (Error error) {
+							error.getMessage();
 						}
 					} while (true);
 					SetConsoleTextAttribute(cl, 10);

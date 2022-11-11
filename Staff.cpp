@@ -132,7 +132,7 @@ void Staff::writeDatarl() {
     cout << left << setw(24) << this->getName() << "|";
     cout << left << setw(3) << " ";
     cout << left << setw(24) << this->getRelative().getNamerl() << "|";
-    cout << "   " << this->getRelative().getAge() << "   " << "|";
+    cout << "  " << left << setw(5) << this->getRelative().getAge() << "|";
     cout << left << setw(3) << " ";
     cout << left << setw(13) << this->getRelative().getPhone() << "|";
     cout << "   ";
