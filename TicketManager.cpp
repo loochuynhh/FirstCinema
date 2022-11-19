@@ -18,7 +18,6 @@ Ticket TicketManager::setTicketInfor() {
 	Node* node = this->head;
 	Ticket ticket;
 	string id;
-	string scheduleId;
 	string customerName = "";
 	string customerPhone;
 	string staffId;
@@ -26,6 +25,8 @@ Ticket TicketManager::setTicketInfor() {
 	string templ = "tk";
 	int cost;
 	int amount;
+	int count = 0;
+	Seat* seat = nullptr;
 	int soda_corn;
 	int check = 0;
 	do {
@@ -62,31 +63,7 @@ Ticket TicketManager::setTicketInfor() {
 	}
 	check = 0;
 	do {
-		system("cls");
-		cout << "\n";
-		this->scheduleList->write();
-		cout << "\n\t\t\t\t\t\t\tNhap ma lich chieu: ";
-		getline(cin, scheduleId);
-		if (this->scheduleList->findById(scheduleId) == nullptr) {
-			do {
-				cout << "\t\t\t\t\t\t\t\tKhong tim thay lich chieu!. Lua chon";
-				cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
-				cout << "\t\t\t2. Thoat";
-				cout << "\n\t\t\t\t\t\t\t";
-				check = getInt();
-				if (check != 1 && check != 2) {
-					cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
-					system("pause");
-				}
-			} while (check != 1 && check != 2);
-		}
-		else check = 3;
-	} while (check == 1 || check == 0);
-	if (check == 2) {
-		ticket.setId("null");
-		return ticket;
-	}
-	do {
+		fflush(stdin);
 		try {
 			cout << "\t\t\t\t\t\t\tNhap so dien thoai khach hang: ";
 			customerPhone = getphone();
@@ -139,19 +116,12 @@ Ticket TicketManager::setTicketInfor() {
 		ticket.setId("null");
 		return ticket;
 	}
-	cout << "\t\t\t\t\t\t\tNhap gia ve: ";
-	cost = getInt();
-	cout << "\t\t\t\t\t\t\tNhap so ve: ";
-	amount = getInt();
 	cout << "\t\t\t\t\t\t\tNhap gia bap nuoc: ";
 	soda_corn = getInt();
 	ticket.setId(id);
-	ticket.setScheduleId(scheduleId);
 	ticket.setCustomerName(customerName);
 	ticket.setCustomerPhone(customerPhone);
 	ticket.setStaffId(staffId);
-	ticket.setCost(cost);
-	ticket.setAmount(amount);
 	ticket.setSoda_Corn(soda_corn);
 	return ticket;
 }
@@ -160,7 +130,7 @@ int TicketManager::getRevenue() {
 	Node* node = this->head;
 	int revenue = 0;
 	for (int i = 0; i < this->length; i++) {
-		revenue += node->data.getCost()*node->data.getAmount() + node->data.getSoda_Corn();
+		//revenue += node->data.getCost()*node->data.getAmount() + node->data.getSoda_Corn();
 		node = node->next;
 	}
 	return revenue;
@@ -172,7 +142,7 @@ int TicketManager::getRevenue(Time& t1, Time& t2) {
 	for (int i = 0; i < this->length; i++) {
 		Time t = (this->scheduleList)->findById(node->data.getScheduleId())->getTime();
 		if (t >= t1 && t <= t2 ) {
-			revenue += node->data.getCost() * node->data.getAmount() + node->data.getSoda_Corn();
+			//revenue += node->data.getCost() * node->data.getAmount() + node->data.getSoda_Corn();
 		}
 		node = node->next;
 	}
@@ -183,7 +153,7 @@ int TicketManager::getRevenue(string staffId) {
 	Node* node = this->head;
 	int revenue = 0;
 	for (int i = 0; i < this->length; i++) {
-		if (node->data.getStaffId() == staffId) revenue += node->data.getCost() * node->data.getAmount() + node->data.getSoda_Corn();
+		//if (node->data.getStaffId() == staffId) revenue += node->data.getCost() * node->data.getAmount() + node->data.getSoda_Corn();
 		node = node->next;
 	}
 	return revenue;
@@ -198,7 +168,7 @@ void TicketManager::getRevenueY(int year) {
 	for (int i = 0; i < this->staffManager->getLength(); i++) {
 		for (int j = 0; j < this->length; j++) {
 			if (this->scheduleList->findById(node->data.getScheduleId())->getTime().getYear() == year && (staffManager->operator[](i).getId()).compare(node->data.getStaffId()) == 0) {
-				revenue[i][this->scheduleList->findById(node->data.getScheduleId())->getTime().getMonth() - 1] += node->data.getCost() * node->data.getAmount() + node->data.getSoda_Corn();
+				//revenue[i][this->scheduleList->findById(node->data.getScheduleId())->getTime().getMonth() - 1] += node->data.getCost() * node->data.getAmount() + node->data.getSoda_Corn();
 			}
 			node = node->next;
 		}
@@ -226,8 +196,26 @@ void TicketManager::readFile(fstream& filein) {
 	filein >> len;
 	for (int i = 0; i < len; i++) {
 	 	Ticket ticket;
-	 	ticket.readDataFile(filein);
-	 	this->add(ticket);
+		string* ids = ticket.readDataFile(filein);
+		this->add(ticket);
+		int amount = 0;
+		while (*(ids + amount) != "")
+		{
+			amount++;
+		}
+		Ticket* tic = this->findById(ticket.getId());
+		if(tic == nullptr) return;
+		for(int i = 0; i < amount; i++) {
+			if(strcmp((ids + i)->c_str(), "E") < 0) {
+				tic->addSeat(*(ids + i), true);
+			}
+			else {
+				tic->addSeat(*(ids + i), false);
+			}
+			if(this->scheduleList->findById(tic->getScheduleId())->getSeat(*(ids + i)) != nullptr) {
+				this->scheduleList->findById(tic->getScheduleId())->getSeat(*(ids + i))->setChecked(true);
+			}
+		}
 	}
 }
 void TicketManager::writeFile(fstream& fileout) {

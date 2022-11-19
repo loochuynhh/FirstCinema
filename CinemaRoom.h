@@ -11,18 +11,22 @@ class CinemaRoom
 {
 public:
 	string getId();
-	int getChairs();
+	int getRow();
+	int getColumn();
 	string getStatus();
 	void setId(const string&);
-	void setChairs(int);
+	void setRow(int);
+	void setColumn(int);
 	void setStatus(const string&);
 	void readDataFile(fstream&);
 	void writeDataFile(fstream&);
 	void writeData();
 private:
 	string id;
-	int chairs;
+	int row;
+	int column;
 	string status;
+	int type;
 };
 
 #endif

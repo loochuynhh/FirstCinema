@@ -72,7 +72,6 @@ CinemaRoom CinemaRoomManager::setCinemaRoomInfor() {
 		else check = 3;
 	} while(check == 1 || check == 0);
 	cinemaRoom.setId(id);
-	cinemaRoom.setChairs(chairs);
 	cinemaRoom.setStatus(status);
 	return cinemaRoom;
 }
@@ -113,7 +112,6 @@ string CinemaRoomManager::update() {
 			case(1): {
 				cout << "\t\t\t\t\t\t\tNhap so ghe: ";
 				upn = getInt();
-				room->setChairs(upn);
 				break;
 			}
 			case(2): {

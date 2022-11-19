@@ -658,6 +658,8 @@ void Menu::stMenu() {
 					if(tmp.getId() == "null") {}
 					else { 
 						scdMng.add(tmp); 
+						CinemaRoom* room = cnmMng.findById(tmp.getCinemaRoomId());
+						scdMng.findById(tmp.getId())->createSeat(room);
 						cout << "\t\t\t\t\t\t\tLich chieu moi da duoc them.\n";
 						system("pause");
 					}
@@ -736,6 +738,14 @@ void Menu::stMenu() {
 					cout << "\t\t\t\t\t\t\tThay doi da duoc luu vao file.\n";
 					system("pause");
 				}
+				else if (tmp == 7) {
+					string id;
+					system("cls");
+					cout << "nhap id" << endl;
+					getline(cin, id);
+					scdMng.findById(id)->showSeatStatus();
+					system("pause");
+				}
 				else if (tmp != 0) {
 					cout << "\t\t\t\t\t\t\tLua chon khong phu hop. Moi chon lai.\n";
 					system("pause");
@@ -790,12 +800,81 @@ void Menu::stMenu() {
 					cout << "\n\t\t\t\t\t\t\t\t\t\t***THEM HOA DON MOI***\n\n";
 					SetConsoleTextAttribute(cl, 7);
 					Ticket tmp = tkMng.setTicketInfor();
-					if (tmp.getId() == "null") {}
-					else {
-						tkMng.add(tmp);
-						cout << "\t\t\t\t\t\t\tDa ban 1 hoa don moi.\n";
-						system("pause");
-					}
+					tkMng.add(tmp);
+					int check = 0;
+					string scheduleId;
+					do {
+						system("cls");
+						cout << "\n";
+						scdMng.write();
+						cout << "\n\t\t\t\t\t\t\tNhap ma lich chieu: ";fflush(stdin);
+						getline(cin, scheduleId);
+						if (scdMng.findById(scheduleId) == nullptr) {
+							do {
+								cout << "\t\t\t\t\t\t\t\tKhong tim thay lich chieu!. Lua chon";
+								cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
+								cout << "\t\t\t2. Thoat";
+								cout << "\n\t\t\t\t\t\t\t";
+								check = getInt();
+								if (check != 1 && check != 2) {
+									cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
+									system("pause");
+								}
+							} while (check != 1 && check != 2);
+						}
+						else check = 3;
+					} while (check == 1 || check == 0);
+					if(check == 2) break;
+					tmp.setScheduleId(scheduleId);
+					check = 0;
+					do {
+						string seatId;
+						scdMng.findById(scheduleId)->showSeatStatus();
+						cout << "\n\t\t\t\t\t\t\tChon ma ghe: " << endl;fflush(stdin);
+						getline(cin, seatId);
+						if(scdMng.findById(scheduleId)->getSeat(seatId) == nullptr) {
+							do {
+								cout << "\t\t\t\t\t\t\t\tMa khong phu hop!. Lua chon";
+								cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
+								cout << "\t\t\t2. Thoat";
+								cout << "\n\t\t\t\t\t\t\t";
+								check = getInt();
+								if (check != 1 && check != 2) {
+									cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
+									system("pause");
+								}
+							} while (check != 1 && check != 2);
+						}
+						else if (scdMng.findById(scheduleId)->getSeat(seatId)->getChecked() == true) {
+							cout << "\t\t\t\t\t\t\t\tCho nay da duoc dat!" << endl;
+							check = 1;
+						}
+						else {
+							check = 3;
+							if(scdMng.findById(scheduleId)->getSeat(seatId)->getVip()) {
+								tmp.addSeat(seatId, true);
+							}
+							else {
+								tmp.addSeat(seatId, false);
+							}
+							if(scdMng.findById(scheduleId)->getSeat(seatId) != nullptr) {
+								scdMng.findById(scheduleId)->getSeat(seatId)->setChecked(true);
+							}
+							do {
+								cout << "\t\t\t\t\t\t\t\tXac nhan ve?";
+								cout << "\n\t\t\t\t\t\t\t1. Chon tiep";
+								cout << "\t\t\t2. Xac nhan";
+								cout << "\n\t\t\t\t\t\t\t";
+								cin >> check;
+								if (check != 1 && check != 2) {
+									cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
+									system("pause");
+								}
+							} while (check != 1 && check != 2);
+						}
+					} while(check == 1 || check == 0);
+					cout << "\t\t\t\t\t\t\tDa ban 1 hoa don moi.\n";
+					system("pause");
 				}
 				else if (tmp == 2) {
 					system("cls");

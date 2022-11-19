@@ -15,6 +15,7 @@ ScheduleManager::ScheduleManager(FilmManager& filmManager, CinemaRoomManager& ro
 }
 
 Schedule ScheduleManager::setScheduleInfor() {
+	Node* node = this->head;
 	Schedule schedule;
 	string id;
 	string filmId;
@@ -150,6 +151,15 @@ Schedule ScheduleManager::setScheduleInfor() {
 		}
 	} while (true);
 	Time t(date, month, year);
+	for(int i = 0; i < this->length; i++) {
+		if(node->data.getFilmId() == filmId && node->data.getCinemaRoomId() == cinemaRoomId && node->data.getShow() == show && node->data.getTime() == t) {
+			cout << "\t\t\t\t\t\t\tlich chieu nay da ton tai!" << endl;
+			system("pause");
+			schedule.setId("null");
+			return schedule;
+		}
+		node = node->next;
+	}
 	schedule.setId(id);
 	schedule.setFilmId(filmId);
 	schedule.setCinemaRoomId(cinemaRoomId);
@@ -362,9 +372,12 @@ void ScheduleManager::readFile(fstream& filein) {
 	for (int i = 0; i < len; i++) {
 		Schedule schedule;
 		schedule.readDataFile(filein);
-	 	this->add(schedule);
-	 }
+		CinemaRoom* room = this->cinemaRoomManager->findById(schedule.getCinemaRoomId());
+		this->add(schedule);
+		findById(schedule.getId())->createSeat(room);
+	}
 }
+
 void ScheduleManager::writeFile(fstream& fileout) {
 	Node* node = this->head;
 	fileout << length << "\n";
