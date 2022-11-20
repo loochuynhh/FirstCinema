@@ -10,7 +10,7 @@ public:
 	ScheduleManager(FilmManager& FilmManager, CinemaRoomManager& room);
 	void getShow();
 	Schedule setScheduleInfor();
-	void update();
+	int getType(const string&);
 	void deleteByRoom(const string&);
 	void deleteByFilm(const string&);
 	void readFile(fstream&);
@@ -19,5 +19,4 @@ public:
 private:
 	FilmManager* filmManager;
 	CinemaRoomManager* cinemaRoomManager;
-
 };

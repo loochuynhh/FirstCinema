@@ -59,6 +59,10 @@ Time Schedule::getTime() const {
 	return this->time;
 }
 
+int Schedule::getBaseCost() const {
+	return this->baseCost;
+}
+
 void Schedule::showSeatStatus() {
 	for(int i = 0; i < this->row; i++) {
 		for(int j = 0; j < this->column; j++) {
@@ -82,6 +86,10 @@ void Schedule::setId(const string& id) {
 
 void Schedule::setFilmId(const string& filmId) {
 	this->filmId = filmId;
+}
+
+void Schedule::setBaseCost(int base) {
+	this->baseCost = base;
 }
 
 void Schedule::setSeatStatus(Seat& seat) {
@@ -108,7 +116,7 @@ Schedule::~Schedule() {
 void Schedule::readDataFile(fstream& filein) {
 	filein.ignore(20, 10);
 	string id, filmid, cnmrid;
-	int show;
+	int show, baseCost;
 	Time time;
 	getline(filein, id, ',');
 	this->setId(id);
@@ -121,6 +129,9 @@ void Schedule::readDataFile(fstream& filein) {
 	filein.ignore(1);
 	filein >> show;
 	this->setShow(show);
+	filein.ignore(1);
+	filein >> baseCost;
+	this->setBaseCost(baseCost);
 	filein.ignore(1);
 	this->time.readfilet(filein);
 }

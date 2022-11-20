@@ -19,12 +19,14 @@ public:
 	string getCinemaRoomId() const;
 	Seat* getSeatStatus() const;
 	int getShow() const;
+	int getBaseCost() const;
 	Time getTime() const;
 	void setId(const string&);
 	void setFilmId(const string&);
 	Seat* getSeat(string);
 	void setShow(const int&);
 	void setTime(const Time&);
+	void setBaseCost(int);
 	void setSeatStatus(Seat&);
 	void setCinemaRoomId(const string&);
 	void showSeatStatus();
@@ -40,6 +42,7 @@ private:
 	Seat* seatStatus;
 	int row;
 	int column;
+	int baseCost;
 };
 
 #endif

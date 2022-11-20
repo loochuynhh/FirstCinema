@@ -13,10 +13,12 @@ public:
 	string getId();
 	int getRow();
 	int getColumn();
+	int getType();
 	string getStatus();
 	void setId(const string&);
 	void setRow(int);
 	void setColumn(int);
+	void setType(int);
 	void setStatus(const string&);
 	void readDataFile(fstream&);
 	void writeDataFile(fstream&);

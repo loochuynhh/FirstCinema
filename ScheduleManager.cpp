@@ -21,6 +21,7 @@ Schedule ScheduleManager::setScheduleInfor() {
 	string filmId;
 	string cinemaRoomId;
 	string templ = "scd";
+	int baseCost;
 	int show;
 	int date;
 	int month;
@@ -160,161 +161,19 @@ Schedule ScheduleManager::setScheduleInfor() {
 		}
 		node = node->next;
 	}
+	cout << "\t\t\t\t\t\t\tNhap gia ve co ban: ";
+	baseCost = getInt();
 	schedule.setId(id);
 	schedule.setFilmId(filmId);
 	schedule.setCinemaRoomId(cinemaRoomId);
 	schedule.setShow(show);
 	schedule.setTime(t);
+	schedule.setBaseCost(baseCost);
 	return schedule;
 }
 
-void ScheduleManager::update() {
-	string id;
-	cout << "\t\t\t\t\t\t\tNhap id: ";
-	getline(cin, id);
-	if (findById(id) == nullptr) {
-		cout << "\t\t\t\t\t\t\tKhong tim thay id phu hop!\n";
-		system("pause");
-	}
-	else {
-		int opttmp = 0;
-		Schedule* schedule = findById(id);
-		do {
-			system("cls");
-			cout << "\t\t\t\t\t";
-			for (int x = 0; x < 80; x++) cout << "-"; cout << endl;
-			cout << "\t\t\t\t\t";
-			cout << "|  Ma lich chieu  |   Ma phim   |  Ma phong chieu  |  Ca  |     Ngay chieu     |" << endl;
-			cout << "\t\t\t\t\t";
-			for (int x = 0; x < 80; x++) cout << "-"; cout << endl;
-			cout << "\t\t\t\t\t";
-			schedule->writeData();
-			cout << "\t\t\t\t\t";
-			for (int x = 0; x < 80; x++) cout << "-"; cout << endl;
-			cout << "\n\t\t\t\t\t\t\t1. Sua ma phim" << endl;
-			cout << "\t\t\t\t\t\t\t2. Sua ma phong chieu" << endl;
-			cout << "\t\t\t\t\t\t\t3. Sua ca chieu" << endl;
-			cout << "\t\t\t\t\t\t\t4. Sua thoi gian" << endl;
-			cout << "\t\t\t\t\t\t\t0. Xac nhan va thoat" << endl;
-			cout << "\t\t\t\t\t\t\t>> Nhap lua chon: ";
-			opttmp = getInt();
-			string up;
-			int upn;
-			switch (opttmp) {
-			case(1): {
-				int check = 0;
-				do {
-					system("cls");
-					cout << "\n";
-					this->filmManager->write();
-					cout << "\n\t\t\t\t\t\t\tNhap ma phim: ";
-					getline(cin, up);
-					if (this->filmManager->findById(up) == nullptr) {
-						do {
-							cout << "\t\t\t\t\t\t\t\tKhong tim thay phim!. Lua chon";
-							cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
-							cout << "\t\t\t2. Quay lai";
-							cout << "\n\t\t\t\t\t\t\t";
-							check = getInt();
-							if (check != 1 && check != 2) {
-								cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
-								system("pause");
-							}
-						} while (check != 1 && check != 2);
-					}
-					else check = 3;
-				} while (check == 1 || check == 0);	
-				if(check == 3) schedule->setFilmId(up);
-				break;
-			}
-			case(2): {
-				int check = 0;
-				do {
-					system("cls");
-					cout << "\n";
-					this->cinemaRoomManager->write();
-					cout << "\n\t\t\t\t\t\t\tNhap ma phong chieu: "; 
-					getline(cin, up);
-					if (this->cinemaRoomManager->findById(up) == nullptr) {
-						do {
-							cout << "\t\t\t\t\t\t\t\tKhong tim thay phong chieu!. Lua chon";
-							cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
-							cout << "\t\t\t2. Quay lai";
-							cout << "\n\t\t\t\t\t\t\t";
-							check = getInt();
-							if (check != 1 && check != 2) {
-								cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
-								system("pause");
-							}
-						} while (check != 1 && check != 2);
-					}
-					else if (this->cinemaRoomManager->findById(up)->getStatus() == "bad") {
-						do {
-							cout << "\t\t\t\t\t\t\t\tPhong chieu dang co van de!. Lua chon";
-							cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
-							cout << "\t\t\t2. Thoat";
-							cout << "\n\t\t\t\t\t\t\t";
-							check = getInt();
-							if (check != 1 && check != 2) {
-								cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
-								system("pause");
-							}
-						} while (check != 1 && check != 2);
-					}
-					else check = 3;
-				} while (check == 1 || check == 0);
-				if(check == 3) schedule->setCinemaRoomId(up);
-				break;
-			}
-			case(3): {
-				cout << "\t\t\t\t\t\t\tNhap ca chieu: " << endl;
-				getShow();
-				upn = getInt();
-				while (upn < 1 || upn > 5)
-				{
-					cout << "\t\t\t\t\t\t\tSo ca khong hop le!" << endl;
-					getShow();
-					cout << "\t\t\t\t\t\t\tNhap lai ca chieu: " << endl;
-					upn = getInt();
-				}	
-				schedule->setShow(upn);
-				break;
-			}
-			case(4): {
-				int date;
-				int month;
-				int year;
-				do {
-					try {
-						cout << "\t\t\t\t\t\t\tNhap ngay chieu: ";
-						date = getInt();
-						cout << "\t\t\t\t\t\t\tNhap thang chieu: ";
-						month = getInt();
-						cout << "\t\t\t\t\t\t\tNhap nam chieu: ";
-						year = getInt();
-						checktime(date, month, year);
-						break;
-					}
-					catch (Error error) {
-						error.getMessage();
-					}
-				} while (true);
-				Time t;
-				t.setDate(date);
-				t.setMonth(month);
-				t.setYear(year);
-				schedule->setTime(t);
-				break;
-			}
-			case(0): {
-				break;
-			}
-			default:
-				cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
-				system("pause");	
-			}
-		} while (opttmp != 0);
-	}
+int ScheduleManager::getType(const string& id) {
+	return this->cinemaRoomManager->findById(this->findById(id)->getCinemaRoomId())->getType();
 }
 
 void ScheduleManager::deleteByRoom(const string& id) {
@@ -372,7 +231,7 @@ void ScheduleManager::readFile(fstream& filein) {
 	for (int i = 0; i < len; i++) {
 		Schedule schedule;
 		schedule.readDataFile(filein);
-		CinemaRoom* room = this->cinemaRoomManager->findById(schedule.getCinemaRoomId());
+		CinemaRoom* room =	this->cinemaRoomManager->findById(schedule.getCinemaRoomId());
 		this->add(schedule);
 		findById(schedule.getId())->createSeat(room);
 	}

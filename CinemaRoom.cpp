@@ -12,6 +12,10 @@ int CinemaRoom::getColumn() {
 	return this->column;
 }
 
+int CinemaRoom::getType() {
+	return this->type;
+}
+
 string CinemaRoom::getStatus() {
 	return this->status;
 }
@@ -32,10 +36,14 @@ void CinemaRoom::setStatus(const string& status) {
 	this->status = status;
 }
 
+void CinemaRoom::setType(int type) {
+	this->type = type;
+}
+
 void CinemaRoom::readDataFile(fstream& filein) {
 	filein.ignore(20, 10);
 	string id, status;
-	int row, column;
+	int row, column, type;
 	getline(filein, id, ',');
 	this->setId(id);
 	filein >> row;
@@ -43,6 +51,10 @@ void CinemaRoom::readDataFile(fstream& filein) {
 	filein.ignore(20, 32);
 	filein >> column;
 	this->setColumn(column);
+	filein.ignore(1);
+	filein >> type;
+	this->setType(type);
+	filein.ignore(2);
 	getline(filein, status, '.');
 	this->setStatus(status);
 }

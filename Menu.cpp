@@ -636,9 +636,7 @@ void Menu::stMenu() {
 				Sleep(50);
 				cout << "\n\t\t\t\t\t\t\t4. Xoa lich chieu";
 				Sleep(50);
-				cout << "\n\t\t\t\t\t\t\t5. Cap nhat lich chieu";
-				Sleep(50);
-				cout << "\n\t\t\t\t\t\t\t6. Xac nhan thay doi";
+				cout << "\n\t\t\t\t\t\t\t5. Xac nhan thay doi";
 				Sleep(50);
 				cout << "\n\t\t\t\t\t\t\t0. Quay lai menu";
 				cout << "\n\n\t\t\t\t\t\t\t\t";
@@ -723,22 +721,13 @@ void Menu::stMenu() {
 					}
 				}
 				else if (tmp == 5) {
-					system("cls");
-					SetConsoleTextAttribute(cl, 4);
-					cinema();
-					SetConsoleTextAttribute(cl, 3);
-					cout << "\n\t\t\t\t\t\t\t\t\t\t***CAP NHAT LICH CHIEU***\n\n";
-					SetConsoleTextAttribute(cl, 7);
-					scdMng.update();
-				}
-				else if (tmp == 6) {
 					fsscd.open("Schedule.txt", ios::out | ios::trunc);
 					scdMng.writeFile(fsscd);
 					fsscd.close();
 					cout << "\t\t\t\t\t\t\tThay doi da duoc luu vao file.\n";
 					system("pause");
 				}
-				else if (tmp == 7) {
+				else if (tmp == 6) {
 					string id;
 					system("cls");
 					cout << "nhap id" << endl;
@@ -799,8 +788,9 @@ void Menu::stMenu() {
 					SetConsoleTextAttribute(cl, 3);
 					cout << "\n\t\t\t\t\t\t\t\t\t\t***THEM HOA DON MOI***\n\n";
 					SetConsoleTextAttribute(cl, 7);
-					Ticket tmp = tkMng.setTicketInfor();
-					tkMng.add(tmp);
+					Ticket t = tkMng.setTicketInfor();
+					tkMng.add(t);
+					Ticket* tt = tkMng.findById(t.getId());
 					int check = 0;
 					string scheduleId;
 					do {
@@ -825,7 +815,7 @@ void Menu::stMenu() {
 						else check = 3;
 					} while (check == 1 || check == 0);
 					if(check == 2) break;
-					tmp.setScheduleId(scheduleId);
+					tt->setScheduleId(scheduleId);
 					check = 0;
 					do {
 						string seatId;
@@ -852,10 +842,10 @@ void Menu::stMenu() {
 						else {
 							check = 3;
 							if(scdMng.findById(scheduleId)->getSeat(seatId)->getVip()) {
-								tmp.addSeat(seatId, true);
+								tt->addSeat(seatId, true);
 							}
 							else {
-								tmp.addSeat(seatId, false);
+								tt->addSeat(seatId, false);
 							}
 							if(scdMng.findById(scheduleId)->getSeat(seatId) != nullptr) {
 								scdMng.findById(scheduleId)->getSeat(seatId)->setChecked(true);

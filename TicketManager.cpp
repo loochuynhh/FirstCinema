@@ -116,7 +116,7 @@ Ticket TicketManager::setTicketInfor() {
 		ticket.setId("null");
 		return ticket;
 	}
-	cout << "\t\t\t\t\t\t\tNhap gia bap nuoc: ";
+	cout << "\t\t\t\t\t\t\tNhap so bap nuoc: ";
 	soda_corn = getInt();
 	ticket.setId(id);
 	ticket.setCustomerName(customerName);
@@ -130,7 +130,15 @@ int TicketManager::getRevenue() {
 	Node* node = this->head;
 	int revenue = 0;
 	for (int i = 0; i < this->length; i++) {
-		//revenue += node->data.getCost()*node->data.getAmount() + node->data.getSoda_Corn();
+		revenue += this->scheduleList->findById(node->data.getScheduleId())->getBaseCost()*(node->data.getCountReg() + node->data.getCountVip());
+		if(this->scheduleList->getType(node->data.getScheduleId()) == 2) {
+			revenue *= 2;
+		}
+		else if(this->scheduleList->getType(node->data.getScheduleId()) == 3) {
+			revenue *= 3;
+		}
+		revenue += node->data.getCountVip()*5000;
+		revenue += node->data.getSoda_Corn()*20000;
 		node = node->next;
 	}
 	return revenue;
@@ -140,9 +148,18 @@ int TicketManager::getRevenue(Time& t1, Time& t2) {
 	Node* node = this->head;
 	int revenue = 0;
 	for (int i = 0; i < this->length; i++) {
+		cout << i << endl;
 		Time t = (this->scheduleList)->findById(node->data.getScheduleId())->getTime();
 		if (t >= t1 && t <= t2 ) {
-			//revenue += node->data.getCost() * node->data.getAmount() + node->data.getSoda_Corn();
+			revenue += this->scheduleList->findById(node->data.getScheduleId())->getBaseCost()*(node->data.getCountReg() + node->data.getCountVip());
+			if(this->scheduleList->getType(node->data.getScheduleId()) == 2) {
+				revenue *= 2;
+			}
+			else if(this->scheduleList->getType(node->data.getScheduleId()) == 3) {
+				revenue *= 3;
+			}
+			revenue += node->data.getCountVip()*5000;
+			revenue += node->data.getSoda_Corn()*20000;
 		}
 		node = node->next;
 	}
@@ -153,7 +170,17 @@ int TicketManager::getRevenue(string staffId) {
 	Node* node = this->head;
 	int revenue = 0;
 	for (int i = 0; i < this->length; i++) {
-		//if (node->data.getStaffId() == staffId) revenue += node->data.getCost() * node->data.getAmount() + node->data.getSoda_Corn();
+		if (node->data.getStaffId() == staffId) {
+			revenue += this->scheduleList->findById(node->data.getScheduleId())->getBaseCost()*(node->data.getCountReg() + node->data.getCountVip());
+			if(this->scheduleList->getType(node->data.getScheduleId()) == 2) {
+				revenue *= 2;
+			}
+			else if(this->scheduleList->getType(node->data.getScheduleId()) == 3) {
+				revenue *= 3;
+			}
+			revenue += node->data.getCountVip()*5000;
+			revenue += node->data.getSoda_Corn()*20000;
+		}
 		node = node->next;
 	}
 	return revenue;
@@ -166,9 +193,19 @@ void TicketManager::getRevenueY(int year) {
 		for (int j = 0; j < 12; j++) revenue[i][j] = 0;
 	}
 	for (int i = 0; i < this->staffManager->getLength(); i++) {
+		cout << "a: " << i << endl;
 		for (int j = 0; j < this->length; j++) {
+			cout << "b: " << j << endl;
 			if (this->scheduleList->findById(node->data.getScheduleId())->getTime().getYear() == year && (staffManager->operator[](i).getId()).compare(node->data.getStaffId()) == 0) {
-				//revenue[i][this->scheduleList->findById(node->data.getScheduleId())->getTime().getMonth() - 1] += node->data.getCost() * node->data.getAmount() + node->data.getSoda_Corn();
+				revenue[i][this->scheduleList->findById(node->data.getScheduleId())->getTime().getMonth() - 1] += this->scheduleList->findById(node->data.getScheduleId())->getBaseCost()*(node->data.getCountReg() + node->data.getCountVip());
+				if(this->scheduleList->getType(node->data.getScheduleId()) == 2) {
+					revenue[i][this->scheduleList->findById(node->data.getScheduleId())->getTime().getMonth() - 1] *= 2;
+				}
+				else if(this->scheduleList->getType(node->data.getScheduleId()) == 3) {
+					revenue[i][this->scheduleList->findById(node->data.getScheduleId())->getTime().getMonth() - 1] *= 3;
+				}
+				revenue[i][this->scheduleList->findById(node->data.getScheduleId())->getTime().getMonth() - 1] += node->data.getCountVip()*5000;
+				revenue[i][this->scheduleList->findById(node->data.getScheduleId())->getTime().getMonth() - 1] += node->data.getSoda_Corn()*20000;
 			}
 			node = node->next;
 		}
@@ -206,7 +243,7 @@ void TicketManager::readFile(fstream& filein) {
 		Ticket* tic = this->findById(ticket.getId());
 		if(tic == nullptr) return;
 		for(int i = 0; i < amount; i++) {
-			if(strcmp((ids + i)->c_str(), "E") < 0) {
+			if(strcmp((ids + i)->c_str(), "E") > 0) {
 				tic->addSeat(*(ids + i), true);
 			}
 			else {
