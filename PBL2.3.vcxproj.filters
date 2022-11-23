@@ -15,146 +15,149 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\CinemaRoom.h">
+    <ClInclude Include="CinemaRoom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\CinemaRoomManager.h">
+    <ClInclude Include="CinemaRoomManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Director.h">
+    <ClInclude Include="Director.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\DirectorManager.h">
+    <ClInclude Include="DirectorManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Film.h">
+    <ClInclude Include="Error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\FilmManager.h">
+    <ClInclude Include="FilmManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Infor.h">
+    <ClInclude Include="Infor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Inforrl.h">
+    <ClInclude Include="Inforrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Manager.h">
+    <ClInclude Include="Manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Menu.h">
+    <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Salary.h">
+    <ClInclude Include="Salary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Schedule.h">
+    <ClInclude Include="Schedule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\ScheduleManager.h">
+    <ClInclude Include="ScheduleManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Staff.h">
+    <ClInclude Include="Staff.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\StaffManager.h">
+    <ClInclude Include="StaffManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Ticket.h">
+    <ClInclude Include="Ticket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\TicketManager.h">
+    <ClInclude Include="TicketManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Time.h">
+    <ClInclude Include="Time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Type.h">
+    <ClInclude Include="Type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\PBL2.2\PBL2.2\CinemaRoom.txt">
+    <Text Include="CinemaRoom.txt">
       <Filter>Header Files</Filter>
     </Text>
-    <Text Include="..\..\PBL2.2\PBL2.2\Director.txt">
+    <Text Include="Director.txt">
       <Filter>Header Files</Filter>
     </Text>
-    <Text Include="..\..\PBL2.2\PBL2.2\Film.txt">
+    <Text Include="Film.txt">
       <Filter>Header Files</Filter>
     </Text>
-    <Text Include="..\..\PBL2.2\PBL2.2\Salary.txt">
+    <Text Include="Salary.txt">
       <Filter>Header Files</Filter>
     </Text>
-    <Text Include="..\..\PBL2.2\PBL2.2\Schedule.txt">
+    <Text Include="Schedule.txt">
       <Filter>Header Files</Filter>
     </Text>
-    <Text Include="..\..\PBL2.2\PBL2.2\Staff.txt">
+    <Text Include="Staff.txt">
       <Filter>Header Files</Filter>
     </Text>
-    <Text Include="..\..\PBL2.2\PBL2.2\Ticket.txt">
+    <Text Include="Ticket.txt">
       <Filter>Header Files</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\CinemaRoom.cpp">
+    <ClCompile Include="CinemaRoom.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\CinemaRoomManager.cpp">
+    <ClCompile Include="CinemaRoomManager.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Director.cpp">
+    <ClCompile Include="Director.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\DirectorManager.cpp">
+    <ClCompile Include="DirectorManager.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Film.cpp">
+    <ClCompile Include="Error.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\FilmManager.cpp">
+    <ClCompile Include="Film.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Infor.cpp">
+    <ClCompile Include="FilmManager.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Inforrl.cpp">
+    <ClCompile Include="Infor.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Manager.cpp">
+    <ClCompile Include="Inforrl.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Menu.cpp">
+    <ClCompile Include="Manager.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Salary.cpp">
+    <ClCompile Include="Menu.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Schedule.cpp">
+    <ClCompile Include="Salary.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\ScheduleManager.cpp">
+    <ClCompile Include="Schedule.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Staff.cpp">
+    <ClCompile Include="ScheduleManager.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\StaffManager.cpp">
+    <ClCompile Include="Staff.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Ticket.cpp">
+    <ClCompile Include="StaffManager.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\TicketManager.cpp">
+    <ClCompile Include="Ticket.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Time.cpp">
+    <ClCompile Include="TicketManager.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Type.cpp">
+    <ClCompile Include="Time.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\main.cpp">
+    <ClCompile Include="Type.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

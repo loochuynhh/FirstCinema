@@ -18,6 +18,59 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CinemaRoom.h" />
+    <ClInclude Include="CinemaRoomManager.h" />
+    <ClInclude Include="Director.h" />
+    <ClInclude Include="DirectorManager.h" />
+    <ClInclude Include="Error.h" />
+    <ClInclude Include="FilmManager.h" />
+    <ClInclude Include="Infor.h" />
+    <ClInclude Include="Inforrl.h" />
+    <ClInclude Include="Manager.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Salary.h" />
+    <ClInclude Include="Schedule.h" />
+    <ClInclude Include="ScheduleManager.h" />
+    <ClInclude Include="Staff.h" />
+    <ClInclude Include="StaffManager.h" />
+    <ClInclude Include="Ticket.h" />
+    <ClInclude Include="TicketManager.h" />
+    <ClInclude Include="Time.h" />
+    <ClInclude Include="Type.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CinemaRoom.txt" />
+    <Text Include="Director.txt" />
+    <Text Include="Film.txt" />
+    <Text Include="Salary.txt" />
+    <Text Include="Schedule.txt" />
+    <Text Include="Staff.txt" />
+    <Text Include="Ticket.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CinemaRoom.cpp" />
+    <ClCompile Include="CinemaRoomManager.cpp" />
+    <ClCompile Include="Director.cpp" />
+    <ClCompile Include="DirectorManager.cpp" />
+    <ClCompile Include="Error.cpp" />
+    <ClCompile Include="Film.cpp" />
+    <ClCompile Include="FilmManager.cpp" />
+    <ClCompile Include="Infor.cpp" />
+    <ClCompile Include="Inforrl.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Salary.cpp" />
+    <ClCompile Include="Schedule.cpp" />
+    <ClCompile Include="ScheduleManager.cpp" />
+    <ClCompile Include="Staff.cpp" />
+    <ClCompile Include="StaffManager.cpp" />
+    <ClCompile Include="Ticket.cpp" />
+    <ClCompile Include="TicketManager.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Type.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,58 +191,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\CinemaRoom.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\CinemaRoomManager.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Director.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\DirectorManager.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Film.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\FilmManager.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Infor.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Inforrl.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Manager.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Menu.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Salary.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Schedule.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\ScheduleManager.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Staff.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\StaffManager.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Ticket.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\TicketManager.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Time.h" />
-    <ClInclude Include="..\..\PBL2.2\PBL2.2\Type.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\PBL2.2\PBL2.2\CinemaRoom.txt" />
-    <Text Include="..\..\PBL2.2\PBL2.2\Director.txt" />
-    <Text Include="..\..\PBL2.2\PBL2.2\Film.txt" />
-    <Text Include="..\..\PBL2.2\PBL2.2\Salary.txt" />
-    <Text Include="..\..\PBL2.2\PBL2.2\Schedule.txt" />
-    <Text Include="..\..\PBL2.2\PBL2.2\Staff.txt" />
-    <Text Include="..\..\PBL2.2\PBL2.2\Ticket.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\CinemaRoom.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\CinemaRoomManager.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Director.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\DirectorManager.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Film.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\FilmManager.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Infor.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Inforrl.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\main.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Manager.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Menu.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Salary.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Schedule.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\ScheduleManager.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Staff.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\StaffManager.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Ticket.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\TicketManager.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Time.cpp" />
-    <ClCompile Include="..\..\PBL2.2\PBL2.2\Type.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
