@@ -636,9 +636,7 @@ void Menu::stMenu() {
 				Sleep(50);
 				cout << "\n\t\t\t\t\t\t\t4. Xoa lich chieu";
 				Sleep(50);
-				cout << "\n\t\t\t\t\t\t\t5. Cap nhat lich chieu";
-				Sleep(50);
-				cout << "\n\t\t\t\t\t\t\t6. Xac nhan thay doi";
+				cout << "\n\t\t\t\t\t\t\t5. Xac nhan thay doi";
 				Sleep(50);
 				cout << "\n\t\t\t\t\t\t\t0. Quay lai menu";
 				cout << "\n\n\t\t\t\t\t\t\t\t";
@@ -658,6 +656,8 @@ void Menu::stMenu() {
 					if(tmp.getId() == "null") {}
 					else { 
 						scdMng.add(tmp); 
+						CinemaRoom* room = cnmMng.findById(tmp.getCinemaRoomId());
+						scdMng.findById(tmp.getId())->createSeat(room);
 						cout << "\t\t\t\t\t\t\tLich chieu moi da duoc them.\n";
 						system("pause");
 					}
@@ -721,19 +721,18 @@ void Menu::stMenu() {
 					}
 				}
 				else if (tmp == 5) {
-					system("cls");
-					SetConsoleTextAttribute(cl, 4);
-					cinema();
-					SetConsoleTextAttribute(cl, 3);
-					cout << "\n\t\t\t\t\t\t\t\t\t\t***CAP NHAT LICH CHIEU***\n\n";
-					SetConsoleTextAttribute(cl, 7);
-					scdMng.update();
-				}
-				else if (tmp == 6) {
 					fsscd.open("Schedule.txt", ios::out | ios::trunc);
 					scdMng.writeFile(fsscd);
 					fsscd.close();
 					cout << "\t\t\t\t\t\t\tThay doi da duoc luu vao file.\n";
+					system("pause");
+				}
+				else if (tmp == 6) {
+					string id;
+					system("cls");
+					cout << "nhap id" << endl;
+					getline(cin, id);
+					scdMng.findById(id)->showSeatStatus();
 					system("pause");
 				}
 				else if (tmp != 0) {
@@ -789,13 +788,83 @@ void Menu::stMenu() {
 					SetConsoleTextAttribute(cl, 3);
 					cout << "\n\t\t\t\t\t\t\t\t\t\t***THEM HOA DON MOI***\n\n";
 					SetConsoleTextAttribute(cl, 7);
-					Ticket tmp = tkMng.setTicketInfor();
-					if (tmp.getId() == "null") {}
-					else {
-						tkMng.add(tmp);
-						cout << "\t\t\t\t\t\t\tDa ban 1 hoa don moi.\n";
-						system("pause");
-					}
+					Ticket t = tkMng.setTicketInfor();
+					tkMng.add(t);
+					Ticket* tt = tkMng.findById(t.getId());
+					int check = 0;
+					string scheduleId;
+					do {
+						system("cls");
+						cout << "\n";
+						scdMng.write();
+						cout << "\n\t\t\t\t\t\t\tNhap ma lich chieu: ";fflush(stdin);
+						getline(cin, scheduleId);
+						if (scdMng.findById(scheduleId) == nullptr) {
+							do {
+								cout << "\t\t\t\t\t\t\t\tKhong tim thay lich chieu!. Lua chon";
+								cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
+								cout << "\t\t\t2. Thoat";
+								cout << "\n\t\t\t\t\t\t\t";
+								check = getInt();
+								if (check != 1 && check != 2) {
+									cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
+									system("pause");
+								}
+							} while (check != 1 && check != 2);
+						}
+						else check = 3;
+					} while (check == 1 || check == 0);
+					if(check == 2) break;
+					tt->setScheduleId(scheduleId);
+					check = 0;
+					do {
+						string seatId;
+						scdMng.findById(scheduleId)->showSeatStatus();
+						cout << "\n\t\t\t\t\t\t\tChon ma ghe: " << endl;fflush(stdin);
+						getline(cin, seatId);
+						if(scdMng.findById(scheduleId)->getSeat(seatId) == nullptr) {
+							do {
+								cout << "\t\t\t\t\t\t\t\tMa khong phu hop!. Lua chon";
+								cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
+								cout << "\t\t\t2. Thoat";
+								cout << "\n\t\t\t\t\t\t\t";
+								check = getInt();
+								if (check != 1 && check != 2) {
+									cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
+									system("pause");
+								}
+							} while (check != 1 && check != 2);
+						}
+						else if (scdMng.findById(scheduleId)->getSeat(seatId)->getChecked() == true) {
+							cout << "\t\t\t\t\t\t\t\tCho nay da duoc dat!" << endl;
+							check = 1;
+						}
+						else {
+							check = 3;
+							if(scdMng.findById(scheduleId)->getSeat(seatId)->getVip()) {
+								tt->addSeat(seatId, true);
+							}
+							else {
+								tt->addSeat(seatId, false);
+							}
+							if(scdMng.findById(scheduleId)->getSeat(seatId) != nullptr) {
+								scdMng.findById(scheduleId)->getSeat(seatId)->setChecked(true);
+							}
+							do {
+								cout << "\t\t\t\t\t\t\t\tXac nhan ve?";
+								cout << "\n\t\t\t\t\t\t\t1. Chon tiep";
+								cout << "\t\t\t2. Xac nhan";
+								cout << "\n\t\t\t\t\t\t\t";
+								cin >> check;
+								if (check != 1 && check != 2) {
+									cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
+									system("pause");
+								}
+							} while (check != 1 && check != 2);
+						}
+					} while(check == 1 || check == 0);
+					cout << "\t\t\t\t\t\t\tDa ban 1 hoa don moi.\n";
+					system("pause");
 				}
 				else if (tmp == 2) {
 					system("cls");

@@ -20,16 +20,75 @@ string Ticket::getStaffId() const {
 	return this->staffId;
 }
 
-int Ticket::getCost() const {
-	return this->cost;
+int Ticket::getCountReg() {
+	return this->regSeat;
 }
 
-int Ticket::getAmount() {
-	return this->amount;
+int Ticket::getCountVip() {
+	return this->vipSeat;
 }
 
 int Ticket::getSoda_Corn() {
 	return this->soda_corn;
+}
+
+string* Ticket::getIdVipSeat() {
+	return this->idVip;
+}
+
+string* Ticket::getIdRegSeat() {
+	return this->idReg;
+}
+
+void Ticket::setSeat(int vipSeat, int regSeat, string* idVip, string* idReg) {
+	this->vipSeat = vipSeat;
+	this->regSeat = regSeat;
+	this->idVip = idVip;
+	this->idReg = idReg;
+}
+
+void Ticket::setInfor(Ticket ticket) {
+	this->id = ticket.id;
+	this->scheduleId = ticket.scheduleId;
+	this->customerName = ticket.customerName;
+	this->customerPhone = ticket.customerPhone;
+	this->staffId = ticket.staffId;
+	this->soda_corn = ticket.soda_corn;
+}
+
+string* Ticket::getIdAllSeat() {
+	string* all = new string[this->vipSeat + this->regSeat];
+	for(int i = 0; i < this->vipSeat; i++) {
+		*(all + i) = *(this->idVip + i);
+	}
+
+	for(int i = this->vipSeat; i < this->vipSeat + this->regSeat; i++) {
+		*(all + i) = *(this->idReg + (i - this->vipSeat));
+	}
+	return all;
+}
+
+void Ticket::addSeat(const string& id, bool vip) {
+	if(vip) {
+		string* vip = new string[this->vipSeat + 1];
+		for(int i = 0; i < this->vipSeat; i++) {
+			*(vip + i) = *(this->idVip + i);
+		}
+		vip[this->vipSeat] = id;
+		delete[] this->idVip;
+		this->idVip = vip;
+		this->vipSeat++;
+	}
+	else {
+		string* reg = new string[this->regSeat + 1];
+		for(int i = 0; i < this->regSeat; i++) {
+			*(reg + i) = *(this->idReg + i);
+		}
+		reg[this->regSeat] = id;
+		delete[] this->idReg;
+		this->idReg = reg;
+		this->regSeat++;
+	}
 }
 
 void Ticket::setId(const string& id) {
@@ -52,22 +111,26 @@ void Ticket::setStaffId(const string& id) {
 	this->staffId = id;
 }
 
-void Ticket::setCost(int cost) {
-	this->cost = cost;
-}
-
-void Ticket::setAmount(int amount) {
-	this->amount = amount;
-}
-
 void Ticket::setSoda_Corn(int soda_corn) {
 	this->soda_corn = soda_corn;
 }
 
-void Ticket::readDataFile(fstream& filein) {
+Ticket::Ticket() {
+	this->regSeat = 0;
+	this->vipSeat = 0;
+	this->idVip = nullptr;
+	this->idReg = nullptr;
+}
+
+Ticket::~Ticket() {
+	delete[] this->idVip;
+	delete[] this->idReg;
+}
+
+string* Ticket::readDataFile(fstream& filein) {
 	filein.ignore(20, 10);
 	string id, scheduleid, customername, customerphone, staffid;
-	int cost, amount, soda_corn;
+	int vipSeat, soda_corn, regSeat, amount;
 	getline(filein, id, ',');
 	this->setId(id);
 	filein.ignore(1);
@@ -83,14 +146,20 @@ void Ticket::readDataFile(fstream& filein) {
 	getline(filein, staffid, ',');
 	this->setStaffId(staffid);
 	filein.ignore(1);
-	filein >> cost;
-	this->setCost(cost);
-	filein.ignore(1);
 	filein >> amount;
-	this->setAmount(amount);
-	filein.ignore(1);
+	filein.ignore(1);	
+	filein.ignore(1);	
+	string* ids = new string[amount + 1];
+	for(int i = 0; i < amount; i++) {
+		string seatId;
+		getline(filein, seatId, ',');
+		filein.ignore(1);
+		ids[i] = seatId;
+	}
+	ids[amount] = "";
 	filein >> soda_corn;
 	this->setSoda_Corn(soda_corn);
+	return ids;
 }
 void Ticket::writeDataFile(fstream& fileout) {
 	fileout << this->getId() << ", ";
@@ -98,8 +167,7 @@ void Ticket::writeDataFile(fstream& fileout) {
 	fileout << this->getCustomerName() << ", ";
 	fileout << this->getCustomerPhone() << ", ";
 	fileout << this->getStaffId() << ", ";
-	fileout << this->getCost() << ", ";
-	fileout << this->getAmount() << ", ";
+	//fileout << this->getAmount() << ", ";
 	fileout << this->getSoda_Corn() << ".";
 	fileout << "\n";
 }
@@ -110,7 +178,6 @@ void Ticket::writeData() {
 	cout << "    " << left << setw(10) << this->getStaffId() << "|";
 	cout << "   " << left << setw(15) << this->getCustomerPhone() << "|";
 	cout << "   " << left << setw(31) << this->getCustomerName() << "|";
-	cout << "  " << left << setw(6) << this->getCost() << "|";
-	cout << "   " << left << setw(4) << this->getAmount() << "|";
+	//cout << "   " << left << setw(4) << this->getAmount() << "|";
 	cout << "    " << left << setw(6) << this->getSoda_Corn() << "|\n";
 }

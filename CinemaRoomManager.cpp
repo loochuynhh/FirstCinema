@@ -10,6 +10,12 @@ void checkCnmrId(const string& id) {
 	}
 }
 
+void CinemaRoomManager::showType() {
+	cout << "\n\t\t\t\t\t\t\t1: 2D";
+	cout << "\n\t\t\t\t\t\t\t2: 3D";
+	cout << "\n\t\t\t\t\t\t\t3: IMAX";
+}
+
 CinemaRoom CinemaRoomManager::setCinemaRoomInfor() {
 	CinemaRoom cinemaRoom;
 	string templ = "cnmr";
@@ -71,8 +77,40 @@ CinemaRoom CinemaRoomManager::setCinemaRoomInfor() {
 		}
 		else check = 3;
 	} while(check == 1 || check == 0);
+	if (check == 2) {
+		cinemaRoom.setId("null");
+		return cinemaRoom;
+	}
+	int row, column, type;
+	cout << "\t\t\t\t\t\t\tNhap so hang ghe: ";
+	row = getInt();
+	cout << "\t\t\t\t\t\t\tNhap so cot ghe: ";
+	column = getInt();
+	check = 0;
+	do {
+		cout << "\t\t\t\t\t\t\tNhap dinh dang phong chieu: ";
+		this->showType();
+		type = getInt();
+		if(type < 1 || type > 3) {
+		do {
+			cout << "\t\t\t\t\t\t\t\tDinh dang khong hop le!. Lua chon";
+			cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
+			cout << "\t\t\t2. Thoat";
+			cout << "\n\t\t\t\t\t\t\t";
+			check = getInt();
+			if (check != 1 && check != 2) {
+				cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
+				system("pause");
+			}
+		} while (check != 1 && check != 2);
+		}
+		else check = 3;
+	} while(check == 1 || check == 0);
+	if (check == 2) {
+		cinemaRoom.setId("null");
+		return cinemaRoom;
+	}	
 	cinemaRoom.setId(id);
-	cinemaRoom.setChairs(chairs);
 	cinemaRoom.setStatus(status);
 	return cinemaRoom;
 }
@@ -104,6 +142,7 @@ string CinemaRoomManager::update() {
 			for (int x = 0; x < 78; x++) cout << "-"; cout << endl;
 			cout << "\n\t\t\t\t\t\t\t1. Sua so ghe" << endl;
 			cout << "\t\t\t\t\t\t\t2. Sua tinh trang" << endl;
+			cout << "\t\t\t\t\t\t\t3. Sua dinh dang" << endl;
 			cout << "\t\t\t\t\t\t\t0. Xac nhan va thoat" << endl;
 			cout << "\t\t\t\t\t\t\t>> Nhap lua chon: ";
 			opttmp = getInt();
@@ -113,7 +152,6 @@ string CinemaRoomManager::update() {
 			case(1): {
 				cout << "\t\t\t\t\t\t\tNhap so ghe: ";
 				upn = getInt();
-				room->setChairs(upn);
 				break;
 			}
 			case(2): {
@@ -154,7 +192,31 @@ string CinemaRoomManager::update() {
 						system("pause");
 					}
 				}	
-				else room->setStatus(up);			
+				else if(check != 2) room->setStatus(up);			
+				break;
+			}
+			case(3): {
+				int check = 0;
+				do {
+					cout << "\t\t\t\t\t\t\tNhap dinh dang phong chieu: ";
+					this->showType();
+					upn = getInt();
+					if(upn < 1 || upn > 3) {
+					do {
+						cout << "\t\t\t\t\t\t\t\tDinh dang khong hop le!. Lua chon";
+						cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
+						cout << "\t\t\t2. Thoat";
+						cout << "\n\t\t\t\t\t\t\t";
+						check = getInt();
+						if (check != 1 && check != 2) {
+							cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
+							system("pause");
+						}
+					} while (check != 1 && check != 2);
+					}
+					else check = 3;
+				} while(check == 1 || check == 0);
+				if(check != 2) room->setType(upn);
 				break;
 			}
 			case(0): {
