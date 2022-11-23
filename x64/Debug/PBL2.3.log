@@ -1,0 +1,28 @@
+﻿  CinemaRoom.cpp
+  CinemaRoomManager.cpp
+  DirectorManager.cpp
+  FilmManager.cpp
+  Manager.cpp
+  Menu.cpp
+  Schedule.cpp
+  ScheduleManager.cpp
+  Staff.cpp
+  StaffManager.cpp
+  Ticket.cpp
+D:\visual\PBL2.3\PBL2.3\Ticket.cpp(133,26): warning C4101: 'regSeat': unreferenced local variable
+D:\visual\PBL2.3\PBL2.3\Ticket.cpp(133,6): warning C4101: 'vipSeat': unreferenced local variable
+  TicketManager.cpp
+D:\visual\PBL2.3\PBL2.3\TicketManager.cpp(26,6): warning C4101: 'cost': unreferenced local variable
+D:\visual\PBL2.3\PBL2.3\TicketManager.cpp(27,6): warning C4101: 'amount': unreferenced local variable
+  main.cpp
+  Generating Code...
+Menu.obj : error LNK2019: unresolved external symbol "public: bool __cdecl Seat::getVip(void)const " (?getVip@Seat@@QEBA_NXZ) referenced in function "public: void __cdecl Menu::stMenu(void)" (?stMenu@Menu@@QEAAXXZ)
+Menu.obj : error LNK2019: unresolved external symbol "public: bool __cdecl Seat::getChecked(void)const " (?getChecked@Seat@@QEBA_NXZ) referenced in function "public: void __cdecl Menu::stMenu(void)" (?stMenu@Menu@@QEAAXXZ)
+Schedule.obj : error LNK2001: unresolved external symbol "public: bool __cdecl Seat::getChecked(void)const " (?getChecked@Seat@@QEBA_NXZ)
+Menu.obj : error LNK2019: unresolved external symbol "public: void __cdecl Seat::setChecked(bool const &)" (?setChecked@Seat@@QEAAXAEB_N@Z) referenced in function "public: void __cdecl Menu::stMenu(void)" (?stMenu@Menu@@QEAAXXZ)
+TicketManager.obj : error LNK2001: unresolved external symbol "public: void __cdecl Seat::setChecked(bool const &)" (?setChecked@Seat@@QEAAXAEB_N@Z)
+Schedule.obj : error LNK2019: unresolved external symbol "public: __cdecl Seat::Seat(void)" (??0Seat@@QEAA@XZ) referenced in function "public: void __cdecl Schedule::createSeat(class CinemaRoom *)" (?createSeat@Schedule@@QEAAXPEAVCinemaRoom@@@Z)
+Schedule.obj : error LNK2019: unresolved external symbol "public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl Seat::getId(void)const " (?getId@Seat@@QEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) referenced in function "public: class Seat * __cdecl Schedule::getSeat(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?getSeat@Schedule@@QEAAPEAVSeat@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Schedule.obj : error LNK2019: unresolved external symbol "public: void __cdecl Seat::setId(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?setId@Seat@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: void __cdecl Schedule::createSeat(class CinemaRoom *)" (?createSeat@Schedule@@QEAAXPEAVCinemaRoom@@@Z)
+Schedule.obj : error LNK2019: unresolved external symbol "public: void __cdecl Seat::setVip(bool const &)" (?setVip@Seat@@QEAAXAEB_N@Z) referenced in function "public: void __cdecl Schedule::createSeat(class CinemaRoom *)" (?createSeat@Schedule@@QEAAXPEAVCinemaRoom@@@Z)
+D:\visual\PBL2.3\x64\Debug\PBL2.3.exe : fatal error LNK1120: 7 unresolved externals
