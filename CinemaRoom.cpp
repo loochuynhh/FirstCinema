@@ -62,13 +62,18 @@ void CinemaRoom::writeDataFile(fstream& fileout) {
 	fileout << this->getId() << ", ";
 	fileout << this->getRow() << ", ";
 	fileout << this->getColumn() << ", ";
+	fileout << this->getType() << ", ";
 	fileout << this->getStatus() << ". ";
 	fileout << "\n";
 }
 void CinemaRoom::writeData() {
 	cout << "|";
-	cout << left << setw(10) << " " << left << setw(8) << this->getId() << left << setw(8) << " " << "|";
-	cout << left << setw(5) << " " << left << setw(8) << this->row*this->column << "|";
-	cout << left << setw(15) << " " << left << setw(20) << this->getStatus() << "|";
+	cout << left << setw(6) << " " << left << setw(11) << this->getId() << "|";
+	cout << left << setw(7) << " " << left << setw(8) << this->row << "|";
+	cout << left << setw(6) << " " << left << setw(8) << this->column << "|";
+	if (this->getType() == 1) cout << left << setw(6) << " " << left << setw(8) << "2D" << "|";
+	else if (this->getType() == 2) cout << left << setw(6) << " " << left << setw(8) << "3D" << "|";
+	else cout << left << setw(5) << " " << left << setw(9) << "IMAX" << "|";
+	cout << left << setw(4) << " " << left << setw(9) << this->getStatus() << "|";
 	cout << "\n";
 }

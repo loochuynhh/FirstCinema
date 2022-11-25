@@ -10,6 +10,302 @@ ScheduleManager scdMng(filmMng, cnmMng);
 TicketManager tkMng(scdMng, stMng);
 HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 
+void Menu::qlrcp() {
+	SetConsoleTextAttribute(cl, 10);
+	SetConsoleCursorPosition(cl, { 104, 4 });
+	cout << "   ___                               _       _      ____                  ";
+	SetConsoleCursorPosition(cl, { 104, 5 });
+	cout << "  / _ \\   _   _    __ _   _ __      | |     (_)    |  _ \\    __ _   _ __  ";
+	SetConsoleCursorPosition(cl, { 104, 6 });
+	cout << " | | | | | | | |  / _` | | '_ \\     | |     | |    | |_) |  / _` | | '_ \\ ";
+	SetConsoleCursorPosition(cl, { 104, 7 });
+	cout << " | |_| | | |_| | | (_| | | | | |    | |___  | |    |  _ <  | (_| | | |_) |";
+	SetConsoleCursorPosition(cl, { 104, 8 });
+	cout << "  \\__\\_\\  \\__,_|  \\__,_| |_| |_|    |_____| |_|    |_| \\_\\  \\__,_| | .__/ ";
+	SetConsoleCursorPosition(cl, { 104, 9 });
+	cout << "                                                                   |_|    ";
+	SetConsoleCursorPosition(cl, { 106, 10 });
+	cout << "   ____   _       _                     ____    _       _             ";
+	SetConsoleCursorPosition(cl, { 106, 11 });
+	cout << "  / ___| | |__   (_)   ___   _   _     |  _ \\  | |__   (_)  _ __ ___  ";
+	SetConsoleCursorPosition(cl, { 106, 12 });
+	cout << " | |     | '_ \\  | |  / _ \\ | | | |    | |_) | | '_ \\  | | | '_ ` _ \\ ";
+	SetConsoleCursorPosition(cl, { 106, 13 });
+	cout << " | |___  | | | | | | |  __/ | |_| |    |  __/  | | | | | | | | | | | |";
+	SetConsoleCursorPosition(cl, { 106, 14 });
+	cout << "  \\____| |_| |_| |_|  \\___|  \\__,_|    |_|     |_| |_| |_| |_| |_| |_|";
+}
+void Menu::welcome() {
+	SetConsoleTextAttribute(cl, 9);
+	SetConsoleCursorPosition(cl, { 112, 30 });
+	cout << " _       __           __                                    ";
+	SetConsoleCursorPosition(cl, { 112, 31 });
+	cout << "| |     / /  ___     / /  _____   ____     ____ ___     ___ ";
+	SetConsoleCursorPosition(cl, { 112, 32 });
+	cout << "| | /| / /  / _ \\   / /  / ___/  / __ \\   / __ `__ \\   / _ \\";
+	SetConsoleCursorPosition(cl, { 112, 33 });
+	cout << "| |/ |/ /  /  __/  / /  / /__   / /_/ /  / / / / / /  /  __/";
+	SetConsoleCursorPosition(cl, { 112, 34 });
+	cout << "|__/|__/   \\___/  /_/   \\___/   \\____/  /_/ /_/ /_/   \\___/ ";
+}
+void Menu::pic1() {
+	cout << "\n\t                                                                 :!J               ";
+	cout << "\n\t                                                              ~#@@@@:              ";
+	cout << "\n\t                                                      .:?GG...?@@@@@^.             ";
+	cout << "\n\t                                                     ?@@@@@:..!@@@@@^..            ";
+	cout << "\n\t                                            .~JB&#...J@@@@@:..~@@@@@!...           ";
+	cout << "\n\t                                       .: ..5@@@@&:..7@@@@@^..^@@@@@~              ";
+	cout << "\n\t                                   ^Y#&@&...J@@@@@:..~@@@@@!..:B5!:                ";
+	cout << "\n\t                             :77...P@@@@&:..7@@@@@^..^@@@&B:                       ";
+	cout << "\n\t                          ?#@@@&...J@@@@@:..!@@@@@~...?~.                          ";
+	cout << "\n\t                  .^?G5.::P@@@@&...7@@@@@^..~@@&GJ.                                ";
+	cout << "\n\t            .:...5@@@@&B###@@@@@:..!@@@@@^...:.                                    ";
+	cout << "\n\t         ~YGBG^..G@&#B#&&BP@@@@@^..~&#P7:                                          ";
+	cout << "\n\t        JBBBBBP^:P#GGGBP7.7@@@@&:                                                  ";
+	cout << "\n\t       :BBBBBBBGGBGGG#&7..^GY~.                                                    ";
+	cout << "\n\t       GBBBBBBBBBBB#&@@@GY7.                                                       ";
+	cout << "\n\t      YBBBBBBBBBBBG#@@@@@#&Y   :~~~~~    ^~~~~~    ^~~~~^    ~~~~~^   .~~~~~:		";
+	cout << "\n\t    .YBBBBBBBBBBBBBBB@@@@@#...~@@@@@B...7@@@@@5...J@@@@@J...P@@@@@7...B@@@@@^		";
+	cout << "\n\tYBGYGBBBBBBBBBBBBBBG&@@@@&:..:&@@@@#:..^@@@@@B...!@@@@@P...?@@@@@Y...5@@@@@?.		";
+	cout << "\n\t&&#BBBBBBBBBBBBBBBG#@@@@@~...B@@@@@^..:&@@@@&:..:&@@@@#...~@@@@@G...7@@@@@5..		";
+	cout << "\n\t7&&#GGBBBBBBBBBBBB#@@@@@?...5@@@@@!...G@@@@@^...#@@@@&:..:&@@@@&:..^@@@@@B...		";
+	cout << "\n\t.^B&&BGBBBBBBBBB5J@@@@@B^^^7@@@@@P^^^J@@@@@Y:^^5@@@@@?^^^G@@@@@7^^^#@@@@&~^^:		";
+	cout << "\n\t...?#&#BBBPPYJ!:  ^^^^^^^^^^^::::::::^^^^^^:^^^^^^^^::^::^:::::::^^^^^^^^^^^:		";
+	cout << "\n\t....:JB#5:        ..........:GGGGGGGGGGYJP5P555Y5YG5GY5GGGGGGGGGB7...........		";
+	cout << "\n\t........          ..........^@@@@@@@@@@JY5JP5JY5YJG7BY5@@@@@@@@@@5...........		";
+	cout << "\n\t.....             ..........:GBBBBBBBBBGBGGPGGGGGGPGPPPBBBBBBBBBB?...........		";
+	cout << "\n\t..                ..........:??????????????J?JJJJ?J?JJJJJJJJJJJJJ~...........		";
+	cout << "\n\t                  .........!77777777777777777^...777777?7777777777?^.........		";
+	cout << "\n\t                  .........7JJJJJJJJJJJJJJJJJ~..:JJJJJYYYYJJJJJJJJJ^.........		";
+	cout << "\n\t                  .........J55555555555555555!..:5PPPPPPPPPPPPPPPPP^.........		";
+	cout << "\n\t                  .........7JJJ??JJJJJJJJJJJJ~..:?J??????????????JJ^.........		";
+	cout << "\n\t           .^!7?7!!~:......?JJJJJJJJJJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........		";
+	cout << "\n\t        ^5GBBBBBBBBBGY~....YPPPPPPPPPPPPPPPPP!..:5PPPPPPPPPPPPPPPPP^.........		";
+	cout << "\n\t   :~77PBBBBBBBBBBBBBBBY^:^!77JYPGG5????????J~..:?JJJJJJJJJJJJ?????^.........		";
+	cout << "\n\t...P&&BBBBBBBBBBBBBBBBBBGGBBBBBB&&&&PJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........		";
+	cout << "\n\t...7&&BBBBBBBBBBBBBBBBBBBBBBBBG55YJ^.........................................		";
+	cout << "\n\t....G&#GBBBBBBBBBBBBBBBBBBBBBBGGPJ.												";
+	cout << "\n\t....^#&#GGGBBBBBBBBBBBBBBBBBBBP7.													";
+	cout << "\n\t.....^B&&##Y~~!?YPPGGGGGP5Y?~.														";
+	cout << "\n\t......:5B57																		";
+	cout << "\n\t........																			";
+	cout << "\n\t...																				";
+}
+void Menu::pic2() {
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                 .^75B:			";
+	cout << "\n\t                                                          .:~ ..7@@@@@^			";
+	cout << "\n\t                                                       7#&@@&...J@@@@@:.			";
+	cout << "\n\t                                              :!YG&Y...#@@@@B...5@@@@&:..			";
+	cout << "\n\t                                       .~?:..:@@@@@Y...#@@@@G...P@@@@&...			";
+	cout << "\n\t                                .   ^&@@@@~..^@@@@@?...&@@@@P...B@@@#Y				";
+	cout << "\n\t                           :?P#&&:..?@@@@@^..^@@@@@7..:@@@@@Y.. ~^.				";
+	cout << "\n\t                   .^75?...G@@@@&...?@@@@@:..!@@@@@!..:BPJ!:						";
+	cout << "\n\t           .^~^:..#@@@@#GBP&@@@@#...Y@@@@@:..7@@&B5.								";
+	cout << "\n\t         !PBBBP:.:@@&#B&&&#&@@@@B...P@@@@#.. .:									";
+	cout << "\n\t        !BBBBBB?:7#BGGGBP7:&@@@@G...?Y!:.											";
+	cout << "\n\t       ~BBBBBBBGGBGGGB&Y...&&BPJ.													";
+	cout << "\n\t      :BBBBBBBBBBBB#&@@@P?~.														";
+	cout << "\n\t     ^GBBBBBBBBBBBG&@@@@@B#J   :~~~~~    ^~~~~~    ^~~~~^    ~~~~~^   .~~~~~:		";
+	cout << "\n\t~7!:JBBBBBBBBBBBBBBGB@@@@@B:..~@@@@@B...7@@@@@5...J@@@@@J...P@@@@@7...B@@@@@^		";
+	cout << "\n\t&&BBBBBBBBBBBBBBBBBG#@@@@&:..:&@@@@#:..^@@@@@B...!@@@@@P...?@@@@@Y...5@@@@@7.		";
+	cout << "\n\t&&#GBBBBBBBBBBBBBBG&@@@@@~...B@@@@@^..:&@@@@&:..:&@@@@#...~@@@@@G...7@@@@@5..		";
+	cout << "\n\t7#&#GBBBBBBBBBBBBPG@@@@@?...5@@@@@!...G@@@@@^...#@@@@&:..:&@@@@#...^@@@@@B...		";
+	cout << "\n\t.~B&&BGGBBBBBBG5~^@@@@@B^^^7@@@@@P^^^J@@@@@Y:^^5@@@@@?^^^G@@@@@7^^^#@@@@&~^^:		";
+	cout << "\n\t..:J&&&#5??!~:.   ^^^^^^^^^^^::::::::^^^^^^:^^^^^^^^::^::^:::::::^^^^^^^^^^^:		";
+	cout << "\n\t....^JJ^          ..........:GGGGGGGGGGYJP5P555Y5YG5GY5GGGGGGGGGB7...........		";
+	cout << "\n\t.....             ..........^@@@@@@@@@@JY5JP5JY5YJG7BY5@@@@@@@@@@5...........		";
+	cout << "\n\t.                 ..........:GBBBBBBBBBGBGGPGGGGGGPGPPPBBBBBBBBBB7...........		";
+	cout << "\n\t                  ..........:??????????????J?JJJJ?J?JJJJJ???????J~...........		";
+	cout << "\n\t                  .........!77777777777777777^...77777777777777777?^.........		";
+	cout << "\n\t                  .........7JJJJJJJJJJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........		";
+	cout << "\n\t                  .........J55555555555555555!..:555555555555555555^.........		";
+	cout << "\n\t                  .........7JJJ??JJJJJJJJJJJJ~..:?JJJJJJJJJJJJJJJJJ^.........		";
+	cout << "\n\t           .^!7?7!!~:......?JJJJJJJJJJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........		";
+	cout << "\n\t        ^5GBBBBBBBBBGY~....YPPPPPPPPPPPPPPPPP!..:5PPPPPPPPPPPPPPPPP^.........		";
+	cout << "\n\t   :~77PBBBBBBBBBBBBBBBY^:^!77?YPGG5????????J~..:??????????????????^.........		";
+	cout << "\n\t...P&&BBBBBBBBBBBBBBBBBBGGBBBBBB&&&&PJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........		";
+	cout << "\n\t...7&&BBBBBBBBBBBBBBBBBBBBBBBBG55YJ^.........................................		";
+	cout << "\n\t....G&#GBBBBBBBBBBBBBBBBBBBBBBGGPJ.												";
+	cout << "\n\t....^#&#GGGBBBBBBBBBBBBBBBBBBBP7.													";
+	cout << "\n\t.....^B&&##Y~~!?YPPGGGGGP5Y?~.														";
+	cout << "\n\t......:5B57																		";
+	cout << "\n\t........																			";
+	cout << "\n\t...																				";
+}
+void Menu::pic3() {
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                   .:^!:           ";
+	cout << "\n\t                                                          ..:...^PB#&@&~           ";
+	cout << "\n\t                                                      ..!YPB#&^^^?@@@@G^:          ";
+	cout << "\n\t                                                ^!JPG:..^@@@@@?...&@@@@P..         ";
+	cout << "\n\t                                      .:~?5!...G@@@@&:..?@@@@@^..^@@@@@?..         ";
+	cout << "\n\t                             .:~7Y...^@@@@@J...&@@@@G...P@@@@&...?@@@@@^...        ";
+	cout << "\n\t                    ..^7^   P@@@@&:..7@@@@@^..^@@@@@?...&@@@@G...P@&#G?            ";
+	cout << "\n\t           .~7?^:.^&@@@@BJY!&@@@@G...P@@@@&:..?@@@@@~..^@@&#G^                     ";
+	cout << "\n\t         ^PBBBBJ..7@@&##&&&&@@@@@?...&@@@@B...G@@&#5.   .                          ";
+	cout << "\n\t        ^BBBBBBG^~P#BGGB#G7J@@@@@~..^@@@&#!   :.                                   ";
+	cout << "\n\t       !BBBBBBBBGBBGGB#G:..P@@@&B.. .^.                                            ";
+	cout << "\n\t      7BBBBBBBBBBBBB&@@@Y~:^^.                                                     ";
+	cout << "\n\t..  ^5BBBBBBBBBBBBG&@@@@&GG7   :~~~~~    ^~~~~~    ^~~~~^    ~~~~~^   .~~~~~:      ";
+	cout << "\n\t##GPBBBBBBBBBBBBBBBG#@@@@@G^..~@@@@@B...7@@@@@5...J@@@@@J...P@@@@@7...B@@@@@^      ";
+	cout << "\n\t&#GBBBBBBBBBBBBBBBBJB@@@@&:..:&@@@@#:..^@@@@@B...!@@@@@P...?@@@@@Y...5@@@@@7.      ";
+	cout << "\n\t&&#GBBBBBBBBBBBBBB5B@@@@@~...B@@@@@^..:&@@@@&:..:&@@@@#...~@@@@@G...7@@@@@5..      ";
+	cout << "\n\t!#&#GBBBBBBBBBBBG!Y@@@@@?...5@@@@@!...G@@@@@^...#@@@@&:..:&@@@@#...^@@@@@B...      ";
+	cout << "\n\t.~B&&BBBBBBBGPY~ .@@@@@B^^^7@@@@@P^^^J@@@@@Y:^^5@@@@@?^^^G@@@@@7^^^#@@@@&~^^:      ";
+	cout << "\n\t..:Y&#P~.:..      ^^^^^^^^^^^::::::::^^^^^^:^^^^^^^^::^::^:::::::^^^^^^^^^^^:      ";
+	cout << "\n\t....:.            ..........:GGGGGGGGGGYJP5P555Y5YG5GY5GGGGGGGGGB7...........      ";
+	cout << "\n\t.                 ..........^@@@@@@@@@@JY5JP5JY5YJG7BY5@@@@@@@@@@5...........      ";
+	cout << "\n\t                  ..........:GBBBBBBBBBGBGGPGGGGGGPGPPPBBBBBBBBBB7...........      ";
+	cout << "\n\t                  ..........:??????????????J?JJJJ?J?JJJJJ???????J~...........      ";
+	cout << "\n\t                  .........!77777777777777777^...77777777777777777?^.........      ";
+	cout << "\n\t                  .........7JJJJJJJJJJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t                  .........J55555555555555555!..:555555555555555555^.........      ";
+	cout << "\n\t                  .........7JJJ??JJJJJJJJJJJJ~..:?JJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t           .^!7?7!!~:......?JJJJJJJJJJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t        ^5GBBBBBBBBBGY~....YPPPPPPPPPPPPPPPPP!..:5PPPPPPPPPPPPPPPPP^.........      ";
+	cout << "\n\t   :~77PBBBBBBBBBBBBBBBY^:^!77?JPGG5????????J~..:??????????????????^.........      ";
+	cout << "\n\t...P&&BBBBBBBBBBBBBBBBBBGGBBBBBB&&&&PJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t...7&&BBBBBBBBBBBBBBBBBBBBBBBBG55YJ^.........................................      ";
+	cout << "\n\t....G&#GBBBBBBBBBBBBBBBBBBBBBBGGPJ.                                                ";
+	cout << "\n\t....^#&#GGGBBBBBBBBBBBBBBBBBBBP7.                                                  ";
+	cout << "\n\t.....^B&&##Y~~!?YPPGGGGGP5Y?~.                                                     ";
+	cout << "\n\t......:5B57                                                                        ";
+	cout << "\n\t........                                                                           ";
+	cout << "\n\t...                                                                                ";
+}
+void Menu::pic4() {
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                             ..:    JBB&&G         ";
+	cout << "\n\t                                                 .:~!?^ ..Y&@@@&:..!@@@@@7.        ";
+	cout << "\n\t                                       ^?YPG5...?@@@@@~..:@@@@@5...G@@@@&:.        ";
+	cout << "\n\t                      ..:.   !B#&&&:..~@@@@@Y...#@@@@#...J@@@@@^..^@@@@@Y..        ";
+	cout << "\n\t           ^!?YJ::.!&@@@@5~~:&@@@@G...5@@@@@:..~@@@@@?...#@@@@B...Y@@@@@^...       ";
+	cout << "\n\t         .5BBBBB~..B@@&#&&&&#@@@@@!..:&@@@@P...P@@@@&:..!@@@@@!...5BPY?~           ";
+	cout << "\n\t        ^GBBBBBBY^?#BBGB#&BY&@@@@#...?@@@@@~..^@@@@&J . ^77~:.                     ";
+	cout << "\n\t       7BBBBBBBBBBBGGGBB7^.~@@@@@J...G&&BBJ   .:..                                 ";
+	cout << "\n\t     :5BBBBBBBBBBBBB#&@@?:.!PYJ!~                                                  ";
+	cout << "\n\tP57~5BBBBBBBBBBBBBG&@@@@&P5^   .^~~~~    ^~~~~~    ^~~~~^    ~~~~~^   .~~~~~:      ";
+	cout << "\n\t&#BBBBBBBBBBBBBBBBBG&@@@@@G!..~@@@@@B...7@@@@@5...J@@@@@J...P@@@@@7...B@@@@@^      ";
+	cout << "\n\t&#GBBBBBBBBBBBBBBBB~#@@@@&^..:&@@@@#:..^@@@@@B...!@@@@@P...?@@@@@Y...5@@@@@7.      ";
+	cout << "\n\t&&#GBBBBBBBBBBBBBG!G@@@@@~...B@@@@@^..:&@@@@&:..:&@@@@#...~@@@@@G...7@@@@@5..      ";
+	cout << "\n\t!&&#GGBBBBBBBBBG7.J@@@@@?...5@@@@@!...G@@@@@^...#@@@@&:..:&@@@@#...^@@@@@B...      ";
+	cout << "\n\t.~#&&#G5PPP5Y7:  .@@@@@B^^^7@@@@@P^^^J@@@@@Y:^^5@@@@@?^^^G@@@@@7^^^#@@@@&~^^:      ";
+	cout << "\n\t..:JJ~            ^^^^^^^^^^^::::::::^^^^^^:^^^^^^^^::^::^:::::::^^^^^^^^^^^:      ";
+	cout << "\n\t..                ..........:GGGGGGGGGGYJP5P555Y5YG5GY5GGGGGGGGGB7...........      ";
+	cout << "\n\t                  ..........^@@@@@@@@@@JY5JP5JY5YJG7BY5@@@@@@@@@@5...........      ";
+	cout << "\n\t                  ..........:GBBBBBBBBBGBGGPGGGGGGPGPPPBBBBBBBBBB7...........      ";
+	cout << "\n\t                  ..........:??????????????J?JJJJ?J?JJJJJ???????J~...........      ";
+	cout << "\n\t                  .........!77777777777777777^...77777777777777777?^.........      ";
+	cout << "\n\t                  .........7JJJJJJJJJJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t                  .........J55555555555555555!..:555555555555555555^.........      ";
+	cout << "\n\t                  .........7JJJ??JJJJJJJJJJJJ~..:?JJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t           .^!7?7!!~:......?JJJJJJJJJJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t        ^5GBBBBBBBBBGY~....YPPPPPPPPPPPPPPPPP!..:5PPPPPPPPPPPPPPPPP^.........      ";
+	cout << "\n\t   :~77PBBBBBBBBBBBBBBBY^:^!77?JPGG5????????J~..:??????????????????^.........      ";
+	cout << "\n\t...P&&BBBBBBBBBBBBBBBBBBGGBBBBBB&&&&PJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t...7&&BBBBBBBBBBBBBBBBBBBBBBBBG55YJ^.........................................      ";
+	cout << "\n\t....G&#GBBBBBBBBBBBBBBBBBBBBBBGGPJ.                                                ";
+	cout << "\n\t....^#&#GGGBBBBBBBBBBBBBBBBBBBP7.                                                  ";
+	cout << "\n\t.....^B&&##Y~~!?YPPGGGGGP5Y?~.                                                     ";
+	cout << "\n\t......:5B57                                                                        ";
+	cout << "\n\t........                                                                           ";
+	cout << "\n\t...                                                                                ";
+}
+void Menu::pic5() {
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                   ...:.   .7J?YP^ ..Y&&&&&:       ";
+	cout << "\n\t                              .:~!~!.  .YPG##P...!@@@@@J...B@@@@@:..~@@@@@Y.       ";
+	cout << "\n\t           :7JPPY^:.7#&&&@7...&@@@@#:..?@@@@@7...&@@@@#...7@@@@@7...#@@@@&..       ";
+	cout << "\n\t          YBBBBBG:.:@@@&&&##BG@@@@@~..:&@@@@B...J@@@@@!..:&@@@@B...?@@@@@!..       ";
+	cout << "\n\t        ^GBBBBBBG!!5#BBG#&&#B@@@@@P...Y@@@@@~..:@@@@@G...Y@@@@@~..:@@@@@B...       ";
+	cout << "\n\t      .JBBBBBBBBBBBBGGGB5?~:G@@@@@:..~@@@@@P...P@@@@@^..:B&&BBJ   :777!^.          ";
+	cout << "\n\t~!. :?GBBBBBBBBBBBBB#&@@?..~&&&&#7   75JJJ!    ::...                               ";
+	cout << "\n\t&#BGBBBBBBBBBBBBBBG&@@@@&5?:.. ^~~~~~    :^^^^~    ^~~~~^    ~~~~~^   .~~~~~:      ";
+	cout << "\n\t&BGBBBBBBBBBBBBBBBBG&@@@&&G?..~@@@@@B...7@@@@@5...J@@@@@J...P@@@@@7...B@@@@@^      ";
+	cout << "\n\t&&GBBBBBBBBBBBBBBBP^#@@@@&^..:&@@@@#:..^@@@@@B...!@@@@@P...?@@@@@Y...5@@@@@7.      ";
+	cout << "\n\t&&#GBBBBBBBBBBBBBY:G@@@@@~...B@@@@@^..:&@@@@&:..:&@@@@#...~@@@@@G...7@@@@@5..      ";
+	cout << "\n\t!&&#BBBBBBBBBBP?. J@@@@@?...5@@@@@!...G@@@@@^...#@@@@&:..:&@@@@#...^@@@@@B...      ";
+	cout << "\n\t.~B#G?~!7J7!~.   :@@@@@B^^^7@@@@@P^^^J@@@@@Y:^^5@@@@@?^^^G@@@@@7^^^#@@@@&~^^:      ";
+	cout << "\n\t....              ^^^^^^^^^^^::::::::^^^^^^:^^^^^^^^::^::^:::::::^^^^^^^^^^^:      ";
+	cout << "\n\t                  ..........:GGGGGGGGGGYJP5P555Y5YG5GY5GGGGGGGGGB7...........      ";
+	cout << "\n\t                  ..........^@@@@@@@@@@JY5JP5JY5YJG7BY5@@@@@@@@@@5...........      ";
+	cout << "\n\t                  ..........:GBBBBBBBBBGBGGPGGGGGGPGPPPBBBBBBBBBB7...........      ";
+	cout << "\n\t                  ..........:??????????????J?JJJJ?J?JJJJJ???????J~...........      ";
+	cout << "\n\t                  .........!77777777777777777^...77777777777777777?^.........      ";
+	cout << "\n\t                  .........7JJJJJJJJJJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t                  .........J55555555555555555!..:555555555555555555^.........      ";
+	cout << "\n\t                  .........7JJJ??JJJJJJJJJJJJ~..:?JJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t           .^!7?7!!~:......?JJJJJJJJJJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t        ^5GBBBBBBBBBGY~....YPPPPPPPPPPPPPPPPP!..:5PPPPPPPPPPPPPPPPP^.........      ";
+	cout << "\n\t   :~77PBBBBBBBBBBBBBBBY^:^!77?JPGG5????????J~..:??????????????????^.........      ";
+	cout << "\n\t...P&&BBBBBBBBBBBBBBBBBBGGBBBBBB&&&&PJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t...7&&BBBBBBBBBBBBBBBBBBBBBBBBG55YJ^.........................................      ";
+	cout << "\n\t....G&#GBBBBBBBBBBBBBBBBBBBBBBGGPJ.                                                ";
+	cout << "\n\t....^#&#GGGBBBBBBBBBBBBBBBBBBBP7.                                                  ";
+	cout << "\n\t.....^B&&##Y~~!?YPPGGGGGP5Y?~.                                                     ";
+	cout << "\n\t......:5B57                                                                        ";
+	cout << "\n\t........                                                                           ";
+	cout << "\n\t...                                                                                ";
+}
+void Menu::pic6() {
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t                                                                                   ";
+	cout << "\n\t           .75PGGJ::.J#####^  .P####B...:B####5...~#&&&&J...J&&&&&!...G&&&&&.      ";
+	cout << "\n\t          7GBBBBBY..7@@@@@&GP!Y@@@@@7...B@@@@@~..^&@@@@#:..!@@@@@P...J@@@@@?.      ";
+	cout << "\n\t        ~GBBBBBBB5~7B#BBB&&&&&@@@@@5...Y@@@@@7...B@@@@@^..:&@@@@#...!@@@@@P..      ";
+	cout << "\n\t      ~PBBBBBBBBBBBBGGGBGP577@@@@@#...!@@@@@5...5@@@@@7...B@@@@@^..:&@@@@#...      ";
+	cout << "\n\t#BP!YGBBBBBBBBBBBBBB#&&@Y...#@@@@&:..^@@@@@B...7@@@@@Y...5@@@@@!...B@@@@&:...      ";
+	cout << "\n\t&BBBBBBBBBBBBBBBBBG&@@@@&J!^??7PBY!7!~??7GB?!!~^~~~Y5!!!~^~~~5Y!!7~~~^!5J!!7:      ";
+	cout << "\n\t&#GBBBBBBBBBBBBBBBBG&@@@&BB7..^@@@@@B...!@@@@@5...J@@@@@J...5@@@@@7...G@@@@@^      ";
+	cout << "\n\t&&GBBBBBBBBBBBBBBBJ:#@@@@&^:.:&@@@@#:..^@@@@@B...!@@@@@P...?@@@@@Y...5@@@@@7.      ";
+	cout << "\n\t&&#GBBBBBBBBBBBBP!.G@@@@@!...B@@@@@^..:&@@@@&:..:&@@@@#...~@@@@@G...7@@@@@5..      ";
+	cout << "\n\t!&&#BGGBBBBBG5?:  J@@@@@?...5@@@@@!...G@@@@@^...#@@@@&:..:&@@@@#...^@@@@@B...      ";
+	cout << "\n\t.~7~. ..:.:.     :@@@@@B^^^7@@@@@P^^^J@@@@@Y:^^5@@@@@?^^^G@@@@@7^^^#@@@@&~^^:      ";
+	cout << "\n\t                  ^^^^^^^^^^^::::::::^^^^^^:^^^^^^^^::^::^:::::::^^^^^^^^^^^:      ";
+	cout << "\n\t                  ..........:GGGGGGGGGGYJP5P555Y5YG5GY5GGGGGGGGGB7...........      ";
+	cout << "\n\t                  ..........^@@@@@@@@@@JY5JP5JY5YJG7BY5@@@@@@@@@@5...........      ";
+	cout << "\n\t                  ..........:GBBBBBBBBBGBGGPGGGGGGPGPPPBBBBBBBBBB7...........      ";
+	cout << "\n\t                  ..........:??????????????J?JJJJ?J?JJJJJ???????J~...........      ";
+	cout << "\n\t                  .........!77777777777777777^...77777777777777777?^.........      ";
+	cout << "\n\t                  .........7JJJJJJJJJJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t                  .........J55555555555555555!..:555555555555555555^.........      ";
+	cout << "\n\t                  .........7JJJ??JJJJJJJJJJJJ~..:?JJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t           .^!7?7!!~:......?JJJJJJJJJJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t        ^5GBBBBBBBBBGY~....YPPPPPPPPPPPPPPPPP!..:5PPPPPPPPPPPPPPPPP^.........      ";
+	cout << "\n\t   :~77PBBBBBBBBBBBBBBBY^:^!77?JPGG5????????J~..:??????????????????^.........      ";
+	cout << "\n\t...P&&BBBBBBBBBBBBBBBBBBGGBBBBBB&&&&PJJJJJJJJ~..:JJJJJJJJJJJJJJJJJJ^.........      ";
+	cout << "\n\t...7&&BBBBBBBBBBBBBBBBBBBBBBBBG55YJ^.........................................      ";
+	cout << "\n\t....G&#GBBBBBBBBBBBBBBBBBBBBBBGGPJ.                                                ";
+	cout << "\n\t....^#&#GGGBBBBBBBBBBBBBBBBBBBP7.                                                  ";
+	cout << "\n\t.....^B&&##Y~~!?YPPGGGGGP5Y?~.                                                     ";
+	cout << "\n\t......:5B57                                                                        ";
+	cout << "\n\t........                                                                           ";
+	cout << "\n\t...                                                                                ";
+}
 void Menu::logo() {
 	SetConsoleTextAttribute(cl, 6);
 	Sleep(30);
@@ -106,6 +402,81 @@ void Menu::logo() {
 		cout << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b                                                                    \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
 	}
 }
+void Menu::intro() {
+	SetConsoleCursorPosition(cl, { 115, 18 });
+	cout << "Sinh Vien Thuc Hien: ";
+	SetConsoleCursorPosition(cl, { 115, 20 });
+	cout << "\t-  HUYNH VAN LOC \t\tLop:\t21T_DT";
+	SetConsoleCursorPosition(cl, { 115, 22 });
+	cout << "\t-  NGUYEN VAN HUY\t\tLop:\t21T_DT";
+	SetConsoleCursorPosition(cl, { 115, 25 });
+	cout << "Giang Vien Huong Dan: ";
+	SetConsoleCursorPosition(cl, { 115, 27 });
+	cout << "\t-  VO DUC HOANG  \t\tKhoa:   CNTT";
+	welcome();
+	qlrcp();
+	for (int i = 0; i < 51; i++) {
+		if (i % 2 == 0) {
+			if (i < 42) {
+				SetConsoleTextAttribute(cl, 8);
+				SetConsoleCursorPosition(cl, { 135, 37 });
+				cout << i * 5 / 2 << "%  LOADING ...";
+				Sleep(150);
+				SetConsoleTextAttribute(cl, 6);
+			}
+			else {
+				SetConsoleTextAttribute(cl, 8);
+				SetConsoleCursorPosition(cl, { 135, 37 });
+				cout << "                 ";
+				Sleep(75);
+				SetConsoleCursorPosition(cl, { 135, 37 });
+				cout << "100%  LOADING ...";
+				Sleep(75);
+				SetConsoleTextAttribute(cl, 6);
+			}
+		}
+		if (i % 12 == 0) {
+			SetConsoleCursorPosition(cl, { 0, 0 });
+			pic1();
+		}
+		else if (i % 12 == 2) {
+			SetConsoleCursorPosition(cl, { 0, 0 });
+			pic2();
+		}
+		else if (i % 12 == 4) {
+			SetConsoleCursorPosition(cl, { 0, 0 });
+			pic3();
+		}
+		else if (i % 12 == 6) {
+			SetConsoleCursorPosition(cl, { 0, 0 });
+			pic4();
+		}
+		else if (i % 12 == 8) {
+			SetConsoleCursorPosition(cl, { 0, 0 });
+			pic5();
+		}
+		else if (i % 12 == 10) {
+			SetConsoleCursorPosition(cl, { 0, 0 });
+			pic6();
+		}
+	}
+	system("cls");
+	SetConsoleTextAttribute(cl, 4);
+	for (short i = 30; i > 1; i--) {
+		SetConsoleCursorPosition(cl, { 0, i });
+		cout << endl;
+		cout << "\t\t\t\t\t\t\t ______    ________  ___   __    ______   ___ __ __   ________      " << endl;
+		cout << "\t\t\t\t\t\t\t/_____/\\  /_______/\\/__/\\ /__/\\ /_____/\\ /__//_//_/\\ /_______/\\     " << endl;
+		cout << "\t\t\t\t\t\t\t\\:::__\\/  \\__.::._\\/\\::\\_\\\\  \\ \\\\::::_\\/_\\::\\| \\| \\ \\\\::: _  \\ \\    " << endl;
+		cout << "\t\t\t\t\t\t\t \\:\\ \\  __   \\::\\ \\  \\:. `-\\  \\ \\\\:\\/___/\\\\:.      \\ \\\\::(_)  \\ \\   " << endl;
+		cout << "\t\t\t\t\t\t\t  \\:\\ \\/_/\\  _\\::\\ \\__\\:. _    \\ \\\\::___\\/_\\:.\\-/\\  \\ \\\\:: __  \\ \\  " << endl;
+		cout << "\t\t\t\t\t\t\t   \\:\\_\\ \\ \\/__\\::\\__/\\\\. \\`-\\  \\ \\\\:\\____/\\\\. \\  \\  \\ \\\\:.\\ \\  \\ \\ " << endl;
+		cout << "\t\t\t\t\t\t\t    \\_____\\/\\________\\/ \\__\\/ \\__\\/ \\_____\\/ \\__\\/ \\__\\/ \\__\\/\\__\\/ ";
+		Sleep(1);
+		cout << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b                                                                    \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
+	}
+	SetConsoleTextAttribute(cl, 8);
+}
 void Menu::cinema() {
 	cout << endl;
 	cout << "\t\t\t\t\t\t\t ______    ________  ___   __    ______   ___ __ __   ________      " << endl;
@@ -139,7 +510,7 @@ void Menu::login() {
 	stMng.readSalaryFile(fsslr);
 	fsslr.close();
 	int cnt = 0;
-	logo();
+	//intro();
 	system("cls");
 	do {
 		SetConsoleTextAttribute(cl, 4);
@@ -368,13 +739,16 @@ void Menu::stMenu() {
 					}
 					else {
 						cout << "\n\t\t\t\t\t\t\t\t\t<<PHIM CO MA TREN LA>>\n\n";
-						cout << "\t";
-						for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
-						cout << "\t";
-						cout << "|" << left << setw(13) << "    Ma phim" << "|" << left << setw(31) << "\t   Ten phim" << "|" << left << setw(20) << "   Dao dien" << "|" << left << setw(20) << "\tDien vien chinh" << "|" << left << setw(17) << "\tQuoc gia" << "|" << left << setw(20) << "\tThe loai" << "|" << left << setw(15) << "  Thoi gian" << "|" << endl;
-						cout << "\t";
-						for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
-						cout << "\t";
+						SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+						cout << "\t              |                               |                    |                       |                    |                          |                ";
+						SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+						SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+						cout << "    Ma phim   |          Ten phim             |     Dao dien       |    Dien vien chinh    |      Quoc gia      |        The loai          |   Thoi gian    ";
+						SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+						SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+						cout << "              |                               |                    |                       |                    |                          |                ";
+						SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+						SetConsoleTextAttribute(cl, 7);
 						filmMng.findById(id)->writeData();
 						cout << "\t";
 						for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
@@ -528,12 +902,16 @@ void Menu::stMenu() {
 					else {
 						cout << "\n\t\t\t\t\t\t\t\t\t<<PHONG CHIEU CO MA TREN LA>>\n\n";
 						cout << "\t\t\t\t\t\t";
-						for (int x = 0; x < 78; x++) cout << "-"; cout << endl;
-						cout << "\t\t\t\t\t\t";
-						cout << "|" << left << setw(6) << " " << left << setw(20) << "Ma phong chieu" << "|" << left << setw(10) << "\tSo ghe" << "|" << left << setw(30) << "\t        Chat luong" << "|" << endl;
-						cout << "\t\t\t\t\t\t";
-						for (int x = 0; x < 78; x++) cout << "-"; cout << endl;
-						cout << "\t\t\t\t\t\t";
+						SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+						cout << "                  |               |              |              |              ";
+						SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t\t\t";
+						SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+						cout << "  Ma phong chieu  |  So hang ghe  |  So cot ghe  |  Chat luong  |  Tinh trang  ";
+						SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t\t\t";
+						SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+						cout << "                  |               |              |              |              ";
+						SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t\t\t";
+						SetConsoleTextAttribute(cl, 7);
 						cnmMng.findById(id)->writeData();
 						cout << "\t\t\t\t\t\t";
 						for (int x = 0; x < 78; x++) cout << "-"; cout << endl;
@@ -681,16 +1059,20 @@ void Menu::stMenu() {
 					}
 					else {
 						cout << "\n\t\t\t\t\t\t\t\t\t<<LICH CHIEU CO MA TREN LA>>\n\n";
-						cout << "\t\t\t\t\t";
-						for (int x = 0; x < 80; x++) cout << "-"; cout << endl;
-						cout << "\t\t\t\t\t";
-						cout << "|  Ma lich chieu  |   Ma phim   |  Ma phong chieu  |  Ca  |     Ngay chieu     |" << endl;
-						cout << "\t\t\t\t\t";
-						for (int x = 0; x < 80; x++) cout << "-"; cout << endl;
-						cout << "\t\t\t\t\t";
+						cout << "\n\n\t\t\t\t\t\t";
+						SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+						cout << "                  |             |                  |      |            |                     ";
+						SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t\t\t";
+						SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+						cout << "   Ma lich chieu  |   Ma phim   |  Ma phong chieu  |  Ca  | Gia co ban |     Ngay chieu      ";
+						SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t\t\t";
+						SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+						cout << "                  |             |                  |      |            |                     ";
+						SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t\t\t";
+						SetConsoleTextAttribute(cl, 7);
 						scdMng.findById(id)->writeData();
-						cout << "\t\t\t\t\t";
-						for (int x = 0; x < 80; x++) cout << "-"; cout << endl;
+						cout << "\t\t\t\t\t\t";
+						for (int x = 0; x < 93; x++) cout << "-"; cout << endl;
 					}
 					system("pause");
 				}
@@ -1035,7 +1417,6 @@ void Menu::stMenu() {
 		}
 	} while (opt != 0);
 }
-
 void Menu::drtMenu() {
 	int opt = 0;
 	do {

@@ -121,7 +121,7 @@ void Film::writeData() {
 	cout << left << setw(16) << this->getCountry() << "|";
 	cout << left << setw(7) << " ";
 	cout << left << setw(19) << allType.getType(type) << "|";
-	cout << left << setw(5) << " ";
-	cout << left << setw(10) << this->getLength() << "|";
+	cout << left << setw(6) << " ";
+	cout << left << setw(9) << this->getLength() << "|";
     cout << "\n";
 }

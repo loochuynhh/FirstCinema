@@ -140,15 +140,17 @@ void Schedule::writeDataFile(fstream& fileout) {
 	fileout << this->getFilmId() << ", ";
 	fileout << this->getCinemaRoomId() << ", ";
 	fileout << this->getShow() << ", ";
+	fileout << this->getBaseCost() << ", ";
 	this->time.writefilet(fileout);
 	fileout << "\n";
 }
 void Schedule::writeData() {
 	cout << "|";
-	cout << "   " << left << setw(14) << this->getId() << "|";
-	cout << "   " << left << setw(10) << this->getFilmId() << "|";
-	cout << "    " << left << setw(14) << this->getCinemaRoomId() << "|";
+	cout << "     " << left << setw(12) << this->getId() << "|";
+	cout << "    " << left << setw(9) << this->getFilmId() << "|";
+	cout << "      " << left << setw(12) << this->getCinemaRoomId() << "|";
 	cout << "  " << left << setw(4) << this->getShow() << "|";
+	cout << "     " << left << setw(7) << this->getBaseCost() << "|";
 	cout << "     ";
 	this->getTime().writet();
 	cout << "     |\n";

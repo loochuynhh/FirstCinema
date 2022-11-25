@@ -32,12 +32,12 @@ int Ticket::getSoda_Corn() {
 	return this->soda_corn;
 }
 
-string* Ticket::getIdVipSeat() {
-	return this->idVip;
+string* Ticket::getIdVipSeat(int i) {
+	return this->idVip + i;
 }
 
-string* Ticket::getIdRegSeat() {
-	return this->idReg;
+string* Ticket::getIdRegSeat(int i) {
+	return this->idReg + i;
 }
 
 void Ticket::setSeat(int vipSeat, int regSeat, string* idVip, string* idReg) {
@@ -147,8 +147,7 @@ string* Ticket::readDataFile(fstream& filein) {
 	this->setStaffId(staffid);
 	filein.ignore(1);
 	filein >> amount;
-	filein.ignore(1);	
-	filein.ignore(1);	
+	filein.ignore(2);	
 	string* ids = new string[amount + 1];
 	for(int i = 0; i < amount; i++) {
 		string seatId;
@@ -167,7 +166,9 @@ void Ticket::writeDataFile(fstream& fileout) {
 	fileout << this->getCustomerName() << ", ";
 	fileout << this->getCustomerPhone() << ", ";
 	fileout << this->getStaffId() << ", ";
-	//fileout << this->getAmount() << ", ";
+	fileout << this->getCountVip() + this->getCountReg() << ", ";
+	for (int i = 0; i < this->getCountVip(); i++) fileout << this->getIdVipSeat(i) << ", ";
+	for (int i = 0; i < this->getCountReg(); i++) fileout << this->getIdRegSeat(i) << ", ";
 	fileout << this->getSoda_Corn() << ".";
 	fileout << "\n";
 }

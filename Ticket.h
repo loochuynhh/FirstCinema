@@ -20,8 +20,8 @@ public:
 	int getCountVip();
 	int getCountReg();
 	int getSoda_Corn();
-	string* getIdVipSeat();
-	string* getIdRegSeat();
+	string* getIdVipSeat(int);
+	string* getIdRegSeat(int);
 	string* getIdAllSeat();
 	void addSeat(const string&, bool);
 	void setId(const string&);

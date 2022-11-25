@@ -1,4 +1,5 @@
 #include "FilmManager.h"
+#include <Windows.h>
 
 void checkFilmId(const string& id) {
 	if(id.size() != 4) throw Error(9);
@@ -16,6 +17,7 @@ char asciitolower(char in) {
 }
 
 void FilmManager::findByName(string& name) {
+	HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 	Node* node = this->head;
 	transform(name.begin(), name.end(), name.begin(), asciitolower);
 	int check = 0;
@@ -27,13 +29,16 @@ void FilmManager::findByName(string& name) {
 		if (found != string::npos && check == 0)
 		{
 			cout << "\n\t\t\t\t\t\t\t\t\t\t<<PHIM CHUA TEN TREN LA>>\n\n";
-			cout << "\t";
-			for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
-			cout << "\t";
-			cout << "|" << left << setw(13) << "    Ma phim" << "|" << left << setw(31) << "\t   Ten phim" << "|" << left << setw(20) << "   Dao dien" << "|" << left << setw(20) << "\tDien vien chinh" << "|" << left << setw(17) << "\tQuoc gia" << "|" << left << setw(20) << "\tThe loai" << "|" << left << setw(15) << "  Thoi gian" << "|" << endl;
-			cout << "\t";
-			for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
-			cout << "\t";
+			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+			cout << "\t              |                               |                    |                       |                    |                          |                ";
+			SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+			cout << "    Ma phim   |          Ten phim             |     Dao dien       |    Dien vien chinh    |      Quoc gia      |        The loai          |   Thoi gian    ";
+			SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+			cout << "              |                               |                    |                       |                    |                          |                ";
+			SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+			SetConsoleTextAttribute(cl, 7);
 			node->data.writeData();
 			cout << "\t";
 			for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
@@ -132,6 +137,7 @@ Film FilmManager::setFilmInfor() {
 }
 
 void FilmManager::update() {
+	HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 	Type allType;
 	string id;
 	cout << "\t\t\t\t\t\t\tNhap id: ";
@@ -146,13 +152,16 @@ void FilmManager::update() {
 		do {
 			system("cls");
 			cout << "\n";
-			cout << "\t";
-			for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
-			cout << "\t";
-			cout << "|" << left << setw(13) << "    Ma phim" << "|" << left << setw(31) << "\t   Ten phim" << "|" << left << setw(20) << "   Dao dien" << "|" << left << setw(20) << "\tDien vien chinh" << "|" << left << setw(17) << "\tQuoc gia" << "|" << left << setw(20) << "\tThe loai" << "|" << left << setw(15) << "  Thoi gian" << "|" << endl;
-			cout << "\t";
-			for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
-			cout << "\t";
+			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+			cout << "\t              |                               |                    |                       |                    |                          |                ";
+			SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+			cout << "    Ma phim   |          Ten phim             |     Dao dien       |    Dien vien chinh    |      Quoc gia      |        The loai          |   Thoi gian    ";
+			SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+			cout << "              |                               |                    |                       |                    |                          |                ";
+			SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+			SetConsoleTextAttribute(cl, 7);
 			film->writeData();
 			cout << "\t";
 			for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
@@ -248,13 +257,18 @@ void FilmManager::writeFile(fstream& fileout) {
 	}
 }
 void FilmManager::write() {
+	HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 	Node* node = this->head;
-	cout << "\t";
-	for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
-	cout << "\t";
-	cout << "|" << left << setw(13) << "    Ma phim" << "|" << left << setw(31) << "\t   Ten phim" << "|" << left << setw(20) << "   Dao dien" << "|" << left << setw(20) << "\tDien vien chinh" << "|" << left << setw(17) << "\tQuoc gia" << "|" << left << setw(20) << "\tThe loai" << "|" << left << setw(15) << "  Thoi gian" << "|" << endl;
-	cout << "\t";
-	for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "\t              |                               |                    |                       |                    |                          |                ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "    Ma phim   |          Ten phim             |     Dao dien       |    Dien vien chinh    |      Quoc gia      |        The loai          |   Thoi gian    ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "              |                               |                    |                       |                    |                          |                ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n";
+	SetConsoleTextAttribute(cl, 7);
 	for (int i = 0; i < length; i++) {
 		cout << "\t";
 		node->data.writeData();

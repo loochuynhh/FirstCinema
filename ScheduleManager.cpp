@@ -1,5 +1,5 @@
 #include "ScheduleManager.h"
-
+#include <Windows.h>
 void checkScdId(const string& id) {
 	if(id.size() != 3) throw Error(8);
 	for (int i = 0; i < id.length(); i++) {
@@ -246,18 +246,24 @@ void ScheduleManager::writeFile(fstream& fileout) {
 	}
 }
 void ScheduleManager::write() {
+	HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 	Node* node = this->head;
-	cout << "\t\t\t\t\t";
-	for (int x = 0; x < 80; x++) cout << "-"; cout << endl;
-	cout << "\t\t\t\t\t";
-	cout << "|  Ma lich chieu  |   Ma phim   |  Ma phong chieu  |  Ca  |     Ngay chieu     |" << endl;
-	cout << "\t\t\t\t\t";
-	for (int x = 0; x < 80; x++) cout << "-"; cout << endl;
+	cout << "\n\t\t\t\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "                  |             |                  |      |            |                     ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "   Ma lich chieu  |   Ma phim   |  Ma phong chieu  |  Ca  | Gia co ban |     Ngay chieu      ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "                  |             |                  |      |            |                     ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n";
+	SetConsoleTextAttribute(cl, 7);
 	for (int i = 0; i < length; i++) {
-		cout << "\t\t\t\t\t";
+		cout << "\t\t\t\t\t\t";
 		node->data.writeData();
 		node = node->next;
 	}
-	cout << "\t\t\t\t\t";
-	for (int x = 0; x < 80; x++) cout << "-"; cout << endl;
+	cout << "\t\t\t\t\t\t";
+	for (int x = 0; x < 93; x++) cout << "-"; cout << endl;
 }

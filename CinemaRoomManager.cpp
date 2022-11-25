@@ -13,7 +13,7 @@ void checkCnmrId(const string& id) {
 void CinemaRoomManager::showType() {
 	cout << "\n\t\t\t\t\t\t\t1: 2D";
 	cout << "\n\t\t\t\t\t\t\t2: 3D";
-	cout << "\n\t\t\t\t\t\t\t3: IMAX";
+	cout << "\n\t\t\t\t\t\t\t3: IMAX\n";
 }
 
 CinemaRoom CinemaRoomManager::setCinemaRoomInfor() {
@@ -55,9 +55,6 @@ CinemaRoom CinemaRoomManager::setCinemaRoomInfor() {
 		return cinemaRoom;
 	}
 	check = 0;
-	int chairs;
-	cout << "\t\t\t\t\t\t\tNhap so ghe: ";
-	chairs = getInt();
 	string status;
 	do {
 		cout << "\t\t\t\t\t\t\tNhap tinh trang phong chieu(great, good, normal, bad): ";
@@ -90,6 +87,7 @@ CinemaRoom CinemaRoomManager::setCinemaRoomInfor() {
 	do {
 		cout << "\t\t\t\t\t\t\tNhap dinh dang phong chieu: ";
 		this->showType();
+		cout << "\t\t\t\t\t\t\t";
 		type = getInt();
 		if(type < 1 || type > 3) {
 		do {
@@ -112,6 +110,9 @@ CinemaRoom CinemaRoomManager::setCinemaRoomInfor() {
 	}	
 	cinemaRoom.setId(id);
 	cinemaRoom.setStatus(status);
+	cinemaRoom.setColumn(column);
+	cinemaRoom.setRow(row);
+	cinemaRoom.setType(type);
 	return cinemaRoom;
 }
 
@@ -131,18 +132,23 @@ string CinemaRoomManager::update() {
 		do {
 			system("cls");
 			cout << "\n\t\t\t\t\t\t";
-			for (int x = 0; x < 78; x++) cout << "-"; cout << endl;
-			cout << "\t\t\t\t\t\t";
-			cout << "|" << left << setw(6) << " " << left << setw(20) << "Ma phong chieu" << "|" << left << setw(10) << "\tSo ghe" << "|" << left << setw(30) << "\t        Chat luong" << "|" << endl;
-			cout << "\t\t\t\t\t\t";
-			for (int x = 0; x < 78; x++) cout << "-"; cout << endl;
-			cout << "\t\t\t\t\t\t";
+			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+			cout << "                  |               |              |              |              ";
+			SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t\t\t";
+			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+			cout << "  Ma phong chieu  |  So hang ghe  |  So cot ghe  |  Chat luong  |  Tinh trang  ";
+			SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t\t\t";
+			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+			cout << "                  |               |              |              |              ";
+			SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t\t\t";
+			SetConsoleTextAttribute(cl, 7);
 			room->writeData();
 			cout << "\t\t\t\t\t\t";
 			for (int x = 0; x < 78; x++) cout << "-"; cout << endl;
-			cout << "\n\t\t\t\t\t\t\t1. Sua so ghe" << endl;
-			cout << "\t\t\t\t\t\t\t2. Sua tinh trang" << endl;
-			cout << "\t\t\t\t\t\t\t3. Sua dinh dang" << endl;
+			cout << "\n\t\t\t\t\t\t\t1. Sua so hang ghe" << endl;
+			cout << "\t\t\t\t\t\t\t2. Sua so cot ghe" << endl;
+			cout << "\t\t\t\t\t\t\t3. Sua tinh trang" << endl;
+			cout << "\t\t\t\t\t\t\t4. Sua dinh dang" << endl;
 			cout << "\t\t\t\t\t\t\t0. Xac nhan va thoat" << endl;
 			cout << "\t\t\t\t\t\t\t>> Nhap lua chon: ";
 			opttmp = getInt();
@@ -150,11 +156,18 @@ string CinemaRoomManager::update() {
 			int upn;
 			switch (opttmp) {
 			case(1): {
-				cout << "\t\t\t\t\t\t\tNhap so ghe: ";
+				cout << "\t\t\t\t\t\t\tNhap so hang ghe: ";
 				upn = getInt();
+				room->setColumn(upn);
 				break;
 			}
 			case(2): {
+				cout << "\t\t\t\t\t\t\tNhap so cot ghe: ";
+				upn = getInt();
+				room->setRow(upn);
+				break;
+			}
+			case(3): {
 				int check = 0;
 				do {
 					cout << "\t\t\t\t\t\t\tNhap tinh trang phong chieu(great, good, normal, bad): ";
@@ -195,11 +208,12 @@ string CinemaRoomManager::update() {
 				else if(check != 2) room->setStatus(up);			
 				break;
 			}
-			case(3): {
+			case(4): {
 				int check = 0;
 				do {
 					cout << "\t\t\t\t\t\t\tNhap dinh dang phong chieu: ";
 					this->showType();
+					cout << "\t\t\t\t\t\t\t";
 					upn = getInt();
 					if(upn < 1 || upn > 3) {
 					do {
@@ -248,18 +262,24 @@ void CinemaRoomManager::writeFile(fstream& fileout) {
 	}
 }
 void CinemaRoomManager::write() {
+	HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 	Node* node = this->head;
 	cout << "\t\t\t\t\t\t";
-	for (int x = 0; x < 78; x++) cout << "-"; cout << endl;
-	cout << "\t\t\t\t\t\t";
-	cout << "|" << left << setw(6) << " " << left << setw(20) << "Ma phong chieu" << "|" << left << setw(10) << "\tSo ghe" << "|" << left << setw(30) << "\t        Chat luong" << "|" << endl;
-	cout << "\t\t\t\t\t\t";
-	for (int x = 0; x < 78; x++) cout << "-"; cout << endl;
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "                  |               |              |              |              ";
+	SetConsoleTextAttribute(cl, 0 ); cout << "|\n\t\t\t\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "  Ma phong chieu  |  So hang ghe  |  So cot ghe  |  Chat luong  |  Tinh trang  ";
+	SetConsoleTextAttribute(cl, 0 ); cout << "|\n\t\t\t\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "                  |               |              |              |              ";
+	SetConsoleTextAttribute(cl, 0 ); cout << "|\n";
+	SetConsoleTextAttribute(cl, 7);
 	for (int i = 0; i < length; i++) {
 		cout << "\t\t\t\t\t\t";
 		node->data.writeData();
 		node = node->next;
 	}
 	cout << "\t\t\t\t\t\t";
-	for (int x = 0; x < 78; x++) cout << "-"; cout << endl;
+	for (int x = 0; x < 79; x++) cout << "-"; cout << endl;
 }
