@@ -58,20 +58,20 @@ void Ticket::setInfor(Ticket ticket) {
 
 string* Ticket::getIdAllSeat() {
 	string* all = new string[this->vipSeat + this->regSeat];
-	for(int i = 0; i < this->vipSeat; i++) {
+	for (int i = 0; i < this->vipSeat; i++) {
 		*(all + i) = *(this->idVip + i);
 	}
 
-	for(int i = this->vipSeat; i < this->vipSeat + this->regSeat; i++) {
+	for (int i = this->vipSeat; i < this->vipSeat + this->regSeat; i++) {
 		*(all + i) = *(this->idReg + (i - this->vipSeat));
 	}
 	return all;
 }
 
 void Ticket::addSeat(const string& id, bool vip) {
-	if(vip) {
+	if (vip) {
 		string* vip = new string[this->vipSeat + 1];
-		for(int i = 0; i < this->vipSeat; i++) {
+		for (int i = 0; i < this->vipSeat; i++) {
 			*(vip + i) = *(this->idVip + i);
 		}
 		vip[this->vipSeat] = id;
@@ -81,7 +81,7 @@ void Ticket::addSeat(const string& id, bool vip) {
 	}
 	else {
 		string* reg = new string[this->regSeat + 1];
-		for(int i = 0; i < this->regSeat; i++) {
+		for (int i = 0; i < this->regSeat; i++) {
 			*(reg + i) = *(this->idReg + i);
 		}
 		reg[this->regSeat] = id;
@@ -147,9 +147,9 @@ string* Ticket::readDataFile(fstream& filein) {
 	this->setStaffId(staffid);
 	filein.ignore(1);
 	filein >> amount;
-	filein.ignore(2);	
+	filein.ignore(2);
 	string* ids = new string[amount + 1];
-	for(int i = 0; i < amount; i++) {
+	for (int i = 0; i < amount; i++) {
 		string seatId;
 		getline(filein, seatId, ',');
 		filein.ignore(1);
@@ -174,11 +174,11 @@ void Ticket::writeDataFile(fstream& fileout) {
 }
 void Ticket::writeData() {
 	cout << "|";
-	cout << "    " << left << setw(10) << this->getId() << "|";
-	cout << "    " << left << setw(13) << this->getScheduleId() << "|";
-	cout << "    " << left << setw(10) << this->getStaffId() << "|";
+	cout << "     " << left << setw(10) << this->getId() << "|";
+	cout << "     " << left << setw(11) << this->getStaffId() << "|";
+	cout << "     " << left << setw(12) << this->getScheduleId() << "|";
 	cout << "   " << left << setw(15) << this->getCustomerPhone() << "|";
-	cout << "   " << left << setw(31) << this->getCustomerName() << "|";
-	//cout << "   " << left << setw(4) << this->getAmount() << "|";
-	cout << "    " << left << setw(6) << this->getSoda_Corn() << "|\n";
+	cout << "   " << left << setw(27) << this->getCustomerName() << "|";
+	cout << "    " << left << setw(5) << this->vipSeat + this->regSeat << "|";
+	cout << "    " << left << setw(5) << this->getSoda_Corn() << "|\n";
 }

@@ -1,5 +1,5 @@
 #include "DirectorManager.h"
-
+#include <Windows.h>
 void DirectorManager::readFile(fstream& filein) {
 	int len;
 	filein >> len;
@@ -18,13 +18,25 @@ void DirectorManager::writeFile(fstream& fileout) {
 	}
 }
 void DirectorManager::write() {
+	HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 	Node* node = this->head;
-	cout << "\t\t\t\t";
+	/*cout << "\t\t\t\t";
 	for (int x = 0; x < 107; x++) cout << "-"; cout << endl;
 	cout << "\t\t\t\t";
 	cout << "|" << left << setw(15) << "  Ma quan li" << "|" << left << setw(27) << "\tTen quan li" << "|" << left << setw(25) << "\t  Tai khoan" << "|" << left << setw(25) << "    Mat khau" << "|" << endl;
 	cout << "\t\t\t\t";
-	for (int x = 0; x < 107; x++) cout << "-"; cout << endl;
+	for (int x = 0; x < 107; x++) cout << "-"; cout << endl;*/
+	cout << "\t\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "                |                                 |                             |                          ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t";  
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "   Ma quan li   |        Ten quan li              |      Tai khoan              |       Mat khau           ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "                |                                 |                             |                          ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n";
+	SetConsoleTextAttribute(cl, 7);
 	for (int i = 0; i < length; i++) {
 		cout << "\t\t\t\t";
 		node->data.writeData();

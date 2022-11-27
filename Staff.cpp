@@ -107,12 +107,12 @@ void Staff::writeDataFile(fstream& fileout) {
 }
 void Staff::writeData() {
     cout << "|" << left << setw(4) << " ";
-    cout << left << setw(10) << this->getId() << "|";
+    cout << left << setw(9) << this->getId() << "|";
     cout << left << setw(3) << " ";
-    cout << left << setw(23) << this->getName() << "|";
+    cout << left << setw(24) << this->getName() << "|";
     cout << "  " << left << setw(4) << this->getInforSt().getAge() << "|";
     cout << left << setw(3) << " ";
-    cout << left << setw(12) <<this->getJob() << "|";
+    cout << left << setw(11) <<this->getJob() << "|";
     cout << left << setw(3) << " ";
     cout << left << setw(20) << this->getAccount() << "|";
     cout << left << setw(2) << " ";
@@ -127,16 +127,16 @@ void Staff::writeData() {
 }
 void Staff::writeDatarl() {
     cout << "|" << left << setw(4) << " ";
-    cout << left << setw(10) << this->getId() << "|";
+    cout << left << setw(9) << this->getId() << "|";
     cout << left << setw(3) << " ";
     cout << left << setw(24) << this->getName() << "|";
     cout << left << setw(3) << " ";
     cout << left << setw(24) << this->getRelative().getNamerl() << "|";
-    cout << "  " << left << setw(5) << this->getRelative().getAge() << "|";
-    cout << left << setw(3) << " ";
+    cout << "   " << left << setw(6) << this->getRelative().getAge() << "|";
+    cout << left << setw(2) << " ";
     cout << left << setw(13) << this->getRelative().getPhone() << "|";
     cout << "   ";
-    cout << left << setw(29) << this->getRelative().getMail() << "|\n";
+    cout << left << setw(28) << this->getRelative().getMail() << "|\n";
 }
 void Staff::addslr(Salary& tmp) {
     Salary* listtmp = new Salary[50];

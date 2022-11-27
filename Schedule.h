@@ -24,6 +24,8 @@ public:
 	void setId(const string&);
 	void setFilmId(const string&);
 	Seat* getSeat(string);
+	int getRow();
+	int getColumn();
 	void setShow(const int&);
 	void setTime(const Time&);
 	void setBaseCost(int);

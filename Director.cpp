@@ -48,10 +48,10 @@ void Director::writeDataFile(fstream& fileout) {
 	fileout << "\n";
 }
 void Director::writeData() {
-	cout << "|" << left << setw(3) << " ";
-	cout << left << setw(12) << this->getId() << "|";
-	cout << left << setw(7) << " ";
-	cout << left << setw(26) << this->getName() << "|";
+	cout << "|" << left << setw(5) << " ";
+	cout << left << setw(10) << this->getId() << "|";
+	cout << left << setw(6) << " ";
+	cout << left << setw(27) << this->getName() << "|";
 	cout << left << setw(4) << " ";
 	cout << left << setw(25) << this->getAccount() << "|";
 	cout << left << setw(4) << " ";

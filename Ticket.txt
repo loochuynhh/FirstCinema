@@ -1,5 +1,4 @@
 3
-tk0001, scd001, Nguyen Tuan Anh, 0123456700, st001, 1, F02, 2.
+tk0001, scd013, Nguyen Tuan Anh, 0123456700, st001, 1, F02, 2.
 tk0002, scd002, Pham Duy Bach, 0123456701, st003, 1, A01, 1.
 tk0003, scd003, Tran Quang Bao, 0123456703, st001, 2, B10, C01, 3.
-

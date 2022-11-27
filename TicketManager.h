@@ -21,4 +21,3 @@ private:
 	ScheduleManager* scheduleList;
 	StaffManager* staffManager;
 };
-

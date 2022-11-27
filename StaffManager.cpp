@@ -1,5 +1,5 @@
 #include "StaffManager.h"
-
+#include <Windows.h>
 void checkStId(const string& id) {
 	if(id.size() != 3) throw Error(8);
 	for (int i = 0; i < id.length(); i++) {
@@ -27,31 +27,48 @@ void StaffManager::writeFile(fstream& fileout) {
 	}
 }
 void StaffManager::write() {
+	HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 	Node* node = this->head;
-	for (int i = 0; i < 170; i++) cout << "-"; cout << endl;
-	cout << "| Ma nhan vien |    " << left << setw(22) << " Ten nhan vien" << "| Tuoi |" << left << setw(15) << "   Cong viec " << "|" << left << setw(23) << "     Tai khoan" << "|" << left << setw(17) << "   Mat khau" << "|  Ngay lam  |" << left << setw(15) << " So dien thoai" << "|" << left << setw(32) << "        email" << "|" << endl;
-	for (int i = 0; i < 170; i++) cout << "-"; cout << endl;
+	cout << "\n\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "              |                           |      |              |                       |                 |            |               |                                 ";	
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << " Ma nhan vien |       Ten nhan vien       | Tuoi |  Cong viec   |       Tai khoan       |     Mat khau    |  Ngay lam  | So dien thoai |       Email                     ";	
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "              |                           |      |              |                       |                 |            |               |                                 ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n";
+	SetConsoleTextAttribute(cl, 7);
 	for (int i = 0; i < length; i++) {
+		cout << "\t";
 		node->data.writeData();
 		node = node->next;
 	}
-	for (int i = 0; i < 170; i++) cout << "-"; cout << endl;
+	cout << "\t";
+	for (int i = 0; i < 169; i++) cout << "-"; cout << endl;
 }
 void StaffManager::writerl() {
+	HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 	Node* node = this->head;
-	cout << "\t\t\t";
-	for (int i = 0; i < 131; i++) cout << "-"; cout << endl;
-	cout << "\t\t\t";
-	cout << "| Ma nhan vien |   " << left << setw(24) << "Ten nhan vien" << "|   " << left << setw(24) << "Ten nguoi than" << "| TuoiNT |" << left << setw(16) << " SDT nguoi than" << "|" << left << setw(32) << "       email nguoi than" << "|\n";
-	cout << "\t\t\t";
-	for (int i = 0; i < 131; i++) cout << "-"; cout << endl;
+	cout << "\n\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "              |                           |                           |         |               |                                ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << " Ma nhan vien |       Ten nhan vien       |    Ten nhan than          | Tuoi NT | SDT nhan than |      Email nhan than           ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "              |                           |                           |         |               |                                ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n";
+	SetConsoleTextAttribute(cl, 7);
 	for (int i = 0; i < length; i++) {
 		cout << "\t\t\t";
 		node->data.writeDatarl();
 		node = node->next;
 	}
 	cout << "\t\t\t";
-	for (int i = 0; i < 131; i++) cout << "-"; cout << endl;
+	for (int i = 0; i < 129; i++) cout << "-"; cout << endl;
 }
 Staff StaffManager::setStaff() {
 	cout << "\n\t\t\t\t\t\t\t**Nhap day du thong tin nhan vien**";
