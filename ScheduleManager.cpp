@@ -1,7 +1,7 @@
 #include "ScheduleManager.h"
 #include <Windows.h>
 void checkScdId(const string& id) {
-	if(id.size() != 3) throw Error(8);
+	if (id.size() != 3) throw Error(8);
 	for (int i = 0; i < id.length(); i++) {
 		if (id[i] > '9' || id[i] < '0') {
 			throw Error(1);
@@ -36,12 +36,13 @@ Schedule ScheduleManager::setScheduleInfor() {
 				getline(cin, idin);
 				checkScdId(idin);
 				break;
-			} catch(Error error) {
+			}
+			catch (Error error) {
 				error.getMessage();
 			}
-		} while(true);	
+		} while (true);
 		id = templ + idin;
-		if(this->findById(id) != nullptr) {
+		if (this->findById(id) != nullptr) {
 			do {
 				cout << "\t\t\t\t\t\t\t\tMa bi trung!. Lua chon";
 				cout << "\n\t\t\t\t\t\t\t1. Nhap lai";
@@ -55,7 +56,7 @@ Schedule ScheduleManager::setScheduleInfor() {
 			} while (check != 1 && check != 2);
 		}
 		else check = 3;
-	} while(check == 1 || check == 0);
+	} while (check == 1 || check == 0);
 	if (check == 2) {
 		schedule.setId("null");
 		return schedule;
@@ -81,7 +82,7 @@ Schedule ScheduleManager::setScheduleInfor() {
 			} while (check != 1 && check != 2);
 		}
 		else check = 3;
-	} while (check == 1 || check == 0);	
+	} while (check == 1 || check == 0);
 	if (check == 2) {
 		schedule.setId("null");
 		return schedule;
@@ -91,7 +92,7 @@ Schedule ScheduleManager::setScheduleInfor() {
 		system("cls");
 		cout << "\n";
 		this->cinemaRoomManager->write();
-		cout << "\n\t\t\t\t\t\t\tNhap ma phong chieu: "; 
+		cout << "\n\t\t\t\t\t\t\tNhap ma phong chieu: ";
 		getline(cin, cinemaRoomId);
 		if (this->cinemaRoomManager->findById(cinemaRoomId) == nullptr) {
 			do {
@@ -152,8 +153,8 @@ Schedule ScheduleManager::setScheduleInfor() {
 		}
 	} while (true);
 	Time t(date, month, year);
-	for(int i = 0; i < this->length; i++) {
-		if(node->data.getFilmId() == filmId && node->data.getCinemaRoomId() == cinemaRoomId && node->data.getShow() == show && node->data.getTime() == t) {
+	for (int i = 0; i < this->length; i++) {
+		if (node->data.getFilmId() == filmId && node->data.getCinemaRoomId() == cinemaRoomId && node->data.getShow() == show && node->data.getTime() == t) {
 			cout << "\t\t\t\t\t\t\tlich chieu nay da ton tai!" << endl;
 			system("pause");
 			schedule.setId("null");
@@ -179,9 +180,9 @@ int ScheduleManager::getType(const string& id) {
 void ScheduleManager::deleteByRoom(const string& id) {
 	Node* node = this->head;
 	int i = 0;
-	while(i < this->length) {
-		if(node->data.getCinemaRoomId() == id) {
-			Node *nodetmp = node->next;
+	while (i < this->length) {
+		if (node->data.getCinemaRoomId() == id) {
+			Node* nodetmp = node->next;
 			delByIndex(i);
 			node = nodetmp;
 		}
@@ -195,14 +196,10 @@ void ScheduleManager::deleteByRoom(const string& id) {
 void ScheduleManager::deleteByFilm(const string& id) {
 	Node* node = this->head;
 	int i = 0;
-	while(i < this->length) {
-		if(node->data.getFilmId() == id) {
-			Node *nodetmp = node->next;
+	while (i < this->length) {
+		if (node->data.getFilmId() == id) {
+			Node* nodetmp = node->next;
 			delByIndex(i);
-			// node = this->head;
-			// for(int j = 1; j <= i; j++) {
-			// 	node = node->next;
-			// }
 			node = nodetmp;
 		}
 		else {
@@ -231,7 +228,7 @@ void ScheduleManager::readFile(fstream& filein) {
 	for (int i = 0; i < len; i++) {
 		Schedule schedule;
 		schedule.readDataFile(filein);
-		CinemaRoom* room =	this->cinemaRoomManager->findById(schedule.getCinemaRoomId());
+		CinemaRoom* room = this->cinemaRoomManager->findById(schedule.getCinemaRoomId());
 		this->add(schedule);
 		findById(schedule.getId())->createSeat(room);
 	}
