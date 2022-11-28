@@ -127,25 +127,25 @@ Ticket TicketManager::setTicketInfor() {
 	return ticket;
 }
 
-int TicketManager::getRevenue() {
+long long int TicketManager::getRevenue() {
 	Node* node = this->head;
 	int revenue = 0;
 	for (int i = 0; i < this->length; i++) {
 		revenue += this->scheduleList->findById(node->data.getScheduleId())->getBaseCost() * (node->data.getCountReg() + node->data.getCountVip());
 		if (this->scheduleList->getType(node->data.getScheduleId()) == 2) {
-			revenue *= 2;
+			revenue += 20;
 		}
 		else if (this->scheduleList->getType(node->data.getScheduleId()) == 3) {
-			revenue *= 3;
+			revenue += 50;
 		}
-		revenue += node->data.getCountVip() * 5;
+		revenue += node->data.getCountVip() * 10;
 		revenue += node->data.getSoda_Corn() * 20;
 		node = node->next;
 	}
 	return revenue;
 }
 
-int TicketManager::getRevenue(Time& t1, Time& t2) {
+long long int TicketManager::getRevenue(Time& t1, Time& t2) {
 	Node* node = this->head;
 	int revenue = 0;
 	for (int i = 0; i < this->length; i++) {
@@ -153,12 +153,12 @@ int TicketManager::getRevenue(Time& t1, Time& t2) {
 		if (t >= t1 && t <= t2) {
 			revenue += this->scheduleList->findById(node->data.getScheduleId())->getBaseCost() * (node->data.getCountReg() + node->data.getCountVip());
 			if (this->scheduleList->getType(node->data.getScheduleId()) == 2) {
-				revenue *= 2;
+				revenue += 20;
 			}
 			else if (this->scheduleList->getType(node->data.getScheduleId()) == 3) {
-				revenue *= 3;
+				revenue += 50;
 			}
-			revenue += node->data.getCountVip() * 5;
+			revenue += node->data.getCountVip() * 10;
 			revenue += node->data.getSoda_Corn() * 20;
 		}
 		node = node->next;
@@ -166,19 +166,19 @@ int TicketManager::getRevenue(Time& t1, Time& t2) {
 	return revenue;
 }
 
-int TicketManager::getRevenue(string staffId) {
+long long int TicketManager::getRevenue(string staffId) {
 	Node* node = this->head;
 	int revenue = 0;
 	for (int i = 0; i < this->length; i++) {
 		if (node->data.getStaffId() == staffId) {
 			revenue += this->scheduleList->findById(node->data.getScheduleId())->getBaseCost() * (node->data.getCountReg() + node->data.getCountVip());
 			if (this->scheduleList->getType(node->data.getScheduleId()) == 2) {
-				revenue *= 2;
+				revenue += 20;
 			}
 			else if (this->scheduleList->getType(node->data.getScheduleId()) == 3) {
-				revenue *= 3;
+				revenue += 50;
 			}
-			revenue += node->data.getCountVip() * 5;
+			revenue += node->data.getCountVip() * 10;
 			revenue += node->data.getSoda_Corn() * 20;
 		}
 		node = node->next;
@@ -187,6 +187,7 @@ int TicketManager::getRevenue(string staffId) {
 }
 
 void TicketManager::getRevenueY(int year) {
+	HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 	Node* node = this->head;
 	int revenue[20][12];
 	for (int i = 0; i < 20; i++) {
@@ -209,12 +210,17 @@ void TicketManager::getRevenueY(int year) {
 		}
 		node = this->head;
 	}
-	cout << "\t\t\t\t";
-	for (int i = 0; i < 100; i++) cout << "-"; cout << endl;
-	cout << "\t\t\t\t";
-	cout << "|  MaNV/Thang  |  01  |  02  |  03  |  04  |  05  |  06  |  07  |  08  |  09  |  10  |  11  |  12  |\n";
-	cout << "\t\t\t\t";
-	for (int i = 0; i < 100; i++) cout << "-"; cout << endl;
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "\n\t\t\t\t";
+	cout << "               |      |      |      |      |      |      |      |      |      |      |      |       ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "   MaNV/Thang  |  01  |  02  |  03  |  04  |  05  |  06  |  07  |  08  |  09  |  10  |  11  |  12   ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t\t\t\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "               |      |      |      |      |      |      |      |      |      |      |      |       ";	
+	SetConsoleTextAttribute(cl, 0); cout << "|\n";
+	SetConsoleTextAttribute(cl, 7); 
 	for (int i = 0; i < this->staffManager->getLength(); i++) {
 		cout << "\t\t\t\t";
 		cout << "|    " << left << setw(10) << (this->staffManager->operator[](i).getId()) << "|";

@@ -2,6 +2,6 @@
 cnmr01, 15, 12, 1, good. 
 cnmr02, 20, 15, 2, bad. 
 cnmr03, 15, 12, 3, normal. 
-cnmr04, 10, 10, 2, great. 
-cnmr05, 20, 10, 1, good. 
+cnmr04, 15, 12, 2, great. 
+cnmr05, 20, 12, 1, good. 
 cnmr06, 15, 15, 2, great. 

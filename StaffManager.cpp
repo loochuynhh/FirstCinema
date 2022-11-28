@@ -359,6 +359,7 @@ void StaffManager::writeSalaryFile(fstream& fileout) {
 	}
 }
 void StaffManager::writeSalaryY(int year) {
+	HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 	Node* node = this->head;
 	int salaryTable[20][12][2];
 	for (int i = 0; i < 20; i++) {
@@ -376,12 +377,17 @@ void StaffManager::writeSalaryY(int year) {
 		node = node->next;
 	}
 	node = this->head;
-	cout << "\t";
-	for (int i = 0; i < 161; i++) cout << "-"; cout << endl;
-	cout << "\t";
-	cout << "| MaNV/Thang |  Loai Luong  |    01    |    02    |    03    |    04    |    05    |    06    |    07    |    08    |    09    |    10    |    11    |    12    |\n";
-	cout << "\t";
-	for (int i = 0; i < 161; i++) cout << "-"; cout << endl; 
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "\n\t";
+	cout << "             |              |          |          |          |          |          |          |          |          |          |          |          |           ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "  MaNV/Thang |  Loai Luong  |    01    |    02    |    03    |    04    |    05    |    06    |    07    |    08    |    09    |    10    |    11    |    12     ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+	cout << "             |              |          |          |          |          |          |          |          |          |          |          |          |           ";
+	SetConsoleTextAttribute(cl, 0); cout << "|\n";
+	SetConsoleTextAttribute(cl, 7);
 	for (int i = 0; i < length; i++) {
 		for (int cnt = 0; cnt < 3; cnt++) {
 			if (cnt == 1) {
