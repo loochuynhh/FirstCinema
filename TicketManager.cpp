@@ -193,9 +193,7 @@ void TicketManager::getRevenueY(int year) {
 		for (int j = 0; j < 12; j++) revenue[i][j] = 0;
 	}
 	for (int i = 0; i < this->staffManager->getLength(); i++) {
-		cout << "a: " << i << endl;
 		for (int j = 0; j < this->length; j++) {
-			cout << "b: " << j << endl;
 			if (this->scheduleList->findById(node->data.getScheduleId())->getTime().getYear() == year && (staffManager->operator[](i).getId()).compare(node->data.getStaffId()) == 0) {
 				revenue[i][this->scheduleList->findById(node->data.getScheduleId())->getTime().getMonth() - 1] += this->scheduleList->findById(node->data.getScheduleId())->getBaseCost() * (node->data.getCountReg() + node->data.getCountVip());
 				if (this->scheduleList->getType(node->data.getScheduleId()) == 2) {

@@ -1406,11 +1406,18 @@ void Menu::stMenu() {
 						cout << "\tTen phim       : " << left << setw(57) << filmMng.findById(scdMng.findById(tk->getScheduleId())->getFilmId())->getName() << (char)179;
 						cout << "\n\t\t\t\t\t" << (char)179;
 						cout << "\tNgay chieu     : "; scdMng.findById(tk->getScheduleId())->getTime().writet();
-						cout << "          Ca chieu     : " << left << setw(22) << scdMng.findById(tk->getScheduleId())->getShow() << (char)179;
+						cout << "           Ca chieu      : " << left << setw(20) << scdMng.findById(tk->getScheduleId())->getShow() << (char)179;
 						cout << "\n\t\t\t\t\t" << (char)179;
-						cout << "\tSo ve mua      : " << left << setw(20) << tk->getCountReg()+tk->getCountVip() << "Gia ve co ban: " << left << setw(22) << scdMng.findById(tk->getScheduleId())->getBaseCost() << (char)179;
+						cout << "\tSo ve mua      : " << left << setw(20) << tk->getCountReg()+tk->getCountVip() << " Gia ve co ban : " << left << setw(20) << scdMng.findById(tk->getScheduleId())->getBaseCost() << (char)179;
 						cout << "\n\t\t\t\t\t" << (char)179;
-						cout << "\tMa rap         : " << left << setw(20) << scdMng.findById(tk->getScheduleId())->getCinemaRoomId() << "Vi tri       : ";
+						cout << "\tMa rap         : " << left << setw(20) << scdMng.findById(tk->getScheduleId())->getCinemaRoomId() << " Dinh dang     : " << left << setw(20);
+						if (cnmMng.findById(scdMng.findById(tk->getScheduleId())->getCinemaRoomId())->getType() == 1) cout << "2D" << (char)179;
+						else if (cnmMng.findById(scdMng.findById(tk->getScheduleId())->getCinemaRoomId())->getType() == 2) cout << "3D" << (char)179;
+						else cout << "IMAX" << (char)179;
+						cout << "\n\t\t\t\t\t" << (char)179;
+						cout << "\tBap nuoc       : " << left << setw(20) << tk->getSoda_Corn() << " Tong tien     : " << left << setw(20) << (tk->getCountReg() * scdMng.findById(tk->getScheduleId())->getBaseCost() + tk->getCountVip() * (scdMng.findById(tk->getScheduleId())->getBaseCost() + 5)) * (cnmMng.findById(scdMng.findById(tk->getScheduleId())->getCinemaRoomId())->getType()) + 20 * tk->getSoda_Corn() << (char)179;;
+						cout << "\n\t\t\t\t\t" << (char)179;
+						cout << "\tVi tri ghe     : ";
 						for (int i = 0; i < tk->getCountReg(); i++) {
 							if (i != tk->getCountReg() - 1) cout << *(tk->getIdRegSeat(i)) << ",";
 							else cout << *(tk->getIdRegSeat(i));
@@ -1420,14 +1427,7 @@ void Menu::stMenu() {
 							if (i != tk->getCountVip() - 1) cout << *(tk->getIdVipSeat(i)) << ",";
 							else cout << *(tk->getIdVipSeat(i));
 						}
-						SetConsoleCursorPosition(cl, { 122, 21 }); cout << (char)179;
-						cout << "\n\t\t\t\t\t" << (char)179;
-						cout << "\tBap nuoc       : " << left << setw(20) << tk->getSoda_Corn() << "Dinh dang    : " << left << setw(22);
-						if (cnmMng.findById(scdMng.findById(tk->getScheduleId())->getCinemaRoomId())->getType() == 1) cout << "2D" << (char)179;
-						else if (cnmMng.findById(scdMng.findById(tk->getScheduleId())->getCinemaRoomId())->getType() == 2) cout << "3D" << (char)179;
-						else cout << "IMAX" << (char)179;
-						cout << "\n\t\t\t\t\t" << (char)179;
-						cout << "\tThanh tien     : " << left << setw(57) << (tk->getCountReg() * scdMng.findById(tk->getScheduleId())->getBaseCost() + tk->getCountVip() * (scdMng.findById(tk->getScheduleId())->getBaseCost() + 5))*(cnmMng.findById(scdMng.findById(tk->getScheduleId())->getCinemaRoomId())->getType()) + 20 * tk->getSoda_Corn() << (char)179;
+						SetConsoleCursorPosition(cl, { 122, 23 }); cout << (char)179;
 						cout << "\n\t\t\t\t\t" << (char)179;
 						for (int i = 0; i < 81; i++) cout << " ";
 						cout << (char)179;
