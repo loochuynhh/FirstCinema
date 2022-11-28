@@ -1422,7 +1422,12 @@ void Menu::stMenu() {
 						}
 						SetConsoleCursorPosition(cl, { 122, 21 }); cout << (char)179;
 						cout << "\n\t\t\t\t\t" << (char)179;
-						cout << "\tBap nuoc       : " << left << setw(20) << tk->getSoda_Corn() << "Tong tien    : " << left << setw(22) << tk->getCountReg()* scdMng.findById(tk->getScheduleId())->getBaseCost()+ tk->getCountVip()*(scdMng.findById(tk->getScheduleId())->getBaseCost() + 5) + 20*tk->getSoda_Corn() << (char)179;
+						cout << "\tBap nuoc       : " << left << setw(20) << tk->getSoda_Corn() << "Dinh dang    : " << left << setw(22);
+						if (cnmMng.findById(scdMng.findById(tk->getScheduleId())->getCinemaRoomId())->getType() == 1) cout << "2D" << (char)179;
+						else if (cnmMng.findById(scdMng.findById(tk->getScheduleId())->getCinemaRoomId())->getType() == 2) cout << "3D" << (char)179;
+						else cout << "IMAX" << (char)179;
+						cout << "\n\t\t\t\t\t" << (char)179;
+						cout << "\tThanh tien     : " << left << setw(57) << (tk->getCountReg() * scdMng.findById(tk->getScheduleId())->getBaseCost() + tk->getCountVip() * (scdMng.findById(tk->getScheduleId())->getBaseCost() + 5))*(cnmMng.findById(scdMng.findById(tk->getScheduleId())->getCinemaRoomId())->getType()) + 20 * tk->getSoda_Corn() << (char)179;
 						cout << "\n\t\t\t\t\t" << (char)179;
 						for (int i = 0; i < 81; i++) cout << " ";
 						cout << (char)179;
