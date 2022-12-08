@@ -83,16 +83,22 @@ void Schedule::showSeatStatus() {
 		for (int j = this->row; j > 0; j--) {
 			if (i < 4) {
 				SetConsoleTextAttribute(cl, 0xC | 0x80);
-				if ((this->getSeatStatus() + (i - 1) * this->row + j - 1)->getChecked() == 1) cout << " X ";
-				else cout << " O ";
+				if ((this->getSeatStatus() + (i - 1) * this->row + j - 1)->getChecked() == 1) { 
+					SetConsoleTextAttribute(cl, 0xC | 0x40);
+					cout << "   "; 
+				}
+				else cout << "   ";
 				//cout << (this->getSeatStatus() + (i - 1) * this->row + j - 1)->getId();
 				SetConsoleTextAttribute(cl, 7);
 				cout << " ";
 			}
 			else {
 				SetConsoleTextAttribute(cl, 0xC | 0xA0);
-				if ((this->getSeatStatus() + (i - 1) * this->row + j - 1)->getChecked() == 1) cout << " X ";
-				else cout << " O ";
+				if ((this->getSeatStatus() + (i - 1) * this->row + j - 1)->getChecked() == 1) {
+					SetConsoleTextAttribute(cl, 0xC | 0x40);
+					cout << "   ";
+				}
+				else cout << "   ";
 				//cout << (this->getSeatStatus() + (i - 1) * this->row + j - 1)->getId();
 				SetConsoleTextAttribute(cl, 7);
 				cout << " ";
@@ -136,12 +142,10 @@ void Schedule::showSeatStatus() {
 			cout << "  Ghe VIP";
 		}
 		else if (i == 9) {
+			SetConsoleTextAttribute(cl, 0xC | 0x40);
+			cout << "  ";
 			SetConsoleTextAttribute(cl, 0xE);
-			cout << "O :  Co the dat";
-		}
-		else if (i == 10) {
-			SetConsoleTextAttribute(cl, 0xE);
-			cout << "X :  Khong the dat";
+			cout << "  Ghe da dat";
 		}
 	}
 	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
