@@ -1253,7 +1253,9 @@ void Menu::stMenu() {
 							} while (check != 1 && check != 2);
 						}
 					} while (check == 1 || check == 0);
-					cout << "\t\t\t\t\t\t\tDa ban 1 hoa don moi.\n";
+					system("cls");
+					scdMng.findById(scheduleId)->showSeatStatus();
+					cout << "\n\t\t\t\t\tDa ban 1 hoa don moi.\n";
 					system("pause");
 				}
 				else if (tmp == 2) {
