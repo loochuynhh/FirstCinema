@@ -232,6 +232,20 @@ void TicketManager::getRevenueY(int year) {
 	cout << "\t\t\t\t";
 	for (int i = 0; i < 100; i++) cout << "-"; cout << endl;
 }
+
+bool TicketManager::checkScheduleExist(const string& id) {
+	Node* node = this->head;
+	int i = 0;
+	while (i < this->length) {
+		if (node->data.getScheduleId() == id) {
+			return true;
+		}
+		node = node->next;
+		i++;
+	}
+	return false;
+}
+
 void TicketManager::readFile(fstream& filein) {
 	int len;
 	filein >> len;

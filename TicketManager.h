@@ -12,6 +12,7 @@ public:
 	long long int getRevenue(string);
 	long long int getRevenue(Time&, Time&);
 	void getRevenueY(int);
+	bool checkScheduleExist(const string& id);
 	TicketManager(ScheduleManager&, StaffManager&);
 	Ticket setTicketInfor();
 	void readFile(fstream&);

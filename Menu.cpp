@@ -771,25 +771,32 @@ void Menu::stMenu() {
 					cout << "\t\t\t\t\t\t\tNhap ma phim can xoa: ";
 					getline(cin, id);
 					if (filmMng.findById(id) != nullptr) {
-						SetConsoleTextAttribute(cl, 4);
-						cout << "\n\t\t\t\t\t\tLUU Y:    SAU KHI XAC NHAN THAY DOI CAC PHIM BI XOA CUNG SE DUOC XOA TRONG LICH CHIEU\n";
-						SetConsoleTextAttribute(cl, 7);
-						cout << "\n\t\t\t\t\t\t\t\tBan co chac chan muon xoa.";
-						cout << "\n\t\t\t\t\t\t\t1. Xoa.";
-						cout << "\t\t\t0. Thoat.";
-						cout << "\n\t\t\t\t\t\t\t";
-						int idel; idel = getInt();
-						if (idel == 1) {
-							filmMng.del(id);
-							scdMng.deleteByFilm(id);
-							cout << "\t\t\t\t\t\t\tPhim co ma " << id << " da duoc xoa.\n";
-							system("pause");
+						if(scdMng.checkFilmExist(id)) {
+							SetConsoleTextAttribute(cl, 4);
+							cout << "\n\t\t\t\t\t\tKHONG DUOC XOA PHIM NAY VI DA DUOC DAT LICH CHIEU, VUI LONG XOA LICH CHIEU CUA PHIM\n";
 						}
-						else if (idel == 2) {}
 						else {
-							cout << "\t\t\t\t\t\t\tLua chon khong hop le!\n";
-							system("pause");
+							filmMng.del(id);
 						}
+						// SetConsoleTextAttribute(cl, 4);
+						// cout << "\n\t\t\t\t\t\tLUU Y:    SAU KHI XAC NHAN THAY DOI CAC PHIM BI XOA CUNG SE DUOC XOA TRONG LICH CHIEU\n";
+						// SetConsoleTextAttribute(cl, 7);
+						// cout << "\n\t\t\t\t\t\t\t\tBan co chac chan muon xoa.";
+						// cout << "\n\t\t\t\t\t\t\t1. Xoa.";
+						// cout << "\t\t\t0. Thoat.";
+						// cout << "\n\t\t\t\t\t\t\t";
+						// int idel; idel = getInt();
+						// if (idel == 1) {
+						// 	filmMng.del(id);
+						// 	scdMng.checkFilmExist(id);
+						// 	cout << "\t\t\t\t\t\t\tPhim co ma " << id << " da duoc xoa.\n";
+						// 	system("pause");
+						// }
+						// else if (idel == 2) {}
+						// else {
+						// 	cout << "\t\t\t\t\t\t\tLua chon khong hop le!\n";
+						// 	system("pause");
+						// }
 					}
 					else {
 						cout << "\n\t\t\t\t\t\t\tKhong tim thay phim phu hop.\n";
@@ -934,25 +941,32 @@ void Menu::stMenu() {
 					cout << "\t\t\t\t\t\t\tNhap ma phong chieu can xoa: ";
 					getline(cin, id);
 					if (cnmMng.findById(id) != nullptr) {
-						SetConsoleTextAttribute(cl, 4);
-						cout << "\n\t\t\t\t\t\tLUU Y:    SAU KHI XAC NHAN THAY DOI CAC PHONG CHIEU BI XOA CUNG SE DUOC XOA TRONG LICH CHIEU\n";
-						SetConsoleTextAttribute(cl, 7);
-						cout << "\n\t\t\t\t\t\t\t\tBan co chac chan muon xoa.";
-						cout << "\n\t\t\t\t\t\t\t1. Xoa.";
-						cout << "\t\t\t0. Thoat.";
-						cout << "\n\t\t\t\t\t\t\t";
-						int idel; idel = getInt();
-						if (idel == 1) {
+						if(scdMng.checkRoomExist(id)) {
+							SetConsoleTextAttribute(cl, 4);
+							cout << "\n\t\t\t\t\t\tKHONG DUOC XOA PHONG CHIEU NAY VI DA DUOC DAT LICH CHIEU, VUI LONG XOA LICH CHIEU CUA PHONG\n";
+						}
+						else {
 							cnmMng.del(id);
-							scdMng.deleteByRoom(id);
-							cout << "\t\t\t\t\t\t\tPhong chieu co ma " << id << " da duoc xoa.\n";
-							system("pause");
 						}
-						else if (idel != 0) {
-							cout << "\t\t\t\t\t\t\tLua chon khong hop le!\n";
-							system("pause");
-						}
-						else {}
+						// SetConsoleTextAttribute(cl, 4);
+						// cout << "\n\t\t\t\t\t\tLUU Y:    SAU KHI XAC NHAN THAY DOI CAC PHONG CHIEU BI XOA CUNG SE DUOC XOA TRONG LICH CHIEU\n";
+						// SetConsoleTextAttribute(cl, 7);
+						// cout << "\n\t\t\t\t\t\t\t\tBan co chac chan muon xoa.";
+						// cout << "\n\t\t\t\t\t\t\t1. Xoa.";
+						// cout << "\t\t\t0. Thoat.";
+						// cout << "\n\t\t\t\t\t\t\t";
+						// int idel; idel = getInt();
+						// if (idel == 1) {
+						// 	cnmMng.del(id);
+						// 	scdMng.checkRoomExist(id);
+						// 	cout << "\t\t\t\t\t\t\tPhong chieu co ma " << id << " da duoc xoa.\n";
+						// 	system("pause");
+						// }
+						// else if (idel != 0) {
+						// 	cout << "\t\t\t\t\t\t\tLua chon khong hop le!\n";
+						// 	system("pause");
+						// }
+						// else {}
 					}
 					else {
 						cout << "\n\t\t\t\t\t\t\tKhong tim thay phong chieu phu hop.\n";
@@ -967,7 +981,6 @@ void Menu::stMenu() {
 					cout << "\n\t\t\t\t\t\t\t\t\t\t***CAP NHAT PHONG CHIEU***\n\n";
 					SetConsoleTextAttribute(cl, 7);
 					string id = cnmMng.update();
-					scdMng.deleteByRoom(id);
 				}
 				else if (tmp == 6) {
 					fscr.open("CinemaRoom.txt", ios::out | ios::trunc);
@@ -1073,21 +1086,27 @@ void Menu::stMenu() {
 					cout << "\t\t\t\t\t\t\tNhap ma lich chieu can xoa: ";
 					getline(cin, id);
 					if (scdMng.findById(id) != nullptr) {
-						cout << "\t\t\t\t\t\t\t\tBan co chac chan muon xoa.";
-						cout << "\n\t\t\t\t\t\t\t1. Xoa.";
-						cout << "\t\t\t0. Thoat.";
-						cout << "\n\t\t\t\t\t\t\t";
-						int idel; idel = getInt();
-						if (idel == 1) {
-							scdMng.del(id);
-							cout << "\t\t\t\t\t\t\tLich chieu co ma " << id << " da duoc xoa.\n";
-							system("pause");
+						if(tkMng.checkScheduleExist(id)) {
+							SetConsoleTextAttribute(cl, 4);
+							cout << "\n\t\t\t\t\t\tKHONG DUOC XOA LICH CHIEU NAY VI DA CO VE BAN RA, VUI LONG HOAN TRA VE TRUOC KHI XOA LICH CHIEU\n";
 						}
-						else if (idel != 1) {
-							cout << "\t\t\t\t\t\t\tLua chon khong hop le!\n";
-							system("pause");
+						else {						
+							cout << "\t\t\t\t\t\t\t\tBan co chac chan muon xoa.";
+							cout << "\n\t\t\t\t\t\t\t1. Xoa.";
+							cout << "\t\t\t0. Thoat.";
+							cout << "\n\t\t\t\t\t\t\t";
+							int idel; idel = getInt();
+							if (idel == 1) {
+								scdMng.del(id);
+								cout << "\t\t\t\t\t\t\tLich chieu co ma " << id << " da duoc xoa.\n";
+								system("pause");
+							}
+							else if (idel != 1) {
+								cout << "\t\t\t\t\t\t\tLua chon khong hop le!\n";
+								system("pause");
+							}
+							else {}
 						}
-						else {}
 					}
 					else {
 						cout << "\n\t\t\t\t\t\t\tKhong tim thay lich chieu phu hop.\n";

@@ -177,36 +177,30 @@ int ScheduleManager::getType(const string& id) {
 	return this->cinemaRoomManager->findById(this->findById(id)->getCinemaRoomId())->getType();
 }
 
-void ScheduleManager::deleteByRoom(const string& id) {
+bool ScheduleManager::checkRoomExist(const string& id) {
 	Node* node = this->head;
 	int i = 0;
 	while (i < this->length) {
 		if (node->data.getCinemaRoomId() == id) {
-			Node* nodetmp = node->next;
-			delByIndex(i);
-			node = nodetmp;
+			return true;
 		}
-		else {
-			node = node->next;
-			i++;
-		}
+		node = node->next;
+		i++;
 	}
+	return false;
 }
 
-void ScheduleManager::deleteByFilm(const string& id) {
+bool ScheduleManager::checkFilmExist(const string& id) {
 	Node* node = this->head;
 	int i = 0;
 	while (i < this->length) {
 		if (node->data.getFilmId() == id) {
-			Node* nodetmp = node->next;
-			delByIndex(i);
-			node = nodetmp;
+			return true;
 		}
-		else {
-			node = node->next;
-			i++;
-		}
+		node = node->next;
+		i++;
 	}
+	return false;
 }
 
 void ScheduleManager::getShow() {
