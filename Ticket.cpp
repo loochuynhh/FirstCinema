@@ -167,8 +167,8 @@ void Ticket::writeDataFile(fstream& fileout) {
 	fileout << this->getCustomerPhone() << ", ";
 	fileout << this->getStaffId() << ", ";
 	fileout << this->getCountVip() + this->getCountReg() << ", ";
-	for (int i = 0; i < this->getCountVip(); i++) fileout << this->getIdVipSeat(i) << ", ";
-	for (int i = 0; i < this->getCountReg(); i++) fileout << this->getIdRegSeat(i) << ", ";
+	for (int i = 0; i < this->getCountVip(); i++) fileout << *this->getIdVipSeat(i) << ", ";
+	for (int i = 0; i < this->getCountReg(); i++) fileout << *this->getIdRegSeat(i) << ", ";
 	fileout << this->getSoda_Corn() << ".";
 	fileout << "\n";
 }
