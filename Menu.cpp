@@ -1,6 +1,6 @@
+#pragma warning(disable : 4996)
 #include "Menu.h"
 #include <Windows.h>
-
 fstream fsst, fsdrt, fsfilm, fscr, fsscd, fstk, fsslr;
 StaffManager stMng;
 DirectorManager drtMng;
