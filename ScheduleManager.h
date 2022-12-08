@@ -11,8 +11,8 @@ public:
 	void getShow();
 	Schedule setScheduleInfor();
 	int getType(const string&);
-	bool checkRoomExist(const string&);
-	bool checkFilmExist(const string&);
+	bool checkRoomExist(const string&, const Time&);
+	bool checkFilmExist(const string&, const Time&);
 	void readFile(fstream&);
 	void writeFile(fstream&);
 	void write();

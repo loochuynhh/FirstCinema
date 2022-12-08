@@ -13,7 +13,7 @@ class FilmManager : public Manager<Film>
 public:
 	void findByName(string&);
 	Film setFilmInfor();
-	void update();
+	void update(const string&);
 	void readFile(fstream&);
 	void writeFile(fstream&);
 	void write();

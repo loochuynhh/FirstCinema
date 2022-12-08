@@ -2,6 +2,7 @@
 #include <iostream>
 #include <conio.h>
 #include <iomanip>
+#include <ctime>
 #include <Windows.h>
 #include "FilmManager.h"
 #include "CinemaRoomManager.h"

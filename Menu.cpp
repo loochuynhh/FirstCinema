@@ -10,6 +10,16 @@ ScheduleManager scdMng(filmMng, cnmMng);
 TicketManager tkMng(scdMng, stMng);
 HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 
+Time getCurrentTime() {
+	Time currentTime;
+	time_t now = time(0);
+	tm* ltm = localtime(&now);
+	currentTime.setDate(ltm->tm_mday);
+	currentTime.setMonth(1 + ltm->tm_mon);
+	currentTime.setYear(1900 + ltm->tm_year);
+	return currentTime;
+}
+
 void Menu::qlrcp() {
 	SetConsoleTextAttribute(cl, 10);
 	SetConsoleCursorPosition(cl, { 104, 4 });
@@ -771,32 +781,14 @@ void Menu::stMenu() {
 					cout << "\t\t\t\t\t\t\tNhap ma phim can xoa: ";
 					getline(cin, id);
 					if (filmMng.findById(id) != nullptr) {
-						if(scdMng.checkFilmExist(id)) {
+						if(scdMng.checkFilmExist(id, getCurrentTime())) {
 							SetConsoleTextAttribute(cl, 4);
-							cout << "\n\t\t\t\t\t\tKHONG DUOC XOA PHIM NAY VI DA DUOC DAT LICH CHIEU, VUI LONG XOA LICH CHIEU CUA PHIM\n";
+							cout << "\n\t\t\t\t\t\tKHONG DUOC XOA PHIM NAY VI DA DUOC DAT LICH CHIEU, VUI LONG XOA LICH CHIEU CUA PHIM HOAC DOI CHIEU XONG\n";
+							system("pause");
 						}
 						else {
 							filmMng.del(id);
 						}
-						// SetConsoleTextAttribute(cl, 4);
-						// cout << "\n\t\t\t\t\t\tLUU Y:    SAU KHI XAC NHAN THAY DOI CAC PHIM BI XOA CUNG SE DUOC XOA TRONG LICH CHIEU\n";
-						// SetConsoleTextAttribute(cl, 7);
-						// cout << "\n\t\t\t\t\t\t\t\tBan co chac chan muon xoa.";
-						// cout << "\n\t\t\t\t\t\t\t1. Xoa.";
-						// cout << "\t\t\t0. Thoat.";
-						// cout << "\n\t\t\t\t\t\t\t";
-						// int idel; idel = getInt();
-						// if (idel == 1) {
-						// 	filmMng.del(id);
-						// 	scdMng.checkFilmExist(id);
-						// 	cout << "\t\t\t\t\t\t\tPhim co ma " << id << " da duoc xoa.\n";
-						// 	system("pause");
-						// }
-						// else if (idel == 2) {}
-						// else {
-						// 	cout << "\t\t\t\t\t\t\tLua chon khong hop le!\n";
-						// 	system("pause");
-						// }
 					}
 					else {
 						cout << "\n\t\t\t\t\t\t\tKhong tim thay phim phu hop.\n";
@@ -810,7 +802,22 @@ void Menu::stMenu() {
 					SetConsoleTextAttribute(cl, 3);
 					cout << "\n\t\t\t\t\t\t\t\t\t\t***CAP NHAT PHIM***\n\n";
 					SetConsoleTextAttribute(cl, 7);
-					filmMng.update();
+					string id;
+					cout << "\t\t\t\t\t\t\tNhap id: ";
+					getline(cin, id);
+					if (filmMng.findById(id) == nullptr) {
+						cout << "\t\t\t\t\t\t\tKhong tim thay id phu hop!\n";
+						system("pause");
+					}
+					else {
+						if(scdMng.checkFilmExist(id, getCurrentTime())) {
+							cout << "\n\t\t\t\t\t\t\t\t\t\tKHONG DUOC THAY DOI PHIM VI DA DUOC DAT LICH, VUI LONG DOI CHIEU XONG\n\n";
+							system("pause");
+						}
+						else {
+							filmMng.update(id);
+						}
+					}
 				}
 				else if (tmp == 7) {
 					fsfilm.open("Film.txt", ios::out | ios::trunc);
@@ -941,32 +948,14 @@ void Menu::stMenu() {
 					cout << "\t\t\t\t\t\t\tNhap ma phong chieu can xoa: ";
 					getline(cin, id);
 					if (cnmMng.findById(id) != nullptr) {
-						if(scdMng.checkRoomExist(id)) {
+						if(scdMng.checkRoomExist(id, getCurrentTime())) {
 							SetConsoleTextAttribute(cl, 4);
-							cout << "\n\t\t\t\t\t\tKHONG DUOC XOA PHONG CHIEU NAY VI DA DUOC DAT LICH CHIEU, VUI LONG XOA LICH CHIEU CUA PHONG\n";
+							cout << "\n\t\t\t\t\t\tKHONG DUOC XOA PHONG CHIEU NAY VI DA DUOC DAT LICH CHIEU, VUI LONG XOA LICH CHIEU CUA PHONG HOAC DOI CHIEU XONG\n";
+							system("pause");
 						}
 						else {
 							cnmMng.del(id);
 						}
-						// SetConsoleTextAttribute(cl, 4);
-						// cout << "\n\t\t\t\t\t\tLUU Y:    SAU KHI XAC NHAN THAY DOI CAC PHONG CHIEU BI XOA CUNG SE DUOC XOA TRONG LICH CHIEU\n";
-						// SetConsoleTextAttribute(cl, 7);
-						// cout << "\n\t\t\t\t\t\t\t\tBan co chac chan muon xoa.";
-						// cout << "\n\t\t\t\t\t\t\t1. Xoa.";
-						// cout << "\t\t\t0. Thoat.";
-						// cout << "\n\t\t\t\t\t\t\t";
-						// int idel; idel = getInt();
-						// if (idel == 1) {
-						// 	cnmMng.del(id);
-						// 	scdMng.checkRoomExist(id);
-						// 	cout << "\t\t\t\t\t\t\tPhong chieu co ma " << id << " da duoc xoa.\n";
-						// 	system("pause");
-						// }
-						// else if (idel != 0) {
-						// 	cout << "\t\t\t\t\t\t\tLua chon khong hop le!\n";
-						// 	system("pause");
-						// }
-						// else {}
 					}
 					else {
 						cout << "\n\t\t\t\t\t\t\tKhong tim thay phong chieu phu hop.\n";
@@ -980,7 +969,22 @@ void Menu::stMenu() {
 					SetConsoleTextAttribute(cl, 3);
 					cout << "\n\t\t\t\t\t\t\t\t\t\t***CAP NHAT PHONG CHIEU***\n\n";
 					SetConsoleTextAttribute(cl, 7);
-					string id = cnmMng.update();
+					string id;
+					cout << "\t\t\t\t\t\t\tNhap id: ";
+					getline(cin, id);
+					if (cnmMng.findById(id) == nullptr) {
+						cout << "\t\t\t\t\t\t\tKhong tim thay id phu hop!\n";
+						system("pause");
+					}
+					else {
+						if(scdMng.checkRoomExist(id, getCurrentTime())) {
+							cout << "\n\t\t\t\t\t\t\t\t\t\tKHONG DUOC THAY DOI PHONG CHIEU VI DA DUOC DAT LICH, VUI LONG DOI CHIEU XONG\n\n";
+							system("pause");
+						}
+						else {
+							cnmMng.update(id);
+						}
+					}
 				}
 				else if (tmp == 6) {
 					fscr.open("CinemaRoom.txt", ios::out | ios::trunc);

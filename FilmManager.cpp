@@ -136,108 +136,99 @@ Film FilmManager::setFilmInfor() {
 	return film;
 }
 
-void FilmManager::update() {
+void FilmManager::update(const string& id) {
 	HANDLE cl = GetStdHandle(STD_OUTPUT_HANDLE);
 	Type allType;
-	string id;
-	cout << "\t\t\t\t\t\t\tNhap id: ";
-	getline(cin, id);
-	if (findById(id) == nullptr) {
-		cout << "\t\t\t\t\t\t\tKhong tim thay id phu hop!\n";
-		system("pause");
-	}
-	else {
-		int opttmp = 0;
-		Film* film = findById(id);
-		do {
-			system("cls");
+	int opttmp = 0;
+	Film* film = findById(id);
+	do {
+		system("cls");
+		cout << "\n";
+		SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+		cout << "\t              |                               |                    |                       |                    |                          |                ";
+		SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+		SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+		cout << "    Ma phim   |          Ten phim             |     Dao dien       |    Dien vien chinh    |      Quoc gia      |        The loai          |   Thoi gian    ";
+		SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+		SetConsoleTextAttribute(cl, 0xF0 | 0x70);
+		cout << "              |                               |                    |                       |                    |                          |                ";
+		SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
+		SetConsoleTextAttribute(cl, 7);
+		film->writeData();
+		cout << "\t";
+		for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
+		cout << "\n\t\t\t\t\t\t\t1. Sua ten phim" << endl;
+		cout << "\t\t\t\t\t\t\t2. Sua dao dien" << endl;
+		cout << "\t\t\t\t\t\t\t3. Sua dien vien" << endl;
+		cout << "\t\t\t\t\t\t\t4. Sua noi san xuat" << endl;
+		cout << "\t\t\t\t\t\t\t5. Sua the loai" << endl;
+		cout << "\t\t\t\t\t\t\t6. Sua do dai phim" << endl;
+		cout << "\t\t\t\t\t\t\t0. Xac nhan va thoat" << endl;
+		cout << "\t\t\t\t\t\t\t\t>> Nhap lua chon: ";
+		opttmp = getInt();
+		string up;
+		int upn;
+		switch (opttmp) {
+		case(1): {
+			cout << "\t\t\t\t\t\t\tNhap ten phim: ";
+			getline(cin, up);
+			film->setName(up);
+			break;
+		}
+		case(2): {
+			cout << "\t\t\t\t\t\t\tNhap dao dien: ";
+			getline(cin, up);
+			film->setDirector(up);
+			break;
+		}
+		case(3): {
+			cout << "\t\t\t\t\t\t\tNhap dien vien: ";
+			getline(cin, up);
+			film->setActor(up);
+			break;
+		}
+		case(4): {
+			cout << "\t\t\t\t\t\t\tNhap noi san xuat: ";
+			getline(cin, up);
+			film->setCountry(up);
+			break;
+		}
+		case(5): {
+			cout << "\t\t\t\t\t\t\t\t\t\tCac the loai bao gom:";
+			int check = 0;
+			int cnt = 0;
+			while (cnt < 20) {
+				cout << "\n\t\t\t\t\t\t\t" << left << setw(4) << cnt << ": " << left << setw(30) << *(allType.getType() + cnt) << "|";
+				cout << "\t\t\t\t" << left << setw(4) << cnt + 1 << ": "  << *(allType.getType() + cnt + 1);
+				cnt += 2;
+			}
 			cout << "\n";
-			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
-			cout << "\t              |                               |                    |                       |                    |                          |                ";
-			SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
-			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
-			cout << "    Ma phim   |          Ten phim             |     Dao dien       |    Dien vien chinh    |      Quoc gia      |        The loai          |   Thoi gian    ";
-			SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
-			SetConsoleTextAttribute(cl, 0xF0 | 0x70);
-			cout << "              |                               |                    |                       |                    |                          |                ";
-			SetConsoleTextAttribute(cl, 0); cout << "|\n\t";
-			SetConsoleTextAttribute(cl, 7);
-			film->writeData();
-			cout << "\t";
-			for (int x = 0; x < 156; x++) cout << "-"; cout << endl;
-			cout << "\n\t\t\t\t\t\t\t1. Sua ten phim" << endl;
-			cout << "\t\t\t\t\t\t\t2. Sua dao dien" << endl;
-			cout << "\t\t\t\t\t\t\t3. Sua dien vien" << endl;
-			cout << "\t\t\t\t\t\t\t4. Sua noi san xuat" << endl;
-			cout << "\t\t\t\t\t\t\t5. Sua the loai" << endl;
-			cout << "\t\t\t\t\t\t\t6. Sua do dai phim" << endl;
-			cout << "\t\t\t\t\t\t\t0. Xac nhan va thoat" << endl;
-			cout << "\t\t\t\t\t\t\t\t>> Nhap lua chon: ";
-			opttmp = getInt();
-			string up;
-			int upn;
-			switch (opttmp) {
-			case(1): {
-				cout << "\t\t\t\t\t\t\tNhap ten phim: ";
-				getline(cin, up);
-				film->setName(up);
-				break;
-			}
-			case(2): {
-				cout << "\t\t\t\t\t\t\tNhap dao dien: ";
-				getline(cin, up);
-				film->setDirector(up);
-				break;
-			}
-			case(3): {
-				cout << "\t\t\t\t\t\t\tNhap dien vien: ";
-				getline(cin, up);
-				film->setActor(up);
-				break;
-			}
-			case(4): {
-				cout << "\t\t\t\t\t\t\tNhap noi san xuat: ";
-				getline(cin, up);
-				film->setCountry(up);
-				break;
-			}
-			case(5): {
-				cout << "\t\t\t\t\t\t\t\t\t\tCac the loai bao gom:";
-				int check = 0;
-				int cnt = 0;
-				while (cnt < 20) {
-					cout << "\n\t\t\t\t\t\t\t" << left << setw(4) << cnt << ": " << left << setw(30) << *(allType.getType() + cnt) << "|";
-					cout << "\t\t\t\t" << left << setw(4) << cnt + 1 << ": "  << *(allType.getType() + cnt + 1);
-					cnt += 2;
-				}
-				cout << "\n";
-				do {
-					cout << "\t\t\t\t\t\t\tNhap ma the loai: ";
-					upn = getInt();
-					if(upn >= 0 && upn < 20) check = 1;
-					if (check == 0) {
-						cout << "\t\t\t\t\t\t\t\tThe loai khong hop le moi nhap lai.\n";
-						system("pause");
-					}
-				} while (check == 0);
-				film->setType(upn);
-				break;
-			}
-			case(6): {
-				cout << "\t\t\t\t\t\t\tNhap thoi gian: ";
+			do {
+				cout << "\t\t\t\t\t\t\tNhap ma the loai: ";
 				upn = getInt();
-				film->setLength(upn);
-				break;
-			}
-			case(0): {
-				break;
-			}
-			default:
-				cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
-				system("pause");
-			}
-		} while (opttmp != 0);
-	}
+				if(upn >= 0 && upn < 20) check = 1;
+				if (check == 0) {
+					cout << "\t\t\t\t\t\t\t\tThe loai khong hop le moi nhap lai.\n";
+					system("pause");
+				}
+			} while (check == 0);
+			film->setType(upn);
+			break;
+		}
+		case(6): {
+			cout << "\t\t\t\t\t\t\tNhap thoi gian: ";
+			upn = getInt();
+			film->setLength(upn);
+			break;
+		}
+		case(0): {
+			break;
+		}
+		default:
+			cout << "\t\t\t\t\t\t\tLua chon khong hop le! Moi chon lai.\n";
+			system("pause");
+		}
+	} while (opttmp != 0);
 }
 void FilmManager::readFile(fstream& filein) {
 	int len;

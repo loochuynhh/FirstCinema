@@ -177,11 +177,11 @@ int ScheduleManager::getType(const string& id) {
 	return this->cinemaRoomManager->findById(this->findById(id)->getCinemaRoomId())->getType();
 }
 
-bool ScheduleManager::checkRoomExist(const string& id) {
+bool ScheduleManager::checkRoomExist(const string& id, const Time& t) {
 	Node* node = this->head;
 	int i = 0;
 	while (i < this->length) {
-		if (node->data.getCinemaRoomId() == id) {
+		if (node->data.getCinemaRoomId() == id && node->data.getTime() >= t) {
 			return true;
 		}
 		node = node->next;
@@ -190,11 +190,11 @@ bool ScheduleManager::checkRoomExist(const string& id) {
 	return false;
 }
 
-bool ScheduleManager::checkFilmExist(const string& id) {
+bool ScheduleManager::checkFilmExist(const string& id, const Time& t) {
 	Node* node = this->head;
 	int i = 0;
 	while (i < this->length) {
-		if (node->data.getFilmId() == id) {
+		if (node->data.getFilmId() == id && node->data.getTime() >= t) {
 			return true;
 		}
 		node = node->next;

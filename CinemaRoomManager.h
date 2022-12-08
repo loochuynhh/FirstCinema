@@ -9,7 +9,7 @@ class CinemaRoomManager : public Manager<CinemaRoom>
 {
 public:
 	CinemaRoom setCinemaRoomInfor();
-	string update();
+	void update(const string&);
 	void showType();
 	void readFile(fstream&);
 	void writeFile(fstream&);
