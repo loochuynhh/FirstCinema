@@ -1097,6 +1097,7 @@ void Menu::stMenu() {
 						if(tkMng.checkScheduleExist(id)) {
 							SetConsoleTextAttribute(cl, 4);
 							cout << "\n\t\t\t\t\t\tKHONG DUOC XOA LICH CHIEU NAY VI DA CO VE BAN RA, VUI LONG HOAN TRA VE TRUOC KHI XOA LICH CHIEU\n";
+							system("pause");
 						}
 						else {						
 							cout << "\t\t\t\t\t\t\t\tBan co chac chan muon xoa.";
