@@ -788,6 +788,8 @@ void Menu::stMenu() {
 						}
 						else {
 							filmMng.del(id);
+							cout << "\n\t\t\t\t\t\t\tPhim da duoc xoa.\n";
+							system("pause");
 						}
 					}
 					else {
@@ -955,6 +957,8 @@ void Menu::stMenu() {
 						}
 						else {
 							cnmMng.del(id);
+							cout << "\n\t\t\t\t\t\t\tPhong chieu da duoc xoa.\n";
+							system("pause");
 						}
 					}
 					else {
