@@ -1,5 +1,21 @@
-4
+20
 f0001, ironman, Jon Favreau, Robert Downey, America, 0, 190. 
 f0002, batman, Matt Reeves, Robert Pattinson, America, 0, 210. 
 f0003, hoavangtrencoxanh, Victor Vu, Thanh Vinh, Vietnam, 1, 129. 
 f0004, skytour, Son Tung, Son Tung, Vietnam, 19, 120. 
+f0005, yourname, Makoto, Kamiki Ryunosuke, Japan, 9, 106.
+f0006, lalaland, Damien Chazelle, Ryan Gosling, America, 4, 128.
+f0007, lifeofpi, Ang Lee, Suraj Sharma, America, 2, 127.
+f0008, doraemon, Tony Oliver, Wasabi Mizuta, Japan, 3, 95.
+f0009, knock, Jame Audit, Elizabeth Ocean, America, 14, 100.
+f0010, karatekid, Harald Zwart, Jaden Smith, Chinese, 15, 140.
+f0011, star, Lea Ambert, Lady Dada, America, 19, 150.
+f0012, pele, Jeff Zimbalist, Kevin de Paula, America, 11, 110.
+f0013, war, Amber Zeteri, Mile Hole, America, 10, 210.
+f0014, science, Alert Harm, Michael Jim, America, 17, 150.
+f0015, handsomesiblings, Trau Lap Thanh, Tran Triet Vien, Chinese, 7, 120.
+f0016, spiritedaway, Miyazaki Hayao, Hiiragi Rumi, Japan, 9, 125.
+f0017, doctorstrange, Scott Derrickson, Cumberbatch, America, 0, 115.
+f0018, bogia, Tran Thanh, Tran Thanh, Vietnam, 6, 128.
+f0019, thedoor, Jack Hiderson, Sacha Plaza, America, 14, 142.
+f0020, fastandfurious, Rob Cohen, Paul Walker, America, 0, 106.
