@@ -154,8 +154,8 @@ Schedule ScheduleManager::setScheduleInfor() {
 	} while (true);
 	Time t(date, month, year);
 	for (int i = 0; i < this->length; i++) {
-		if (node->data.getFilmId() == filmId && node->data.getCinemaRoomId() == cinemaRoomId && node->data.getShow() == show && node->data.getTime() == t) {
-			cout << "\t\t\t\t\t\t\tlich chieu nay da ton tai!" << endl;
+		if (node->data.getCinemaRoomId() == cinemaRoomId && node->data.getShow() == show && node->data.getTime() == t) {
+			cout << "\t\t\t\t\t\t\tphong chieu nay da co lich!" << endl;
 			system("pause");
 			schedule.setId("null");
 			return schedule;
