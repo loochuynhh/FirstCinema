@@ -138,7 +138,7 @@ long long int TicketManager::getRevenue() {
 		else if (this->scheduleList->getType(node->data.getScheduleId()) == 3) {
 			revenue += 50;
 		}
-		revenue += node->data.getCountVip() * 10;
+		revenue += node->data.getCountVip() * 5;
 		revenue += node->data.getSoda_Corn() * 20;
 		node = node->next;
 	}
@@ -158,7 +158,7 @@ long long int TicketManager::getRevenue(Time& t1, Time& t2) {
 			else if (this->scheduleList->getType(node->data.getScheduleId()) == 3) {
 				revenue += 50;
 			}
-			revenue += node->data.getCountVip() * 10;
+			revenue += node->data.getCountVip() * 5;
 			revenue += node->data.getSoda_Corn() * 20;
 		}
 		node = node->next;
@@ -178,7 +178,7 @@ long long int TicketManager::getRevenue(string staffId) {
 			else if (this->scheduleList->getType(node->data.getScheduleId()) == 3) {
 				revenue += 50;
 			}
-			revenue += node->data.getCountVip() * 10;
+			revenue += node->data.getCountVip() * 5;
 			revenue += node->data.getSoda_Corn() * 20;
 		}
 		node = node->next;
@@ -210,6 +210,7 @@ void TicketManager::getRevenueY(int year) {
 		}
 		node = this->head;
 	}
+	cout << "\n\t\t\t\tGhi chu: So tien duoc tinh theo don vi ngan dong." << endl;
 	SetConsoleTextAttribute(cl, 0xF0 | 0x70);
 	cout << "\n\t\t\t\t";
 	cout << "               |      |      |      |      |      |      |      |      |      |      |      |       ";
