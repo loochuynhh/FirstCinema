@@ -13,6 +13,7 @@ public:
 	int getType(const string&);
 	bool checkRoomExist(const string&, const Time&);
 	bool checkFilmExist(const string&, const Time&);
+	bool checkShow(int show, int minute);
 	void readFile(fstream&);
 	void writeFile(fstream&);
 	void write();

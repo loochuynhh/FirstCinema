@@ -1,5 +1,5 @@
 20
-f0001, ironman, Jon Favreau, Robert Downey, America, 0, 190. 
+f0001, ironman, Jon Favreau, Robert Downey, America, 0, 120. 
 f0002, batman, Matt Reeves, Robert Pattinson, America, 0, 210. 
 f0003, hoavangtrencoxanh, Victor Vu, Thanh Vinh, Vietnam, 1, 129. 
 f0004, skytour, Son Tung, Son Tung, Vietnam, 19, 120. 

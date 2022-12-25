@@ -126,17 +126,34 @@ Schedule ScheduleManager::setScheduleInfor() {
 		schedule.setId("null");
 		return schedule;
 	}
-	system("cls");
-	cout << "\n";
-	getShow();
-	cout << "\t\t\t\t\t\t\tNhap ca so: ";
-	show = getInt();
-	while (show < 1 || show > 5)
-	{
-		cout << "\t\t\t\t\t\t\tSo ca khong hop le!" << endl;
+	check = 0;
+	do {
+		system("cls");
+		if(check == 1) {
+			cout << "\t\t\t\t\t\t\tPhim co do dai lon hon ca chieu, vui long chon ca khac!";
+		}
+		cout << "\n";
+		getShow();
 		cout << "\t\t\t\t\t\t\tNhap ca so: ";
 		show = getInt();
-	}
+		while (show < 1 || show > 6)
+		{
+			cout << "\t\t\t\t\t\t\tSo ca khong hop le!" << endl;
+			cout << "\t\t\t\t\t\t\tNhap ca so: ";
+			show = getInt();
+		}
+	} while (check = !checkShow(show, this->filmManager->findById(filmId)->getLength()));
+	// system("cls");
+	// cout << "\n";
+	// getShow();
+	// cout << "\t\t\t\t\t\t\tNhap ca so: ";
+	// show = getInt();
+	// while (show < 1 || show > 5)
+	// {
+	// 	cout << "\t\t\t\t\t\t\tSo ca khong hop le!" << endl;
+	// 	cout << "\t\t\t\t\t\t\tNhap ca so: ";
+	// 	show = getInt();
+	// }
 	do {
 		try {
 			cout << "\t\t\t\t\t\t\tNhap ngay chieu: ";
@@ -203,17 +220,29 @@ bool ScheduleManager::checkFilmExist(const string& id, const Time& t) {
 	return false;
 }
 
+bool ScheduleManager::checkShow(int show, int minute) {
+	if(show == 1 && minute > 240) return false;
+	else if(show == 2 && minute > 120) return false;
+	else if(show == 3 && minute > 120) return false;
+	else if(show == 4 && minute > 180) return false;
+	else if(show == 5 && minute > 180) return false;
+	else if(show == 6 && minute > 180) return false;
+	else return true;
+}
+
 void ScheduleManager::getShow() {
 	cout << "\t\t\t\t\t\t\t\t";
-	cout << "Ca 1: " << "7:00 - 9:00" << endl;
+	cout << "Ca 1: " << "1:00 - 5:00" << endl;
 	cout << "\t\t\t\t\t\t\t\t";
-	cout << "Ca 2: " << "10:00 - 12:00" << endl;
+	cout << "Ca 2: " << "7:00 - 9:00" << endl;
 	cout << "\t\t\t\t\t\t\t\t";
-	cout << "Ca 3: " << "13:00 - 16:00" << endl;
+	cout << "Ca 3: " << "10:00 - 12:00" << endl;
 	cout << "\t\t\t\t\t\t\t\t";
-	cout << "Ca 4: " << "17:00 - 20:00" << endl;
+	cout << "Ca 4: " << "13:00 - 16:00" << endl;
 	cout << "\t\t\t\t\t\t\t\t";
-	cout << "Ca 5: " << "21:00 - 0:00" << endl;
+	cout << "Ca 5: " << "17:00 - 20:00" << endl;
+	cout << "\t\t\t\t\t\t\t\t";
+	cout << "Ca 6: " << "21:00 - 0:00" << endl;
 }
 
 void ScheduleManager::readFile(fstream& filein) {
